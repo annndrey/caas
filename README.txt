@@ -13,7 +13,11 @@ Getting Started
 - $venv/bin/pserve development.ini
 
 TODO:
--правка, удаление, ответ на запись - все это сделать чтобы работало
--pagination
--оформление приблизить к тому, что сейчас
--подумать над остальными разделами кроме discuss
+==================
+- reply to specific post
+
+- style must be like on the old site
+
+- articles page
+
+- main page: last articles, map
