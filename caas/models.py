@@ -2,9 +2,9 @@ from sqlalchemy import (
     Column,
     Integer,
     Text,
-	Unicode
+    Unicode
     )
-from sqlalchemy.dialects.mysql import DATETIME
+from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import (
@@ -33,6 +33,29 @@ class Post(Base):
 		self.ip = ip
 		self.page = page
 		self.post = post
+
+class Article(Base):
+	__tablename__ = 'articles'
+	id = Column(Integer, primary_key=True)
+	mainname = Column(Unicode, unique=True)
+	upname = Column(Unicode, unique=True)
+	keywords = Column(Unicode)
+	url = Column(Unicode, unique=True)
+	maintext = Column(Text)
+	descr = Column(Unicode)
+	pubtimestamp = Column(TIMESTAMP)
+	edittimestamp = Column(TIMESTAMP)
+	user = Column(Unicode)
+
+	def __init__(self, mainname, upname, keywords, url, maintext, descr, edittimestamp, user):
+		self.mainname = mainname
+		self.upname = upname
+		self.keywords = keywords
+		self.url = url
+		self.maintext = maintext
+		self.descr = descr
+		self.user = user
+
 
 #TODO md5 hash in password fields instead of plain text
 class User(Base):

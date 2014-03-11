@@ -23,7 +23,8 @@ from sqlalchemy import func
 from .models import (
     DBSession,
     Post,
-	User
+	User, 
+	Article
     )
 import re 
 _re_login = re.compile(r'^[\w\d._-]+$')
@@ -34,6 +35,30 @@ def main_view(request):
 	if authenticated_userid(request):
 		tpldef.update({'auth':True})
 	return tpldef
+
+@view_config(route_name='newarticle', renderer='template_newarticle.mak')
+def add_article(request):
+	if not authenticated_userid(request):
+		request.session.flash({
+				'class' : 'warning',
+				'text'  : 'You need to log in to access this page'
+				})
+		return HTTPSeeOther(location=request.route_url('login'))
+	if not request.POST:
+		tpldef = {}
+		tpldef.update({'authuser':authenticated_userid(request)})
+		return tpldef
+	else:
+		art_name = request.POST.get('inputMainname', None)
+		art_uppername = art_name
+		art_kwords = request.POST.get('inputKeywords', None)
+		art_descr = request.POST.get('inputDescr', None)
+		art_text = request.POST.get('inputArticle', None)
+		art_url = request.POST.get('inputURL', None)
+		newarticle = Article(art_name, art_uppername, art_kwords, art_url, art_text, art_descr, datetime.datetime.now(), authenticated_userid(request))
+		DBSession.add(newarticle)
+
+		return HTTPSeeOther(location=request.route_url('main'))
 
 @view_config(route_name='newpost')
 def add_new_post(request):
@@ -46,7 +71,6 @@ def add_new_post(request):
 	if not request.POST:
 		return HTTPSeeOther(location=request.route_url('home'))
 	else:
-		print(request.POST)
 		message = request.POST.get('userpost', None)
 		if message:
 			newpost = Post(date = datetime.datetime.now(), page='discuss', name=authenticated_userid(request), ip=request.remote_addr, post=message )

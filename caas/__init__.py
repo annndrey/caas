@@ -8,7 +8,8 @@ from .models import (
     DBSession,
     Base,
 	Post,
-	User
+	User,
+	Article
     )
 sessionfactory = UnencryptedCookieSessionFactoryConfig('t,fysdhjn')
 authn_policy = AuthTktAuthenticationPolicy( 'secret')
@@ -29,6 +30,7 @@ def main(global_config, **settings):
 	config.add_route('home:page', '/discuss/{page:\d+}')
 	config.add_route('login', '/login')
 	config.add_route('edit', '/edit/{id:\d+}')
+	config.add_route('newarticle', '/newarticle')
 	config.add_route('remove', '/remove/{id:\d+}')
 	config.add_route('newpost', '/newpost')
 	config.add_route('logout', '/logout')
