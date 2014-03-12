@@ -8,10 +8,15 @@
         <meta name="description" content="caas" />
 	<title>discuss</title>
         <link rel="stylesheet" href="${req.static_url('caas:static/css/bootstrap.css')}" type="text/css" />
+	<link rel="stylesheet" href="${req.static_url('caas:static/css/bootstrap-markdown.min.css')}" type="text/css" />
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 	<script type="text/javascript" src="${req.static_url('caas:static/js/jquery.js')}"></script>
 	<script type="text/javascript" src="${req.static_url('caas:static/js/jquery.actual.js')}"></script>
 	<script type="text/javascript" src="${req.static_url('caas:static/js/bootstrap.js')}"></script>
+	<script type="text/javascript" src="${req.static_url('caas:static/js/bootstrap-markdown.js')}"></script>
+	<script type="text/javascript" src="${req.static_url('caas:static/js/markdown.js')}"></script>
+
 </head>
 <body>
 ${next.body()}

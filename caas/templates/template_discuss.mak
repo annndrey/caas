@@ -30,7 +30,7 @@
      <a data-toggle="tooltip" data-placement="top" title="Выйти" href="${request.route_url('logout')}"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
 
      <ul class="nav navbar-nav">
-        <li><a href="/newcomments">новые комментарии <span class="badge">${newcommentscount}</span></a></li>
+        <li><a href="/newcomments">новые комментарии <span class="badge">${str(newcommentscount)}</span></a></li>
         <li><a href="#">остальное</a></li>
      </ul>
           </p>
@@ -56,17 +56,17 @@ ${navbar(page, max_page)}
 	    
      		 <h4>${p.name}: <small>${p.date.strftime('%d/%m/%Y %H:%M')}</small>
 		 % if p.name == authuser:
-		 	<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#editModal${p.id}" data-toggle="tooltip" data-placement="top" title="Править"><span class="glyphicon glyphicon-pencil"></span></button>
+		 	<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#editModal${str(p.id)}" data-toggle="tooltip" data-placement="top" title="Править"><span class="glyphicon glyphicon-pencil"></span></button>
 		 % endif
-		 <div class="modal fade" id="editModal${p.id}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"${p.id} aria-hidden="true">
+		 <div class="modal fade" id="editModal${str(p.id)}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"${str(p.id)} aria-hidden="true">
   		 <div class="modal-dialog">
     		 <div class="modal-content">
       		 <div class="modal-header">
         	 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        	 <h4 class="modal-title" id="editModalLabel${p.id}">Правка записи</h4>
+        	 <h4 class="modal-title" id="editModalLabel${str(p.id)}">Правка записи</h4>
       		 </div>
       		 <div class="modal-body">
-        	 <form role="form" method="post" action="/edit/${p.id}">
+        	 <form role="form" method="post" action="/edit/${str(p.id)}">
 		 <textarea class="form-control" id="newpost" name="newpost" rows="4">${p.post|n}</textarea>
 		 <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
       		 </div>
@@ -79,7 +79,24 @@ ${navbar(page, max_page)}
   </div>
 </div>
 		 % if p.name == authuser:
-		   <a role="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Удалить" href="/remove/${p.id}"><span class="glyphicon glyphicon-trash"></span></a>
+		   <button class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-delete-modal-sm${str(p.id)}"><span class="glyphicon glyphicon-trash"></span></button>
+		   <div class="modal fade bs-delete-modal-sm${str(p.id)}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+		     <div class="modal-dialog">
+		       <div class="modal-content">
+		       <div class="modal-header">
+		       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		       <h4 class="modal-title" id="deleteModalLabel${str(p.id)}">Удаление записи</h4>
+		       </div>
+		       <div class="modal-body">
+      		       <a href="/remove/${str(p.id)}">Да, удалите немедленно!</a>
+		       </div>
+		       <div class="modal-footer">
+		       <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
+		       </div>
+		       </div>
+		     </div>
+		   </div>
+
 		 % endif  
 		 <a role="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Ответить" href="/reply"><span class="glyphicon glyphicon-comment"></span></a>
 		 </h4>

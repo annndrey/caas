@@ -22,6 +22,7 @@ def main(global_config, **settings):
 	DBSession.configure(bind=engine)
 	Base.metadata.bind = engine
 	config = Configurator(settings=settings, session_factory=sessionfactory)
+	config.include('pyramid_mako')
 	config.set_authentication_policy(authn_policy)
 	config.set_authorization_policy(authz_policy)
 	config.add_static_view('static', 'static', cache_max_age=3600)

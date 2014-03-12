@@ -40,7 +40,8 @@
       <input type="text" class="form-control" id="inputURL" name="inputURL" placeholder="yourarticle">
     </div>
      		     <div class="col-md-8 col-md-offset-2">
-     		     	  <textarea class="form-control" id="inputArticle" name="inputArticle" placeholder="Писать сюда" rows=20></textarea>
+		     	  
+     		     	  <textarea class="form-control" id="inputArticle" name="inputArticle" data-provide="markdown" placeholder="Писать сюда" rows=20></textarea>
 			  <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
 			  <button type="submit" class="btn btn-default pull-right" id="submit" name="submit" title="Опубликовать" tabindex="3">Послать</button>
      		     </div>
