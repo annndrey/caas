@@ -23,7 +23,7 @@
 
 </div>     
 <nav class="navbar navbar-default navbar-ststic-top" role="navigation">
-     <a class="navbar-brand" href="#">Глагне</a>
+     <a class="navbar-brand" href="/">Глагне</a>
      <div class="container">
      <p class="navbar-text">Шалом, ${authuser}! 
 

@@ -31,7 +31,8 @@ _re_login = re.compile(r'^[\w\d._-]+$')
 
 @view_config(route_name='main', renderer='template_main.mak')
 def main_view(request):
-	tpldef = {'message': 'Welcome to the main page. Here we will post something useful' }
+	firstarticle = DBSession.query(Article).filter(Article.id==7).first()
+	tpldef = {'message': 'Welcome to the main page. Here we will post something useful', 'article':firstarticle }
 	if authenticated_userid(request):
 		tpldef.update({'auth':True})
 	return tpldef
