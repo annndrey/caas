@@ -21,7 +21,7 @@
 	<script type="text/javascript" src="${req.static_url('caas:static/js/jquery.colorbox.js')}"></script>
 	
 </head>
-<body>
+<body id="yellowfonts">
 ${next.body()}
 </body>
 </html>
