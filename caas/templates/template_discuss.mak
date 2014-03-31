@@ -53,7 +53,6 @@ ${navbar(page, max_page)}
      % for p in posts:
        <div class="row">
        	    <div class="col-md-8 col-md-offset-2" align='justify'>
-	    
      		 <h4>${p.name}: <small>${p.date.strftime('%d/%m/%Y %H:%M')}</small>
 		 % if p.name == authuser:
 		 	<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#editModal${p.id}" data-toggle="tooltip" data-placement="top" title="Править"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -96,11 +95,12 @@ ${navbar(page, max_page)}
 		       </div>
 		     </div>
 		   </div>
+		 % endif
 
-		 % endif  
 		 <a role="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Ответить" href="/reply"><span class="glyphicon glyphicon-comment"></span></a>
 		 </h4>
 		 </span>${p.post|n}
+
 	    </div>
        </div>
       % endfor
