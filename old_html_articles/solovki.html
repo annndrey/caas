@@ -1,0 +1,74 @@
+<?php
+require("mainlib.php");
+
+$folder="solovki";
+$keywords = "Соловки, Соловецкие сотрова, Соловецкий архипелаг, СЛОН, СТОН, гора Секирка, мыс Белужий";
+$descr="В этой статье мы подробно описываем как добраться до Соловецких островов, а также рассмтриваем
+проживание на соловках и достопримечательности. Естественно, прилагается куча фоторгафий соловков!";
+$css = "proper.css";
+$bord = "bord_20.png";
+
+$cont[0] = "Общая информация";
+$cont[1] = "Как добраться";
+$cont[2] = "Где жить";
+$cont[3] = "Достопримечательности";
+
+$ind=array("0","0","0","0");
+
+insert_header("Соловецкие острова","Соловецкие острова",$descr,$keywords,$css,$bord);
+$userwidth=get_width();
+
+PICTURES($folder,array("solo_01"),"1",$userwidth);
+put_content($cont,$ind);
+put_title(0,0,$cont[0]);
+insert_paragraph($folder,"justify","solo_01.txt");
+PICTURES($folder,array("solo_10","solo_11","solo_12"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_02.txt");
+PICTURES($folder,array("solo_07","solo_08"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_03.txt");
+PICTURES($folder,array("solo_09"),"2",$userwidth);
+insert_paragraph($folder,"justify","solo_04.txt");
+PICTURES($folder,array("solo_02","solo_03","solo_04"),"1",$userwidth);
+
+put_title(1,0,$cont[1]);
+insert_paragraph($folder,"justify","solo_05.txt");
+PICTURES($folder,array("solo_06","solo_13","solo_14"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_06.txt");
+PICTURES($folder,array("solo_48"),"2",$userwidth);
+insert_paragraph($folder,"justify","solo_22.txt");
+PICTURES($folder,array("solo_15","solo_16","solo_17"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_07.txt");
+PICTURES($folder,array("solo_43","solo_42","solo_44"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_08.txt");
+PICTURES($folder,array("solo_18"),"2",$userwidth);
+insert_paragraph($folder,"justify","solo_09.txt");
+
+put_title(2,0,$cont[2]);
+insert_paragraph($folder,"justify","solo_10.txt");
+PICTURES($folder,array("solo_20","solo_21","solo_22"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_11.txt");
+PICTURES($folder,array("solo_23","solo_24","solo_25"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_12.txt");
+PICTURES($folder,array("solo_26","solo_28","solo_27"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_13.txt");
+
+put_title(3,0,$cont[3]);
+PICTURES($folder,array("solo_41"),"2",$userwidth);
+insert_paragraph($folder,"justify","solo_14.txt");
+PICTURES($folder,array("solo_31","solo_33","solo_32"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_15.txt");
+PICTURES($folder,array("solo_34","solo_36","solo_38"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_16.txt");
+PICTURES($folder,array("solo_49","solo_37","solo_39"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_17.txt");
+PICTURES($folder,array("solo_29","solo_36","solo_40"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_18.txt");
+PICTURES($folder,array("solo_30"),"2",$userwidth);
+insert_paragraph($folder,"justify","solo_19.txt");
+PICTURES($folder,array("solo_19"),"2",$userwidth);
+insert_paragraph($folder,"justify","solo_20.txt");
+PICTURES($folder,array("solo_45","solo_46","solo_47"),"1",$userwidth);
+insert_paragraph($folder,"justify","solo_21.txt");
+
+insert_bottom($folder,$bord,$userwidth);
+?>

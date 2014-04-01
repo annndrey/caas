@@ -1,0 +1,47 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Инструкции";
+$upname = "HTML ликбез";
+$desc="Инструкции.";
+$folder="club";
+$css = "proper.css";
+$bord = "dragon";
+
+insert_header($mainname,$upname,$desc,$keywords,$css,$bord."_left.png");
+$usewidth=get_width();?>
+<h3>Вот вам замечательная инструкция по ипользованию базовых HTML-тегов</h3>
+<p align=center> 
+&lt;a href="адрес ссылки"&gt;<a href="http://caas.ru">вот так вот!</a>&lt;/a&gt;, обязательно с http://, иначе не будет работать!
+<br><br>
+&lt;u&gt;<u>подчеркивание</u>&lt;/u&gt; 
+<br><br>
+&lt;i&gt;<i>курсив</i>&lt;/i&gt;
+<br><br>
+&lt;b&gt;<b>жирный шрифт</b>&lt;/b&gt;
+<br><br>
+&lt;strike&gt;<strike>зачеркивание</strike>&lt;/strike&gt;
+<br><br>
+&lt;blink&gt;<blink>моргающий текст</blink>&lt;/blink&gt;
+<br><br>
+&lt;font color="red" size="5"&gt;<font color="red" size="5">большие сиськи пятого размера</font>&lt;/font&gt;, в качестве цвета может быть указан любой, 
+в частности в шестнадцатиричном представлении #RGB. Например, #0000aa - это синенький, а #999999 
+- серенький! Размер как у сисек - чем больше цифра, тем больше буквы.
+<br><br>
+&lt;big&gt;<big>большие буквы</big>&lt;/big&gt;
+<br><br>
+&lt;small&gt;<small>маленькие буквы</small>&lt;/small&gt;
+<br><br>
+&lt;marquee direction="right"&gt;бегущая строка. бежит вправо&lt;/marquee&gt;<br>
+<marquee direction="right">Она реально бежит вправо</marquee>
+а если написать "left" -<br> 
+<marquee direction="left">то она побежит влево :)</marquee><br><br>
+&lt;img src="ссылка на картинку" width=ширина_в_пикселях&gt;<br><br>
+&lt;pre&gt;преформатированный текст (будет вставлен в том виде, в котором был введен)&lt;/pre&gt;<br><br>
+вставка роликов с youtube: справа от окна с роликом есть 2 ссылки - URL и HTML. Просто копируете и вставляете 
+HTML код в сообение.<br><br>
+*тег &lt;blink&gt; не работает в InternetExplorer. Это не повод отказываться от этого
+замечательного тега, а повод перестать, наконец, использовать эту убогую поделку и скачать firefox!
+</p>
+
+<?php insert_bottom("instructions",$bord."_right.png",$userwidth);?>

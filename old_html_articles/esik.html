@@ -1,0 +1,41 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Владыко женился!!!";
+$upname = "Есик. Свадебные фотографии.";
+$descr="Фотографии со свадьбы наших друзей, давйте их хором поздравим!!!";
+$folder="esik";
+$keywords = "Бу-га-га!!!";
+$css = "proper.css";
+$bord = "bord_4";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+
+PICTURES($folder,array("IMG_2643","IMG_2680","IMG_2644","IMG_2645"),"1",$userwidth);
+PICTURES($folder,array("IMG_2651","IMG_2653","IMG_2654"),"1",$userwidth);
+PICTURES($folder,array("IMG_2655","IMG_2673","IMG_2656"),"1",$userwidth);
+PICTURES($folder,array("IMG_2658","IMG_2664","IMG_2660"),"1",$userwidth);
+PICTURES($folder,array("IMG_2667","IMG_2669","IMG_2668"),"1",$userwidth);
+PICTURES($folder,array("IMG_2674","IMG_2677","IMG_2670"),"1",$userwidth);
+PICTURES($folder,array("IMG_2683","IMG_2689","IMG_2686"),"1",$userwidth);
+PICTURES($folder,array("IMG_2699","IMG_2690","IMG_2693"),"1",$userwidth);
+PICTURES($folder,array("IMG_2701","IMG_2702","IMG_2698"),"1",$userwidth);
+PICTURES($folder,array("IMG_2705","IMG_2703","IMG_2704"),"1",$userwidth);
+PICTURES($folder,array("IMG_2712","IMG_2718","IMG_2713"),"1",$userwidth);
+PICTURES($folder,array("IMG_2714","IMG_2715","IMG_2719"),"1",$userwidth);
+PICTURES($folder,array("IMG_2730","IMG_2737","IMG_2739"),"1",$userwidth);
+PICTURES($folder,array("IMG_2744","IMG_2741","IMG_2743"),"1",$userwidth);
+PICTURES($folder,array("IMG_2747","IMG_2748","IMG_2755"),"1",$userwidth);
+PICTURES($folder,array("IMG_2759","IMG_2762","IMG_2771"),"1",$userwidth);
+PICTURES($folder,array("IMG_2780","IMG_2778","IMG_2791"),"1",$userwidth);
+PICTURES($folder,array("IMG_2792","IMG_2796","IMG_2798"),"1",$userwidth);
+PICTURES($folder,array("IMG_2802","IMG_2804","IMG_2810"),"1",$userwidth);
+PICTURES($folder,array("IMG_2825","IMG_2828","IMG_2829"),"1",$userwidth);
+PICTURES($folder,array("IMG_2830","IMG_2831","IMG_2833"),"1",$userwidth);
+PICTURES($folder,array("IMG_2835","IMG_2843","IMG_2846"),"1",$userwidth);
+PICTURES($folder,array("IMG_2855","IMG_2862","IMG_2865"),"1",$userwidth);
+PICTURES($folder,array("IMG_2869","IMG_2875","IMG_2847"),"1",$userwidth);
+PICTURES($folder,array("IMG_2876","IMG_2886","IMG_2878"),"1",$userwidth);
+
+insert_bottom("esik",$bord.".png",$userwidth);?>

@@ -1,0 +1,44 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Республика Карелия,<br>национальный парк Паанаярви,<br>февраль 2008 года";
+$upname = "Национальный парк Паанаярви, фотоотчет";
+$descr="На этой страничке собраны фотографии, не вошедшие в основной отчет о поездке в национальный парк Паанаярви.";
+$folder="paanayarvi";
+$keywords = "Карелия, Паанаярви, отдых, рыбалка, Нуорунен, Пяозерский, Лоухи, национальный парк";
+$css = "proper.css";
+$bord = "bord_4";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+
+PICTURES($folder,array("img_2207","img_2234"),"1",$userwidth);
+PICTURES($folder,array("img_2431","img_2440","img_2492"),"1",$userwidth);
+PICTURES($folder,array("img_2523","img_2512","img_2458"),"1",$userwidth);
+PICTURES($folder,array("img_2518","img_2520"),"1",$userwidth);
+PICTURES($folder,array("img_2542","img_2549"),"1",$userwidth);
+PICTURES($folder,array("img_2561"),"1",$userwidth);
+PICTURES($folder,array("img_2215","img_2219"),"1",$userwidth);
+PICTURES($folder,array("img_2225","img_2228"),"1",$userwidth);
+PICTURES($folder,array("img_2231","img_2585"),"1",$userwidth);
+PICTURES($folder,array("img_2238"),"1",$userwidth);
+PICTURES($folder,array("img_2598","img_2606","img_2620"),"1",$userwidth);
+PICTURES($folder,array("img_2264"),"1",$userwidth);
+PICTURES($folder,array("img_2255","img_2262","img_2266"),"1",$userwidth);
+PICTURES($folder,array("img_2270","img_2272","img_2275"),"1",$userwidth);
+PICTURES($folder,array("img_2296","img_2291","img_2316"),"1",$userwidth);
+PICTURES($folder,array("img_2308","img_2295"),"1",$userwidth);
+PICTURES($folder,array("img_2313","img_2327","img_2317"),"1",$userwidth);
+PICTURES($folder,array("img_2329","img_2335","img_2390"),"1",$userwidth);
+PICTURES($folder,array("img_2338","img_2340","img_2282"),"1",$userwidth);
+PICTURES($folder,array("img_2345","img_2346"),"1",$userwidth);
+PICTURES($folder,array("img_2384","img_2453","img_2388"),"1",$userwidth);
+PICTURES($folder,array("img_2386"),"1",$userwidth);
+PICTURES($folder,array("img_2349","img_2443"),"1",$userwidth);
+PICTURES($folder,array("img_2466","img_2451"),"1",$userwidth);
+PICTURES($folder,array("img_2497","img_2500"),"1",$userwidth);
+PICTURES($folder,array("img_2630","img_2632"),"1",$userwidth);
+
+insert_bottom("paan_foto",$bord.".png",$userwidth);
+?>
+

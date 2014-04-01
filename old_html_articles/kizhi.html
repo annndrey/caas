@@ -1,0 +1,76 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Остров-музей Кижи,<br>осень 2005 года";
+$upname = "Остров-музей Кижи";
+$descr="Остров-музей Кижи давно привлекает туристов и паломников. Однако мало кто задумывался о дикой поездке в Кижи.
+Для этого может потребоваться карта и знание того, где лучше переночевать.";
+$folder="kizhi";
+$keywords = "Карелия, Петрозаводск, Кижи, деревянное зодчество, зодчество, памятники архитектуры, церкви, Лодога, отдых";
+$css = "proper.css";
+$bord = "bord_5";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+
+PICTURES($folder,array("kizhi_zagl"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_01.txt");
+insert_paragraph($folder,"justify","kizi_02.txt");
+
+PICTURES($folder,array("kizhi5"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_03.txt");
+
+PICTURES($folder,array("kizhi1"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_04.txt");
+
+PICTURES($folder,array("kizhi2"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_05.txt");
+
+PICTURES($folder,array("kizhi3","kizhi4"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_06.txt");
+
+PICTURES($folder,array("kizhi6"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_07.txt");
+
+PICTURES($folder,array("kizhi7"),"1",$userwidth);
+insert_paragraph($folder,"center","kizi_08.txt");
+
+PICTURES($folder,array("kizhi8","kizhi9"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_09.txt");
+
+PICTURES($folder,array("kizhi10","kizhi11"),"1",$userwidth);
+insert_paragraph($folder,"center","kizi_10.txt");
+
+PICTURES($folder,array("kizhi12","kizhi13"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_11.txt");
+
+PICTURES($folder,array("kizhi14"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_12.txt");
+
+PICTURES($folder,array("kizhi15","kizhi16"),"1",$userwidth);
+insert_paragraph($folder,"center","kizi_13.txt");
+
+PICTURES($folder,array("kizhi17","kizhi18"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_14.txt");
+
+PICTURES($folder,array("kizhi19"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_15.txt");
+
+PICTURES($folder,array("kizhi21","kizhi22"),"1",$userwidth);
+PICTURES($folder,array("kizhi23","kizhi24"),"1",$userwidth);
+PICTURES($folder,array("kizhi25","kizhi26"),"1",$userwidth);
+insert_paragraph($folder,"center","kizi_16.txt");
+
+PICTURES($folder,array("kizhi27","kizhi28","kizhi29"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_17.txt");
+
+PICTURES($folder,array("kizhi30","kizhi31","kizhi32"),"1",$userwidth);
+insert_paragraph($folder,"center","kizi_18.txt");
+
+PICTURES($folder,array("kizhi33"),"1",$userwidth);
+insert_paragraph($folder,"justify","kizi_19.txt");
+
+PICTURES($folder,array("kizhi34"),"2",$userwidth);
+
+insert_bottom($folder,$bord.".png",$userwidth);
+?>

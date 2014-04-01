@@ -1,0 +1,60 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Республика Карелия,<br>национальный парк Паанаярви,<br>февраль 2008 года";
+$upname = "Национальный парк Паанаярви, Карелия февраль 2008";
+$descr="В Карелии, недалеко от границы с Финлядией расположен небольшой национальный парк Паанаярви. Паанаярви как нельзя 
+лучше подходит для спокойного отдыха и рыбалки. В статье описано, как добраться до Паанаярви, а также даны другие советы";
+$folder="paanayarvi";
+$keywords = "Карелия, Паанаярви, отдых, рыбалка, Нуорунен, Пяозерский, Лоухи, национальный парк";
+$css = "proper.css";
+$bord = "bok";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+
+PICTURES($folder,array("img_2246"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_01.txt");
+
+PICTURES($folder,array("img_2533"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_02.txt");
+
+PICTURES($folder,array("img_2483","img_2485"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_03.txt");
+
+PICTURES($folder,array("img_2158","img_2426","img_2211"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_04.txt");
+
+PICTURES($folder,array("img_2166","img_2170"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_05.txt");
+
+PICTURES($folder,array("img_2535","img_2595"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_06.txt");
+
+PICTURES($folder,array("img_2185","img_2473","img_2511"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_07.txt");
+
+PICTURES($folder,array("img_2204","img_2558"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_08.txt");
+
+PICTURES($folder,array("img_2626"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_09.txt");
+
+PICTURES($folder,array("img_2180","img_2181"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_10.txt");
+
+PICTURES($folder,array("img_2529","img_2566"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_11.txt");
+
+PICTURES($folder,array("img_2351","img_2356"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_12.txt");
+
+PICTURES($folder,array("img_2505","img_2508"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_13.txt");
+
+PICTURES($folder,array("img_2171"),"1",$userwidth);
+insert_paragraph($folder,"justify","paan_14.txt");
+
+
+insert_bottom($folder,$bord.".png",$userwidth);
+?>

@@ -1,0 +1,199 @@
+<?php
+require("mainlib.php");
+
+$folder="makedonia";
+$keywords = "македония, бывшая югославская республика Македония, FYROM, F.Y.R.O.M. Скопье, Прилеп, монастырь, Трескавец, Битола, крепость, Охрид, охридское озеро, Маловишта, Вевчани, республика Вевчани, Свети Наум, монастырь Святого Наума, Тетово, Пелистер, Pelister, Преспа, озеро Преспа, мечеть, икона, роспись";
+$uptitle = "Македония. Путешествие по Западным Балканам, сентябрь 2008 года.";
+$descr="Во время путешествия по Македонии Мы побывали в столице - Скопье, а потом проехали через Прилеп, Битолу, 
+Маловишту, Охрид и Тетово. Побывали в монастырях Трескавец и Свети Наум, посетили распублику Вевчани.";
+$title = "Македония,<br>сентябрь 2008 года";
+$css = "proper.css";
+$bord = "bord_14";
+
+$cont[0] = "Скопье";
+$cont[1] = "Прилеп - Монастырь Трескавец";
+$cont[2] = "Битола";
+$cont[3] = "Деревня Маловишта - Парк Пелистер";
+$cont[4] = "Охрид";
+$cont[5] = "Монастырь Свети Наум и республика Вевчани";
+$cont[6] = "Тетово";
+
+$ind=array("0","0","0","0","0","0","0");
+
+insert_header($title,$uptitle,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+PICTURES($folder,array("marshrut"),"1",$userwidth);
+
+put_content($cont,$ind);?>
+
+<br><h4 align=justify>Общие вопросы, такие как питание и проживание рассмотрены на отдельной 
+<a href="balkany.html#top">страничке</a>.<br>
+Также доступны другие части путешествия - 
+<a href="serbia.html#top">Сербия</a> и 
+<a href="bosnia.html#top">Босния и Герцеговина</a>.</h4>
+<?php
+put_title(0,0,$cont[0]);
+insert_paragraph($folder,"justify","maked_01.txt");
+PICTURES($folder,array("mkd0"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_02.txt");
+PICTURES($folder,array("mkd1"),"2",$userwidth);
+PICTURES($folder,array("mkd2","mkd3","mkd4"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_03.txt");
+PICTURES($folder,array("mkd5","mkd6"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_04.txt");
+PICTURES($folder,array("mkd7","mkd8"),"1",$userwidth);
+PICTURES($folder,array("mkd9"),"2",$userwidth);
+PICTURES($folder,array("mkd10","mkd11"),"1",$userwidth);
+PICTURES($folder,array("mkd12","mkd13"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_05.txt");
+PICTURES($folder,array("mkd14","mkd15"),"1",$userwidth);
+PICTURES($folder,array("mkd16","mkd17","mkd18"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_06.txt");
+PICTURES($folder,array("mkd19","mkd20","mkd21"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_07.txt");
+PICTURES($folder,array("mkd22","mkd23"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_08.txt");
+PICTURES($folder,array("mkd24"),"2",$userwidth);
+
+insert_paragraph($folder,"justify","maked_09.txt");
+PICTURES($folder,array("mkd25","mkd26","mkd27"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_10.txt");
+PICTURES($folder,array("mkd28","mkd29","mkd30"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_11.txt");
+PICTURES($folder,array("mkd31"),"2",$userwidth);
+PICTURES($folder,array("mkd32"),"2",$userwidth);
+
+
+
+put_title(1,0,$cont[1]);
+insert_paragraph($folder,"justify","maked_12.txt");
+PICTURES($folder,array("mkd33","mkd34","mkd35"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_13.txt");
+PICTURES($folder,array("mkd36"),"2",$userwidth);
+PICTURES($folder,array("mkd37"),"2",$userwidth);
+PICTURES($folder,array("mkd38","mkd39"),"1",$userwidth);
+PICTURES($folder,array("mkd40"),"2",$userwidth);
+PICTURES($folder,array("mkd41","mkd42","mkd43"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_14.txt");
+PICTURES($folder,array("mkd44"),"2",$userwidth);
+PICTURES($folder,array("mkd45","mkd46","mkd47"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_15.txt");
+PICTURES($folder,array("mkd48"),"2",$userwidth);
+PICTURES($folder,array("mkd49","mkd50","mkd51"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_16.txt");
+PICTURES($folder,array("mkd52"),"2",$userwidth);
+
+
+
+put_title(2,0,$cont[2]);
+insert_paragraph($folder,"justify","maked_17.txt");
+PICTURES($folder,array("mkd53","mkd54","mkd55"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_18.txt");
+PICTURES($folder,array("mkd56","mkd57"),"1",$userwidth);
+PICTURES($folder,array("mkd58","mkd59","mkd60"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_19.txt");
+PICTURES($folder,array("mkd61","mkd62"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_20.txt");
+PICTURES($folder,array("mkd63","mkd64"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_21.txt");
+PICTURES($folder,array("mkd65"),"2",$userwidth);
+PICTURES($folder,array("mkd66","mkd67","mkd68"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_22.txt");
+PICTURES($folder,array("mkd69","mkd70","mkd71"),"1",$userwidth);
+PICTURES($folder,array("mkd72"),"2",$userwidth);
+
+
+
+put_title(3,0,$cont[3]);
+insert_paragraph($folder,"justify","maked_23.txt");
+PICTURES($folder,array("mkd74","mkd73","mkd75"),"1",$userwidth);
+PICTURES($folder,array("mkd76","mkd77","mkd78"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_24.txt");
+PICTURES($folder,array("mkd79"),"1",$userwidth);
+PICTURES($folder,array("mkd80","mkd81"),"1",$userwidth);
+PICTURES($folder,array("mkd82"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_25.txt");
+PICTURES($folder,array("mkd83"),"2",$userwidth);
+PICTURES($folder,array("mkd84","mkd85","mkd86"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_26.txt");
+PICTURES($folder,array("mkd87"),"2",$userwidth);
+PICTURES($folder,array("mkd88"),"2",$userwidth);
+PICTURES($folder,array("mkd89"),"2",$userwidth);
+
+
+
+put_title(4,0,$cont[4]);
+insert_paragraph($folder,"justify","maked_27.txt");
+PICTURES($folder,array("mkd90"),"2",$userwidth);
+PICTURES($folder,array("mkd91"),"2",$userwidth);
+
+insert_paragraph($folder,"justify","maked_28.txt");
+PICTURES($folder,array("mkd93"),"1",$userwidth);
+PICTURES($folder,array("mkd92","mkd94"),"1",$userwidth);
+PICTURES($folder,array("mkd95","mkd96","mkd97"),"1",$userwidth);
+PICTURES($folder,array("mkd98","mkd99"),"2",$userwidth);
+
+insert_paragraph($folder,"justify","maked_29.txt");
+PICTURES($folder,array("mkd100"),"2",$userwidth);
+
+insert_paragraph($folder,"justify","maked_30.txt");
+PICTURES($folder,array("mkd101","mkd102"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_31.txt");
+PICTURES($folder,array("mkd103","mkd104"),"1",$userwidth);
+PICTURES($folder,array("mkd105","mkd106","mkd107"),"1",$userwidth);
+
+
+
+put_title(5,0,$cont[5]);
+insert_paragraph($folder,"justify","maked_32.txt");
+PICTURES($folder,array("mkd108"),"2",$userwidth);
+
+insert_paragraph($folder,"justify","maked_33.txt");
+PICTURES($folder,array("mkd109","mkd110","mkd111"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_34.txt");
+PICTURES($folder,array("mkd112","mkd113","mkd114"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_35.txt");
+PICTURES($folder,array("mkd116","mkd115","mkd117"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_36.txt");
+PICTURES($folder,array("mkd118","mkd119","mkd120"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_37.txt");
+PICTURES($folder,array("mkd121","mkd122","mkd123"),"1",$userwidth);
+
+
+
+put_title(6,0,$cont[6]);
+insert_paragraph($folder,"justify","maked_38.txt");
+PICTURES($folder,array("mkd124","mkd125","mkd126"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","maked_39.txt");
+PICTURES($folder,array("mkd127","mkd128"),"1",$userwidth);
+
+
+insert_bottom($folder,$bord.".png",$userwidth);
+?>

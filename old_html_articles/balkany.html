@@ -1,0 +1,118 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Балканы, общая информация<br>сентябрь 2008 года";
+$upname = "Путешествие по Западным Балканам, сентябрь 2008 года. Общая информация.";
+$folder="balkany";
+$descr="На этой страничке собрана общая информация, полезная для тех, кто собирается поехать на Балканы дикарем. Мы 
+постарались максимально полно осветить такие вопросы, как цены на транспорт, проживание и питание, а также остановились
+на описании некоторых специфических черт региона, которые полезно знать путешественнику.";
+$keywords = "Сербия, Македония, Босния, Балканы, Босния и Герцеговина, безвизовость, виза в Сербию, виза в Македонию, виза в Боснию, регистрация, деньги, обмен, транспорт, автобус, динар, денар, конвертируемая марка, lonely planet, путеводитель";
+$css = "proper.css";
+$bord = "bord_17";
+
+$cont[0] = "Перелет";
+$cont[1] = "Визы и регистрации";
+$cont[2] = "Границы";
+$cont[3] = "Деньги";
+$cont[4] = "Язык";
+$cont[5] = "Жилье";
+$cont[6] = "Еда и питье";
+$cont[7] = "Транспорт";
+$cont[8] = "Национальные парки";
+$cont[9] = "Информация на месте";
+
+$ind=array("2","2","2","2","2","2","2","2","2","2");
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord."_left.png");
+$userwidth=get_width();
+
+PICTURES($folder,array("marshrut"),"1",$userwidth);
+
+put_content($cont,$ind);?>
+
+<h4 align=left>Вы также можете ознакомиться с подробными описаниями поездок по 
+<a href="serbia.html#top">Сербии</a>, <a href="makedonia.html#top">Македонии</a> и 
+<a href="bosnia.html#top">Боснии и Герцеговине</a>.</h4>
+<p><br><br><img width=150 src="main/list.png" alt="Разделитель"><p><a href="#top" class=link_2><font size=2>top</font></a></p>
+<?php
+put_title(0,2,$cont[0]);
+insert_paragraph($folder,"justify","serbia_01.txt");
+
+put_title(1,2,$cont[1]);
+insert_paragraph($folder,"justify","serbia_02.txt");
+
+put_title(2,2,$cont[2]);
+insert_paragraph($folder,"justify","serbia_03.txt");
+
+put_title(3,2,$cont[3]);
+insert_paragraph($folder,"justify","serbia_04.txt");
+
+put_title(4,2,$cont[4]);
+insert_paragraph($folder,"justify","serbia_05.txt");
+PICTURES($folder,array("srb1"),"1",$userwidth);
+insert_paragraph($folder,"justify","serbia_06.txt");
+PICTURES($folder,array("srb2","srb3"),"1",$userwidth);
+
+put_title(5,2,$cont[5]);
+insert_paragraph($folder,"justify","serbia_11.txt");
+
+put_title(6,2,$cont[6]);?>
+
+<p align=justify>Повсеместно распространена мясная кухня, и в общепите, и в ресторанах. В БиГ
+отличные восточные блюда. Примерные цены:</p>
+<table cellpadding=5>
+<tr><td>на фастфуд:</td><td>в Сербии</td><td> плескавица</td><td>1,5-3
+евро</td></tr>
+<tr><td> </td><td>в БиГ</td><td>донер</td><td>1,5-2,5 евро</td></tr>
+<tr><td> </td><td> </td><td> чевапи (рекомендуем!)</td><td>3 евро</td></tr>
+<tr><td>на блюда посерьезнее:</td><td> </td><td>разные стейки</td><td>5-10
+евро</td></tr>
+<tr><td> </td><td> </td><td>кусок печеного ягненка массой 1
+кг</td><td>примерно 13 евро</td></tr>
+</table>
+<?php
+insert_paragraph($folder,"justify","serbia_08.txt");
+PICTURES($folder,array("srb4"),"1",$userwidth);
+insert_paragraph($folder,"justify","serbia_09.txt");
+
+put_title(7,2,$cont[7]);
+insert_paragraph($folder,"justify","serbia_10.txt");
+?>
+<table align=center style="text-align:right">
+<tr><td><b>Маршрут</b></td><td width=10></td><td><b>Цена (евро)</b></td><td width=10></td><td><b>Время в пути</b></td><td width=50></td>
+<td><b>Маршрут</b></td><td width=10></td><td><b>Цена (евро)</b></td><td width=10></td><td><b>Время в пути</b></td></tr>
+<tr><td>Аэропорт - Белград</td><td width=10></td><td>2.5</td><td width=10></td><td>30 минут</td><td width=50></td>
+<td>Тетово - Скопье</td><td width=10></td><td>2</td><td width=10></td><td>40 минут</td></tr>
+<tr><td>Белград - Ниш</td><td width=10></td><td>11</td><td width=10></td><td>3.5 часа</td><td width=50></td>
+<td>Скопье - Чачак</td><td width=10></td><td>20</td><td width=10></td><td>6 часов</td></tr>
+<tr><td>Ниш - Скопье</td><td width=10></td><td>13</td><td width=10></td><td>3.5 часа</td><td width=50></td>
+<td>Чачак - Ужице</td><td width=10></td><td>2</td><td width=10></td><td>30-40 минут</td></tr>
+<tr><td>Скопье - Прилеп</td><td width=10></td><td>7</td><td width=10></td><td>3 часа</td><td width=50></td>
+<td>Ужице - Баина Баста</td><td width=10></td><td>2.5</td><td width=10></td><td>1.5 часа</td></tr>
+<tr><td>Прилеп - Битола</td><td width=10></td><td>2</td><td width=10></td><td>40 минут</td><td width=50></td>
+<td>Ужице - Мокра Гора</td><td width=10></td><td>3.5</td><td width=10></td><td>2-2.5 часа</td></tr>
+<tr><td>Битола - Маловишта (такси)</td><td width=10></td><td>8</td><td width=10></td><td>30 минут</td><td width=50></td>
+<td>Вишеград - Сараево</td><td width=10></td><td>7</td><td width=10></td><td>3.5 часа</td></tr>
+<tr><td>Ресен - Охрид</td><td width=10></td><td>2.5</td><td width=10></td><td>1 час</td><td width=50></td>
+<td>Сараево - Високо</td><td width=10></td><td>2.5</td><td width=10></td><td>40 минут</td></tr>
+<tr><td>Охрид - Свети-Наум</td><td width=10></td><td>1.8</td><td width=10></td><td>30-40 минут</td><td width=50></td>
+<td>Сараево - Мостар</td><td width=10></td><td>8.5</td><td width=10></td><td>2.5 часа</td></tr>
+<tr><td>Струга - Невчани</td><td width=10></td><td>1</td><td width=10></td><td>30 минут</td><td width=50></td>
+<td>Мостар - Баня-Лука</td><td width=10></td><td>12</td><td width=10></td><td>7 часов</td></tr>
+<tr><td>Охрид - Тетово</td><td width=10></td><td>7</td><td width=10></td><td>3 часа</td><td width=50></td>
+<td>Баня-Лука - Белград</td><td width=10></td><td>20</td><td width=10></td><td>8 часов</td></tr>
+</table>
+<br>
+<?php
+PICTURES($folder,array("srb5","srb6"),"1",$userwidth);
+insert_paragraph($folder,"left","serbia_12.txt",$userwidth);
+
+put_title(8,2,$cont[8]);
+insert_paragraph($folder,"justify","serbia_13.txt");
+
+put_title(9,2,$cont[9]);
+insert_paragraph($folder,"justify","serbia_14.txt");
+
+insert_bottom($folder,$bord."_right.png",$userwidth);
+?>

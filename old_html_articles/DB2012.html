@@ -1,0 +1,32 @@
+<?php
+require("mainlib.php");
+
+$mainname = "День Биологиа 2012";
+$upname = "День Биолога 2012";
+$folder="DB2012";
+$descr="День биолога 2012 года! Попытка повторить 2008 год. Менее удачная, так как народ не пришел почти :(";
+$keywords = "День биолога, фотографии";
+$css = "proper.css";
+$bord = "bord_4";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();?>
+
+
+<p align=justify>Просто рожи. Пусть будут, тем более что можно сравнить с 2008 годом. 
+Жаль, что народу было сравнительно мало...</p><br><br>
+
+
+<?php 
+PICTURES($folder,array("IMG_0641","IMG_0652","IMG_0644"),"1",$userwidth);
+PICTURES($folder,array("IMG_0654","IMG_0660","IMG_0667"),"1",$userwidth);
+PICTURES($folder,array("IMG_0671","IMG_0675","IMG_0683"),"1",$userwidth);
+PICTURES($folder,array("IMG_0701","IMG_0694","IMG_0703"),"1",$userwidth);
+PICTURES($folder,array("IMG_0709","IMG_0713","IMG_0715"),"1",$userwidth);
+PICTURES($folder,array("IMG_0720","IMG_0733","IMG_0735"),"1",$userwidth);
+PICTURES($folder,array("IMG_0736","IMG_0738","IMG_0745"),"1",$userwidth);
+PICTURES($folder,array("IMG_0753","IMG_0750","IMG_0757"),"1",$userwidth);
+PICTURES($folder,array("IMG_0761","IMG_0759","IMG_0768"),"1",$userwidth);
+PICTURES($folder,array("IMG_0769","IMG_0775","IMG_0785","IMG_0792"),"1",$userwidth);
+
+insert_bottom("DB2012",$bord.".png",$userwidth);?>

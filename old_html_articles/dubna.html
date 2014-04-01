@@ -1,0 +1,26 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Конференция в Дубне, 2008 год.";
+$upname = "Дубна 2008";
+$descr="На этой страничке лежит небольшой фотоотчет, посвященный конференуии Математика Компьютер Образование,
+которая прошла в Дубне в феврале 2008 года.";
+$folder="dubna";
+$keywords = "Дубна, фотографии";
+$css = "proper.css";
+$bord = "bord_4";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+PICTURES($folder,array("img_1973","img_1974","img_1976","img_1980"),"1",$userwidth);
+PICTURES($folder,array("img_1978","img_1996","img_1991"),"1",$userwidth);
+PICTURES($folder,array("img_1997","img_2018","img_2000"),"1",$userwidth);
+PICTURES($folder,array("img_2002","img_2006","img_2012"),"1",$userwidth);
+PICTURES($folder,array("img_2033","img_2015","img_2022"),"1",$userwidth);
+PICTURES($folder,array("img_2040","img_2029","img_2039"),"1",$userwidth);
+PICTURES($folder,array("img_2042","img_2055","img_2047","img_2052"),"1",$userwidth);
+PICTURES($folder,array("img_2062","img_2050","img_2043"),"1",$userwidth);
+PICTURES($folder,array("img_2068","img_2070","img_2065"),"1",$userwidth);
+PICTURES($folder,array("img_2077","img_2084"),"1",$userwidth);
+
+insert_bottom("dubna",$bord.".png",$userwidth);?>

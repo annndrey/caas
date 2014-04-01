@@ -1,0 +1,26 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Фотоархив";
+$upname = "Наш фотоархив";
+$description = "На этой странице собраны статьи, состоящие преимущественно из фотографий. Как правило они являются 
+дополнениями к статьям, содержащим текстовую информацию.";
+$css = "proper.css";
+$bord = "dragon";
+
+insert_header($mainname,$upname,$description,$keywords,$css,$bord."_left.png");
+$usewidth=get_width(); ?>
+
+<p align=justify>Все представленные в данном разделе фотографии изначально не предназначены для
+всеобщего просмотра. Многие из них не представляют интереса для посторонних 
+глаз, поэтому не обессутте :) Общий доступ необходим нам для того, чтобы иметь возможность
+свободно поделиться с кем угодно ссылками на сваленные тут материалы. Мы заранее
+благодарны посетителям сайта за понимание.</p><br>
+<p align=justify><b>1.</b> <a class=link_3 href="paan_foto.html">Национальный парк Паанаярви, зима 2008 года. Продолжение.</a></p>
+<p align=justify><b>2.</b> <a class=link_3 href="hibin_foto.html">Хибины, 2000-2008 годы, продолжение.</a></p>
+<p align=justify><b>3.</b> <a class=link_3 href="sokol_foto.html">Судак, Сокол, 2007-2008 годы, продолжение.</a></p>
+<p align=justify><b>4.</b> <a class=link_3 href="esik.html">Фотографии со свадьбы Владыки.</a></p>
+<p align=justify><b>5.</b> <a class=link_3 href="dubna.html">Фотографии с научной конференции в Дубне, зима 2008.</a></p>
+<p align=justify><b>6.</b> <a class=link_3 href="DB2008.html">День Биолога. 24 мая 2008 года. 81 рожа :)</a></p>
+
+<?php insert_bottom("foto",$bord."_right.png",$userwidth); ?>

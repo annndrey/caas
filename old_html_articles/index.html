@@ -1,0 +1,530 @@
+<?php
+require("mainlib.php");
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Главная страничка сайта Клуба Искателей Приключений. Мы любим путешествия, приключения и активный отдых. Сайт наш создан специально для того, чтобы поделиться с миром собранной информацией :)">
+<meta name="verify-v1" content="+0icBUm7MKRKIB4toPQGMQcIzlSfRhHbizL/3idJIzc=">
+<meta name="google-site-verification" content="2Yvs_jCRjFYTDPEgNQuWL9B10_CbM1cX-vz4ggR5E64">
+<title>Главная страница клуба cAAs</title>
+<link rel="stylesheet" type="text/css" href="proper.css">
+<link rel="icon" href="main/cAAs_icon.png" type="image/x-icon">
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20381714-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body class=art>
+
+<?php 
+$width=get_main_width(); 
+$realwidth=get_real_width();
+?>
+
+<table align=center>
+<tr><td colspan=7 height=10></td></tr>
+<tr align=left><td colspan=6><img src="main/cAAs.png" alt="Логотип клуба кААс"></td>
+	       <td colspan=1 valign=bottom><p align=right>
+<a href="http://caas_lj.livejournal.com/"><img src="main/LJ.jpg" border=0 alt="Логотип ЖЖ">&nbsp;&nbsp;&nbsp;<br>
+<b><font color="#3080b0">Наш ЖЖ&nbsp;&nbsp;&nbsp;</font></b></a></p></td></tr>
+<tr><td colspan=7 height=10></td></tr>
+
+<tr align=left>
+<td width=120 height=50 style="background-image:url(main/knop.jpg);" align=center><a class=link_3 href="marsh.html">Районы</a></td>
+<td width=120 height=50 style="background-image:url(main/knop.jpg);" align=center><a class=link_3 href="opisan.html">Описания</a></td>
+<td width=120 height=50 style="background-image:url(main/knop.jpg);" align=center><a class=link_3 href="analitika.html">Тесты</a></td>
+<td width=120 height=50 style="background-image:url(main/knop.jpg);" align=center><a class=link_3 href="club.html">О клубе</a></td>
+<td width=120 height=50 style="background-image:url(main/knop.jpg);" align=center><a class=link_3 href="discuss.php?page=0">Для членов</a></td>
+<td width=120 height=50 style="background-image:url(main/knop.jpg);" align=center><a class=link_3 href="search.html">Поиск</a></td>
+<td width= <? print($width-720) ?> colspan=2></td>
+</tr> 
+
+<tr><td colspan=7 height=10></td></tr>
+<tr><td colspan=8 align=center><img src="main/caasworld.jpg" width="<?php echo round($width);?>" border="0" usemap="#world" alt="Карта Мира кААс"></td></tr>
+<tr><td height=10></td></tr>
+<tr><td colspan=8 align=center>
+<?php print_counters();
+
+// Переменные, определяющие положение чувствительных зон на карте мира и положение дивов с локальными картами и надписями
+$balk_x = round(1376*($width/2500));
+$balk_y = round(405*($width/2500));
+$paan_x = round(1413*($width/2500));
+$paan_y = round(219*($width/2500));
+$koll_x = round(1423*($width/2500));
+$koll_y = round(199*($width/2500));
+$kavk_x = round(1517*($width/2500));
+$kavk_y = round(403*($width/2500));
+$iran_x = round(1599*($width/2500));
+$iran_y = round(498*($width/2500));
+$sinai_x = round(1469*($width/2500));
+$sinai_y = round(517*($width/2500));
+$vostok_x = round(2081*($width/2500));
+$vostok_y = round(253*($width/2500));
+$filip_x = round(2075*($width/2500));
+$filip_y = round(639*($width/2500));
+$sokol_x = round(1455*($width/2500));
+$sokol_y = round(390*($width/2500));
+$murom_x = round(1460*($width/2500));
+$murom_y = round(303*($width/2500));
+$pech_x = round(1549*($width/2500));
+$pech_y = round(251*($width/2500));
+$oslo_x = round(1305*($width/2500));
+$oslo_y = round(264*($width/2500));
+$spit_x = round(1319*($width/2500));
+$spit_y = round(108*($width/2500));
+$kur_x = round(2107*($width/2500));
+$kur_y = round(339*($width/2500));
+$slov_x = round(1373*($width/2500));
+$slov_y = round(349*($width/2500));
+$kor_x = round(2049*($width/2500));
+$kor_y = round(192*($width/2500));
+$more_x = round(1997*($width/2500));
+$more_y = round(246*($width/2500));
+$swis_x = round(1305*($width/2500));
+$swis_y = round(380*($width/2500));
+$far_x = round(1212*($width/2500));
+$far_y = round(248*($width/2500));
+$utah_x = round(561*($width/2500));
+$utah_y = round(422*($width/2500));
+$wisc_x = round(713*($width/2500));
+$wisc_y = round(374*($width/2500));
+$tok_x = round(2120*($width/2500));
+$tok_y = round(436*($width/2500));
+$jord_x = round(1489*($width/2500));
+$jord_y = round(507*($width/2500));
+$arg_x = round(820*($width/2500));
+$arg_y = round(990*($width/2500));
+$lib_x = round(1314*($width/2500));
+$lib_y = round(502*($width/2500));
+$yell_x = round(591*($width/2500));
+$yell_y = round(375*($width/2500));
+$aus_x = round(1323*($width/2500));
+$aus_y = round(359*($width/2500));
+$bor_x = round(1331*($width/2500));
+$bor_y = round(307*($width/2500));
+$nor_x = round(1290*($width/2500));
+$nor_y = round(247*($width/2500));
+$got_x = round(1352*($width/2500));
+$got_y = round(282*($width/2500));
+$sloven_x = round(1336*($width/2500));
+$sloven_y = round(383*($width/2500));
+
+//  Это основная карта... для того чтобы показывать весь мир
+print("<map name=\"world\">\n");
+area($paan_x,$paan_y,"5","karel","Республика Карелия");
+area($koll_x,$koll_y,"5","koll","Кольский полуостров");
+area($kavk_x,$kavk_y,"5","kavkaz","Кавказ");
+area($iran_x,$iran_y,"5","iran","Иран");
+area($sinai_x,$sinai_y,"5","sinai","Синайский полуостров");
+area($vostok_x,$vostok_y,"5","vostok","Дальний Восток");
+area($filip_x,$filip_y,"5","filip","Филиппины");
+area($sokol_x,$sokol_y,"5","sokol","Полуостров Крым");
+area($murom_x,$murom_y,"5","murom","Усадьба Муромцево");
+area($balk_x,$balk_y,"5","balk","Балканы");
+area($pech_x,$pech_y,"5","pech","Печоро-Илычский заповедник");
+area($oslo_x,$oslo_y,"5","oslo","Скандинавия");
+area($spit_x,$spit_y,"5","spit","Щпицберген");
+area($kur_x,$kur_y,"5","kur","Курилы");
+area($slov_x,$slov_y,"5","slov","Словакия");
+area($kor_x,$kor_y,"5","koryak","Корякия");
+area($more_x,$more_y,"5","more","Охотское море");
+area($swis_x,$swis_y,"5","swis","Щвейцария");
+area($far_x,$far_y,"5","far","Фарерские Острова");
+area($utah_x,$utah_y,"5","utah","Национальные парки Юты");
+area($wisc_x,$wisc_y,"5","wisc","Отдых в Висконсине");
+area($tok_x,$tok_y,"5","tok","Несколько дней в Токио");
+area($jord_x,$jord_y,"5","jord","Иордания");
+area($arg_x,$arg_y,"5","arg","Аргентина");
+area($lib_x,$lib_y,"5","lib", "Ливия");
+area($yell_x,$yell_y,"5","yell", "Еллоустоун");
+area($aus_x,$aus_y,"5","aus", "Австрия");
+area($bor_x,$bor_y,"5","bor", "Борнхольм");
+area($nor_x,$nor_y,"5","nor", "Норвегия");
+area($got_x,$got_y,"5","got", "Гостка Сандён");
+area($sloven_x,$sloven_y,"5","sloven", "Словения");
+print("</map>\n");
+
+// Это дива со Словенией
+print("
+<div style=\"position:absolute; top:".top($sloven_y,$width,$realwidth)."px; left:".left($sloven_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"sloven\" onMouseOut=\"document.getElementById('sloven').style.visibility='hidden';\" onMouseOver=\"document.getElementById('sloven').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Словения</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"sloven/slov-climb-20-2.jpg\" border=0 alt=\"Rechter Doppellutscher\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"slovenia.html#top\" class=link_1><font size=2><b>Юлианские Альпы. Зима 2013</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Госткой
+print("
+<div style=\"position:absolute; top:".top($got_y,$width,$realwidth)."px; left:".left($got_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"got\" onMouseOut=\"document.getElementById('got').style.visibility='hidden';\" onMouseOver=\"document.getElementById('got').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Швеция</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"gotska/GS_10_small.jpg\" border=0 alt=\"Rechter Doppellutscher\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"gotska.html#top\" class=link_1><font size=2><b>Остров Готска Сандён</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Норверией
+print("
+<div style=\"position:absolute; top:".top($nor_y,$width,$realwidth)."px; left:".left($nor_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"nor\" onMouseOut=\"document.getElementById('nor').style.visibility='hidden';\" onMouseOver=\"document.getElementById('nor').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Норвегия</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"norway/Nor2012_58_small.jpg\" border=0 alt=\"Rechter Doppellutscher\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"norway.html#top\" class=link_1><font size=2><b>От Ондалснеса до Гейрангера</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Данией
+print("
+<div style=\"position:absolute; top:".top($bor_y,$width,$realwidth)."px; left:".left($bor_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"bor\" onMouseOut=\"document.getElementById('bor').style.visibility='hidden';\" onMouseOver=\"document.getElementById('bor').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Дания</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"bornholm/born_20_small.jpg\" border=0 alt=\"Rechter Doppellutscher\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"danmarkfoto.html#top\" class=link_1><font size=2><b>1. Копенгаген и окрестности. Фотоотчет.</b></font></a></td></tr>
+  <tr><td align=left><a href=\"bornholm.html#top\" class=link_1><font size=2><b>2. Остров Борнхольм</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Австрией
+print("
+<div style=\"position:absolute; top:".top($aus_y,$width,$realwidth)."px; left:".left($aus_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"aus\" onMouseOut=\"document.getElementById('aus').style.visibility='hidden';\" onMouseOver=\"document.getElementById('aus').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Австрия</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"austria/austria-climb-02-2_small.jpg\" border=0 alt=\"Rechter Doppellutscher\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"austria.html#top\" class=link_1><font size=2><b>Ледолазание в долине Гаштейнер</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Желтокаменском
+print("
+<div style=\"position:absolute; top:".top($yell_y,$width,$realwidth)."px; left:".left($yell_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"yell\" onMouseOut=\"document.getElementById('yell').style.visibility='hidden';\" onMouseOver=\"document.getElementById('yell').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Вайоминг</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"yellowstone/37-Yellowst_small.jpg\" border=0 alt=\"Бизон в желтокаменске\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"yellowstone.html#top\" class=link_1><font size=2><b>Три дня в Йеллоустоне</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Аргентиной
+print("
+<div style=\"position:absolute; top:".top($arg_y,$width,$realwidth)."px; left:".left($arg_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"arg\" onMouseOut=\"document.getElementById('arg').style.visibility='hidden';\" onMouseOver=\"document.getElementById('arg').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Аргентина</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"salta/NWArg_54_small.jpg\" border=0 alt=\"Аргентинские кактусы\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"salta.html#top\" class=link_1><font size=2><b>Сальта и окрестности, сентябрь 2010.</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Иорданией
+print("
+<div style=\"position:absolute; top:".top($jord_y,$width,$realwidth)."px; left:".left($jord_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"jord\" onMouseOut=\"document.getElementById('jord').style.visibility='hidden';\" onMouseOver=\"document.getElementById('jord').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Иордания</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"jordan/jord_rum-04-1_small.jpg\" border=0 alt=\"Пустыня Wadi Rum\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"jordan.html#top\" class=link_1><font size=2><b>1. Достопримечательности Иордании, март 2010</b></font></a></td></tr>
+  <tr><td align=left><a href=\"wadirum.html#top\" class=link_1><font size=2><b>2. Скалолазание в Вади Раме, март 2010</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Токио
+print("
+<div style=\"position:absolute; top:".top($tok_y,$width,$realwidth)."px; left:".left($tok_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"tok\" onMouseOut=\"document.getElementById('tok').style.visibility='hidden';\" onMouseOver=\"document.getElementById('tok').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Япония</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"tokyo/IMG_4015_small.jpg\" border=0 alt=\"Дорожная развязка в Токио\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"tokyo.html#top\" class=link_1><font size=2><b>Немного о Токио, сентябрь 2010</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Висконсином
+print("
+<div style=\"position:absolute; top:".top($wisc_y,$width,$realwidth)."px; left:".left($wisc_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"wisc\" onMouseOut=\"document.getElementById('wisc').style.visibility='hidden';\" onMouseOver=\"document.getElementById('wisc').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>США, Висконсин</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"wiscons/30_small.jpg\" border=0 alt=\"Музей Harley Davidson\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"wisconsin.html#top\" class=link_1><font size=2><b>Отдых в Висконсине, 2010</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Ютой 
+print("
+<div style=\"position:absolute; top:".top($utah_y,$width,$realwidth)."px; left:".left($utah_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"utah\" onMouseOut=\"document.getElementById('utah').style.visibility='hidden';\" onMouseOver=\"document.getElementById('utah').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>США, Юта</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"utah/Arches_40_small.jpg\" border=0 alt=\"Юта. Парк арок.\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"utah.html#top\" class=link_1><font size=2><b>Национальные парки Юты, ноябрь 2009</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Фарерскими Островами
+print("
+<div style=\"position:absolute; top:".top($far_y,$width,$realwidth)."px; left:".left($far_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"far\" onMouseOut=\"document.getElementById('far').style.visibility='hidden';\" onMouseOver=\"document.getElementById('far').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Фарерские Острова</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"fareri/far_80_small.jpg\" border=0 alt=\"Фареры\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"fareri.html#top\" class=link_1><font size=2><b>Фареры, лето 2009</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Щвейцарией
+print("
+<div style=\"position:absolute; top:".top($swis_y,$width,$realwidth)."px; left:".left($swis_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"swis\" onMouseOut=\"document.getElementById('swis').style.visibility='hidden';\" onMouseOver=\"document.getElementById('swis').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Швейцария</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"swis/switz_15.jpg\" border=0 alt=\"Швейцария\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"swis.html#top\" class=link_1><font size=2><b>Швейцария, июнь 2009</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Охотским морем
+print("
+<div style=\"position:absolute; top:".top($more_y,$width,$realwidth)."px; left:".left($more_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"more\" onMouseOut=\"document.getElementById('more').style.visibility='hidden';\" onMouseOver=\"document.getElementById('more').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Охотское море</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"more/krap_80.jpg\" border=0 alt=\"Охотсткое море\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"more.html#top\" class=link_1><font size=2><b>Записки моряка, весна-лето 2008</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Корякией
+print("
+<div style=\"position:absolute; top:".top($kor_y,$width,$realwidth)."px; left:".left($kor_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"koryak\" onMouseOut=\"document.getElementById('koryak').style.visibility='hidden';\" onMouseOver=\"document.getElementById('koryak').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Корякия</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"koryak/korak_razrab_02.jpg\" border=0 alt=\"Корякия\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"koryak.html#top\" class=link_1><font size=2><b>Корякия, лето 2007 года</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива со Словакией
+print("
+<div style=\"position:absolute; top:".top($slov_y,$width,$realwidth)."px; left:".left($slov_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"slov\" onMouseOut=\"document.getElementById('slov').style.visibility='hidden';\" onMouseOver=\"document.getElementById('slov').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Словакия</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"slovak/svk_150_small.jpg\" border=0 alt=\"Словакия\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"slovakia.html#top\" class=link_1><font size=2><b>1. Словакия, январь 2009</b></font></a></td></tr>
+  <tr><td align=left><a href=\"tatry.html#top\" class=link_1><font size=2><b>2. Ледолазание в Высоких Татрах, январь 2011</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Курилами
+print("
+<div style=\"position:absolute; top:".top($kur_y,$width,$realwidth)."px; left:".left($kur_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"kur\" onMouseOut=\"document.getElementById('kur').style.visibility='hidden';\" onMouseOver=\"document.getElementById('kur').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Курилы</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"kurili/kuril-02-2_small.jpg\" border=0 alt=\"Курилы\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=center><a href=\"kurili.html#top\" class=link_1><font size=2><b>Южные Курилы, весна 2009</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa со Щпицбегреном
+print("
+<div style=\"position:absolute; top:".top($spit_y,$width,$realwidth)."px; left:".left($spit_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"spit\" onMouseOut=\"document.getElementById('spit').style.visibility='hidden';\" onMouseOver=\"document.getElementById('spit').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Шпицберген</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"shpits/sval_22_small.jpg\" border=0 alt=\"Щпицберген. Адвентдален.\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"shpitstour.html#top\" class=link_1><font size=2><b>1. Туризм и активный отдых</b></font></a></td></tr>
+  <tr><td align=left><a href=\"shpitsbergen.html#top\" class=link_1><font size=2><b>2. Населенные пункты</b></font></a></td></tr>
+  <tr><td align=left><a href=\"shpitsnature.html#top\" class=link_1><font size=2><b>3. Природа архипелага</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa со Скандинавией
+print("
+<div style=\"position:absolute; top:".top($oslo_y,$width,$realwidth)."px; left:".left($oslo_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"oslo\" onMouseOut=\"document.getElementById('oslo').style.visibility='hidden';\" onMouseOver=\"document.getElementById('oslo').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Скандинавия</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"oslo/osl_55_small.jpg\" border=0 alt=\"Осло, Акерсхус.\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"rjukan.html#top\" class=link_1><font size=2><b>1. Ледолазание в Рюкане, Норвегия. Зима 2010.</b></font></a></td></tr>
+  <tr><td align=left><a href=\"osloden.html#top\" class=link_1><font size=2><b>2. Один день в Осло. Лето 2008.</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa с Кольским
+print("
+<div style=\"position:absolute; top:".top($koll_y,$width,$realwidth)."px; left:".left($koll_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"koll\" onMouseOut=\"document.getElementById('koll').style.visibility='hidden';\" onMouseOver=\"document.getElementById('koll').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Кольский полуостров</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"hibiny/otkol_17_small.jpg\" border=0 alt=\"Хибины\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td><a href=\"hibin.html#top\" class=link_1><font size=2><b>Хибинские тундры</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa с Крымом
+print("
+<div style=\"position:absolute; top:".top($sokol_y,$width,$realwidth)."px; left:".left($sokol_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"sokol\" onMouseOut=\"document.getElementById('sokol').style.visibility='hidden';\" onMouseOver=\"document.getElementById('sokol').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Полуостров Крым</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"sokol/sudak_cas_01-1_small.jpg\" border=0 alt=\"Крым\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td><a href=\"sokol.html#top\" class=link_1><font size=2><b>Альпинизм в районе Судака, 2007-2008 годы </b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa с Филипинами
+print("
+<div style=\"position:absolute; top:".top($filip_y,$width,$realwidth)."px; left:".left($filip_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"filip\" onMouseOut=\"document.getElementById('filip').style.visibility='hidden';\" onMouseOver=\"document.getElementById('filip').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Филиппины</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"filip/filip_main_small.jpg\" border=0 alt=\"Филиппины\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"philip_info.html#top\" class=link_1><font size=2><b>1. Общая информация об архипелаге</b></font></a></td></tr>
+  <tr><td align=left><a href=\"philip_skal.html#top\" class=link_1><font size=2><b>2. Скалолазание на Филиппинах, 2009</b></font></a></td></tr>
+  <tr><td align=left><a href=\"philip_palawan.html#top\" class=link_1><font size=2><b>3. Остров Палаван, январь 2009</b></font></a></td></tr>
+  <tr><td align=left><a href=\"philip_luson_ug.html#top\" class=link_1><font size=2><b>4. Южный Лузон, январь 2009</b></font></a></td></tr>
+  <tr><td align=left><a href=\"philip_luson_sev.html#top\" class=link_1><font size=2><b>5. Северный Лузон, январь 2009</b></font></a></td></tr>
+  <tr><td align=left><a href=\"bohol.html#top\" class=link_1><font size=2><b>6. Cебу, Бохол и окрестности, 2009</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa с Муромцевым
+print("
+<div style=\"position:absolute; top:".top($murom_y,$width,$realwidth)."px; left:".left($murom_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"murom\" onMouseOut=\"document.getElementById('murom').style.visibility='hidden';\" onMouseOver=\"document.getElementById('murom').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Центральная Россия</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"muromcevo/murom_24_small.jpg\" border=0 alt=\"Муромцево\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"muromcevo.html#top\" class=link_1><font size=2><b>1. Усадьба Муромцево, август 2008 года</b></font></a></td></tr>
+  <tr><td align=left><a href=\"vorgol.html#top\" class=link_1><font size=2><b>2. Воргольские скалы</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa с Балканами
+print("
+<div style=\"position:absolute; top:".top($balk_y,$width,$realwidth)."px; left:".left($balk_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"balk\" onMouseOut=\"document.getElementById('balk').style.visibility='hidden';\" onMouseOver=\"document.getElementById('balk').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Балканы</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"serbia/srb_extra_1_small.jpg\" border=0 alt=\"Балканы\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"balkany.html#top\" class=link_1><font size=2><b>1. Общая информация, сентябрь 2008</b></font></a></td></tr>
+  <tr><td align=left><a href=\"serbia.html#top\" class=link_1><font size=2><b>2. Сербия, сентябрь 2008</b></font></a></td></tr>
+  <tr><td align=left><a href=\"makedonia.html#top\" class=link_1><font size=2><b>3. Македония, 2008</b></font></a></td></tr>
+  <tr><td align=left><a href=\"bosnia.html#top\" class=link_1><font size=2><b>4. Босния и Герцеговина, сентябрь 2008 года</b></font></a></td></tr>
+  <tr><td align=left><a href=\"belgrad.html#top\" class=link_1><font size=2><b>5. Белград, Земун. Сентябрь 2009 года</b></font></a></td></tr>
+</table></div>\n");
+
+
+// Это дива с Карелией
+print("
+<div style=\"position:absolute; top:".top($paan_y,$width,$realwidth)."px; left:".left($paan_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"karel\" onMouseOut=\"document.getElementById('karel').style.visibility='hidden';\" onMouseOver=\"document.getElementById('karel').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Карелия</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"solovki/solo_01_small.jpg\" border=0 alt=\"Республика Карелия\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"kiyisland.html#top\" class=link_1><font size=2><b>1. Остров Кий и Малые Корелы, лето 2009</b></font></a></td></tr>
+  <tr><td align=left><a href=\"solovki.html#top\" class=link_1><font size=2><b>2. Соловецкие острова, лето 2008</b></font></a></td></tr>
+  <tr><td align=left><a href=\"paanayarvi.html#top\" class=link_1><font size=2><b>3. Нац. парк Паанаярви, февраль 2008</b></font></a></td></tr>
+  <tr><td align=left><a href=\"kizhi.html#top\" class=link_1><font size=2><b>4. Остров-музей Кижи, осень 2005</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Кавказом
+print("
+<div style=\"position:absolute; top:".top($kavk_y,$width,$realwidth)."px; left:".left($kavk_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"kavkaz\" onMouseOut=\"document.getElementById('kavkaz').style.visibility='hidden';\" onMouseOver=\"document.getElementById('kavkaz').style.visibility='visible';\">
+<table width=".($width*0.35)." class=map>
+  <tr><td><h3>Кавказ</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"kavk_2007/kavk_2007_012_small.jpg\" border=0 alt=\"Кавказ\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"kavkaz2009_main.html#top\" class=link_1><font size=2><b>1. Поход Верхняя Балкария - Тырныауз, лето 2009</b></font></a></td></tr>
+  <tr><td align=left><a href=\"kavkaz.html#top\" class=link_1><font size=2><b>2. Поход Безенги-Приэльбрусье, лето 2007</b></font></a></td></tr>
+  <tr><td align=left><a href=\"taimazy_2009.html#top\" class=link_1><font size=2><b>3. Ледолазание в Таймази, март 2009</b></font></a></td></tr>
+  <tr><td align=left><a href=\"taimazy.html#top\" class=link_1><font size=2><b>4. Ледолазание в Таймази, февраль 2008</b></font></a></td></tr>
+  <tr><td align=left><a href=\"digoriya.html#top\" class=link_1><font size=2><b>5. Ледовые каскады Дигорского ущелья</b></font></a></td></tr>
+  <tr><td align=left><a href=\"kavkaz2012.html#top\" class=link_1><font size=2><b>6. Альпинизм в Адыр-Су, июль 2012</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa С Ближним Востоком
+print("
+<div style=\"position:absolute; top:".top($sinai_y,$width,$realwidth)."px; left:".left($sinai_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"sinai\" onMouseOut=\"document.getElementById('sinai').style.visibility='hidden';\" onMouseOver=\"document.getElementById('sinai').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Ближний Восток</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"cather/cather_32_small.jpg\" border=0 alt=\"Синайский Полуостров\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td><a href=\"caterine.html#top\" class=link_1><font size=2><b>Альпинизм в районе монастыря St.Catherine, январь 2008 года</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa С Ираном
+print("
+<div style=\"position:absolute; top:".top($iran_y,$width,$realwidth)."px; left:".left($iran_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"iran\" onMouseOut=\"document.getElementById('iran').style.visibility='hidden';\" onMouseOver=\"document.getElementById('iran').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Ближний Восток</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"iran/iran_98_2.jpg\" border=0 alt=\"Иран\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td><a href=\"iran.html#top\" class=link_1><font size=2><b>Исламская республика Иран, весна 2005</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дивa с Печорой
+print("
+<div style=\"position:absolute; top:".top($pech_y,$width,$realwidth)."px; left:".left($pech_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"pech\" onMouseOut=\"document.getElementById('pech').style.visibility='hidden';\" onMouseOver=\"document.getElementById('pech').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Северный Урал</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"pechora/pechora_04_small.jpg\" border=0 alt=\"Печора\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td><a href=\"pechora.html#top\" class=link_1><font size=2><b>Печоро-Илычский заповедник, февраль 2005</b></font></a></td></tr>
+</table></div>\n");
+
+// Это дива с Камчаткой
+print("
+<div style=\"position:absolute; top:".top($vostok_y,$width,$realwidth)."px; left:".left($vostok_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"vostok\" onMouseOut=\"document.getElementById('vostok').style.visibility='hidden';\" onMouseOver=\"document.getElementById('vostok').style.visibility='visible';\">
+<table width=".($width*0.3)." class=map>
+  <tr><td><h3>Полуостров камчатка</h3></td></tr>
+  <tr><td><img width=".($width*0.3)." src=\"avkorkoz/kamch_avac-06-2_small.jpg\" border=0 alt=\"Камчатка\"></td></tr>
+  <tr><td height=10></td></tr>
+  <tr><td align=left><a href=\"kamchatka.html#top\" class=link_1><font size=2><b>1. Общая информация о полуострове</b></font></a></td></tr>
+  <tr><td align=left><a href=\"kronotsky.html#top\" class=link_1><font size=2><b>2. Кроноцкий заповедник</b></font></a></td></tr>
+  <tr><td align=left><a href=\"vilgormut.html#top\" class=link_1><font size=2><b>3. Вулканы Мутновский, Вилючинский и Горелый</b></font></a></td></tr>
+  <tr><td align=left><a href=\"avkorkoz.html#top\" class=link_1><font size=2><b>4. Вулканы Ааг, Авачинский, Корякский и Козельский</b></font></a></td></tr>
+  <tr><td align=left><a href=\"vachbakgan.html#top\" class=link_1><font size=2><b>5. Вулканы Вачкажец и Бакенинг, Гональские Востряки</b></font></a></td></tr>
+  <tr><td align=left><a href=\"traversvulk.html#top\" class=link_1><font size=2><b>6. Траверс Домашних Вулканов. Лето 2011</b></font></a></td></tr>
+  <tr><td align=left><a href=\"tolmachevka.html#top\" class=link_1><font size=2><b>7. Толмачевский дол. Лето 2011-2012 годов.</b></font></a></td></tr>
+</table></div>\n");
+
+//Это див с Ливией
+print("
+<div style=\"position:absolute; top:".top($lib_y,$width,$realwidth)."px; left:".left($lib_x,$width,$realwidth,0.3)."px; visibility:hidden;\" id=\"lib\" onMouseOut=\"document.getElementById('lib').style.visibility='hidden';\" onMouseOver=\"document.getElementById('lib').style.visibility='visible';\"> 
+<table width=".($width*0.3)." class=map>                                                                                                                 
+  <tr><td><h3>Ливия</h3></td></tr>                                                                                                                      
+  <tr><td><img width=".($width*0.3)." src=\"libya/Lib_79_small.jpg\" border=0 alt=\"Народная Джамахирия\"></td></tr>
+<tr><td height=10></td></tr>
+<tr><td align=center><a href=\"libya.html#top\" class=link_1><font size=2><b>Ливия. Отчет о путешествии. Январь 2011.</b></font></a></td></tr>           
+</table></div>\n");
+
+?>
+
+<script type="text/javascript">
+<!--
+if (document.cookie.length == 0) {
+   document.write("<br><font size=\"5\" color=\"red\">Для корректного отображения страницы включите Cookies!!!");    }
+-->
+</script>
+<noscript>
+<table><tr><td><font size="5" color="red">Для корректного отображения страницы включите JavaScript и Cookies!!!</font></td></tr></table>
+</noscript>
+
+<script type="text/javascript">
+<!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10261838-1");
+pageTracker._trackPageview();
+} catch(err) {}
+-->
+</script>
+
+</table>
+</body>
+</html>

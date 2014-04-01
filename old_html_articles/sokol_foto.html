@@ -1,0 +1,27 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Крым, Судак, свалка фотографий";
+$upname = "Крым, Судак, фотоархив<";
+$descr="На этой страничке собраны фотографи, не вошедшие в основной <a href=sokol.html>отчет</a>, 
+посвященный Соколу и Судаку.";
+$folder="sokol";
+$keywords = "Крым, Судак, фотографии, фотоархив, фотоотчет";
+$css = "proper.css";
+$bord = "bord_4";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+
+PICTURES($folder,array("cimg5739","cimg5762","cimg5780"),"1",$userwidth);
+PICTURES($folder,array("cimg5743","cimg5774","cimg5775"),"1",$userwidth);
+PICTURES($folder,array("img_2930","cimg5816","cimg5741"),"1",$userwidth);
+PICTURES($folder,array("cimg5823","img_2918","cimg5824"),"1",$userwidth);
+PICTURES($folder,array("img_2934","img_2941","img_2936"),"1",$userwidth);
+PICTURES($folder,array("img_2945","img_2920","img_2953"),"1",$userwidth);
+PICTURES($folder,array("img_2972","img_2958","img_2999"),"1",$userwidth);
+PICTURES($folder,array("img_2965","img_2975","img_2993"),"1",$userwidth);
+PICTURES($folder,array("img_2987","img_3003","img_2996"),"1",$userwidth);
+PICTURES($folder,array("img_3017","img_3010","img_3013"),"1",$userwidth);
+
+insert_bottom("sokol_foto",$bord.".png",$userwidth);?>

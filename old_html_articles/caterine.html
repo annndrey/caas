@@ -1,0 +1,167 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Синайский полуостров,<br>район монастыря St.Catherine,<br>январь 2008 года";
+$upname = "Скалолазание на Синайском полуострове";
+$folder="cather";
+$descr="Зимой, в начале 2008 года клуб искателей приключений CAAS в полном составе отправился в Египет, в подножию горы Синай.
+Однако, как не сложно догадаться, мы не только собирались посетить монастырь святой Катерины (St. Catherine), но и совершить
+несколько альпинистских восхождений на окрестные вершины, а также размяться скалолазанием на местных гранитах. Поездка получилась
+очень удачная, помимо осмотра достопримечательностей и алпинизма, нам удалось погулять по африканской пустыне и посетить настоящий 
+оазис.";
+$keywords = "Египет, Синай, Святая Катерина, St. Catherine, альпинизм, поездка, маршруты, описания, Safsafa, Fara, Bata";
+$css = "proper.css";
+$bord = "iran2";
+
+$cont[0] = "Общие впечатления";
+$cont[1] = "О горах и маршрутах";
+$cont_2[0] = "Общие впечатления";
+$cont_2[1] = "О горах и маршрутах";
+$cont_2[2] = "Pharaon`s chimney, ориентировочно 2Б, J. Farra.";
+$cont[2] = "Pharaon`s chimney, ориентировочно 2Б, J. Farra, маршрут <a href=\"http://www.sinaiclimb.h12.ru/fara_routes.htm#_F4._Pharaoh's_chimney\">F4</a>.";
+$cont_2[3] = "Stolen mirror, ориентировочно 4А, J. Batta.";
+$cont[3] = "Stolen mirror, ориентировочно 4А, J. Batta, маршрут <a href=\"http://www.sinaiclimb.h12.ru/batta_routes.htm#_В7._Stolen_Mirror\">B7</a>.";
+$cont_2[4] = "Hatchala meshuleshet, ориентировочно 4Б, J. Safsafa.";
+$cont[4] = "Hatchala meshuleshet, ориентировочно 4Б, J. Safsafa, маршрут <a href=\"http://www.sinaiclimb.h12.ru/safsafa_routes.htm#_E11._Hatchala_Meshuleshet\">Е11</a>.";
+$cont_2[5] = "Big Pyramid, left var. Ориентировочно 5А, J. Fara.";
+$cont[5] = "Big Pyramid, left var. Ориентировочно 5А, J. Fara, вариант маршрута <a href=\"http://www.sinaiclimb.h12.ru/fara_routes.htm#_F12._Big_Pyramid\">F12</a>.";
+$ind=array("0","0","1","1","1","1");
+
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+PICTURES($folder,array("cather_01"),"1",$userwidth);
+put_content($cont_2,$ind);
+
+put_title(0,0,$cont[0]);
+insert_paragraph($folder,"justify","kater_01.txt");
+PICTURES($folder,array("cather_02","cather_03"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_02.txt");
+PICTURES($folder,array("cather_08","cather_05","cather_06"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_03.txt");
+PICTURES($folder,array("cather_36","cather_07"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_04.txt");
+PICTURES($folder,array("cather_04","cather_39"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_05.txt");
+PICTURES($folder,array("cather_10","cather_11"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_06.txt");
+PICTURES($folder,array("cather_22","cather_12","cather_13"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_07.txt");
+PICTURES($folder,array("cather_09","cather_40"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_08.txt");
+PICTURES($folder,array("cather_14","cather_15","cather_16"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_09.txt");
+PICTURES($folder,array("cather_37","cather_38"),"2",$userwidth);
+insert_paragraph($folder,"justify","kater_10.txt");
+PICTURES($folder,array("cather_17","cather_18","cather_19"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_11.txt");
+PICTURES($folder,array("cather_20","cather_21"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_12.txt");
+PICTURES($folder,array("cather_23","cather_24","cather_25"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_13.txt");
+PICTURES($folder,array("cather_41"),"2",$userwidth);
+insert_paragraph($folder,"justify","kater_14.txt");
+PICTURES($folder,array("cather_26","cather_28","cather_27"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_15.txt");
+PICTURES($folder,array("cather_29","cather_30","cather_31"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_16.txt");
+PICTURES($folder,array("cather_35","cather_42"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_17.txt");
+PICTURES($folder,array("cather_33","cather_32","cather_34"),"1",$userwidth);
+
+put_title(1,0,$cont[1]);
+insert_paragraph($folder,"justify","kater_18.txt");
+insert_paragraph($folder,"justify","kater_19.txt");
+insert_paragraph($folder,"justify","kater_20.txt");
+
+put_title(2,1,$cont[2]);
+PICTURES($folder,array("cather_1_1"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_21.txt");
+insert_paragraph($folder,"justify","kater_22.txt");
+PICTURES($folder,array("cather_1_2","cather_1_7"),"1",$userwidth);
+insert_paragraph($folder,"justify","kater_23.txt");
+insert_paragraph($folder,"justify","kater_24.txt");
+insert_paragraph($folder,"justify","kater_25.txt");
+insert_paragraph($folder,"justify","kater_26.txt");
+PICTURES($folder,array("cather_1_3","cather_1_4"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_27.txt");
+insert_paragraph($folder,"justify","kater_28.txt");
+insert_paragraph($folder,"justify","kater_29.txt");
+PICTURES($folder,array("cather_1_5"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_30.txt");
+insert_paragraph($folder,"justify","kater_31.txt");
+PICTURES($folder,array("cather_1_6"),"1",$userwidth);
+
+put_title(3,1,$cont[3]);
+PICTURES($folder,array("cather_2_1"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_32.txt");
+insert_paragraph($folder,"justify","kater_33.txt");
+insert_paragraph($folder,"justify","kater_34.txt");
+PICTURES($folder,array("cather_2_2","cather_2_3"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_35.txt");
+insert_paragraph($folder,"justify","kater_36.txt");
+PICTURES($folder,array("cather_2_4","cather_2_5"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_37.txt");
+insert_paragraph($folder,"justify","kater_38.txt");
+insert_paragraph($folder,"justify","kater_39.txt");
+PICTURES($folder,array("cather_2_6","cather_2_7"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_40.txt");
+insert_paragraph($folder,"justify","kater_41.txt");
+insert_paragraph($folder,"justify","kater_42.txt");
+insert_paragraph($folder,"justify","kater_43.txt");
+PICTURES($folder,array("cather_2_8","cather_2_9"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_44.txt");
+insert_paragraph($folder,"justify","kater_45.txt");
+
+put_title(4,1,$cont[4]);
+PICTURES($folder,array("cather_3_1"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_46.txt");
+insert_paragraph($folder,"justify","kater_47.txt");
+insert_paragraph($folder,"justify","kater_48.txt");
+PICTURES($folder,array("cather_3_2","cather_3_3"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_49.txt");
+insert_paragraph($folder,"justify","kater_50.txt");
+insert_paragraph($folder,"justify","kater_51.txt");
+PICTURES($folder,array("cather_3_4","cather_3_5"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_52.txt");
+insert_paragraph($folder,"justify","kater_53.txt");
+insert_paragraph($folder,"justify","kater_54.txt");
+PICTURES($folder,array("cather_3_6"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_55.txt");
+insert_paragraph($folder,"justify","kater_56.txt");
+insert_paragraph($folder,"justify","kater_57.txt");
+PICTURES($folder,array("cather_3_7"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_58.txt");
+
+put_title(5,1,$cont[5]);
+PICTURES($folder,array("cather_4_1"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_59.txt");
+insert_paragraph($folder,"justify","kater_60.txt");
+PICTURES($folder,array("cather_4_2"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_61.txt");
+insert_paragraph($folder,"justify","kater_62.txt");
+insert_paragraph($folder,"justify","kater_63.txt");
+PICTURES($folder,array("cather_4_3","cather_4_4"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_64.txt");
+insert_paragraph($folder,"justify","kater_65.txt");
+insert_paragraph($folder,"justify","kater_66.txt");
+PICTURES($folder,array("cather_4_5"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_67.txt");
+insert_paragraph($folder,"justify","kater_68.txt");
+PICTURES($folder,array("cather_4_6"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_69.txt");
+insert_paragraph($folder,"justify","kater_70.txt");
+PICTURES($folder,array("cather_4_7","cather_4_8"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_71.txt");
+insert_paragraph($folder,"justify","kater_72.txt");
+PICTURES($folder,array("cather_4_9"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_73.txt");
+insert_paragraph($folder,"justify","kater_74.txt");
+PICTURES($folder,array("cather_4_10"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_75.txt");
+insert_paragraph($folder,"justify","kater_76.txt");
+PICTURES($folder,array("cather_4_11","cather_4_12"),"1",$userwidth);
+insert_paragraph($folder,"center","kater_77.txt");
+
+insert_bottom("caterine",$bord.".png",$userwidth);
+?>

@@ -1,0 +1,69 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Корякия, лето 2007";
+$upname = "Корякия, 2007. Оссора, Палана, Тиличики, Ахтынынский хребет и полуостров Говена.";
+$desc="Корякия - автономный округ, расположенный к северу от Камчатки. Сюда очень сложно добраться, а населенные пункты 
+в основном маленькие, такие как Оссора, Палана, Тиличики или Вывенка. ";
+$folder="koryak";
+$keywords = "Корякия, Камчатка, вертолет, самолет, вездеход, Ми-8, Як-40, Берингово море, Сейнав-Гальмоэнанский горный узел, Сейнав, Корф, Тиличики, Палана, Оссора, КорякГеолДобыча, Вывенка, Ахтынынский хребет, Тиличинский хребет, полуостров Говена, Тапельваям, Окылынываям, Ветвей, Майнгытапельтынупские гор";
+$css = "proper.css";
+$bord = "bord_9";
+
+insert_header($mainname,$upname,$desc,$keywords,$css,$bord."_left.png");
+$userwidth=get_width();
+
+PICTURES($folder,array("korak_zagl"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_01.txt");
+PICTURES($folder,array("korak_vert_01","korak_vert_02","korak_vert_03"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_02.txt");
+insert_paragraph($folder,"justify","korak_03.txt");
+insert_paragraph($folder,"justify","korak_04.txt");
+PICTURES($folder,array("korak_zaezd_01-1","karak_zaezd_01","korak_zaezd_01-3"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_05.txt");
+PICTURES($folder,array("karak_zaezd_02-1","karak_zaezd_02-2","karak_zaezd_02-3"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_05a.txt");
+PICTURES($folder,array("korak_vech_01","korak_vech_02","korak_vech_03"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_06.txt");
+PICTURES($folder,array("korak_trans_01","korak_trans_02","korak_trans_03"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_07.txt");
+PICTURES($folder,array("korak_oss_01-1","korak_oss_01-2","korak_oss_01-3"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_08.txt");
+PICTURES($folder,array("korak_oss_03-1","korak_oss_03-2","korak_oss_03-3"),"1",$userwidth);
+PICTURES($folder,array("korak_oss_04"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_08a.txt");
+PICTURES($folder,array("korak_oss_02-1","korak_oss_02-2"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_09.txt");
+PICTURES($folder,array("korak_korf_01-1","korak_korf_01-2","korak_korf_01-3"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_10.txt");
+PICTURES($folder,array("korak_korf_02-1","korak_korf_02-2"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_11.txt");
+insert_paragraph($folder,"justify","korak_12.txt");
+PICTURES($folder,array("korak_new-01-1","korak_new-01-2","korak_new-01-3"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_12_2.txt");
+PICTURES($folder,array("korak_tur_01","korak_tur_02"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_13.txt");
+PICTURES($folder,array("korak_tilich"),"2",$userwidth);
+insert_paragraph($folder,"justify","korak_14.txt");
+PICTURES($folder,array("korak_kolca_01","korak_kolca_02","korak_kolca_03"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_15.txt");
+PICTURES($folder,array("korak_tundra"),"2",$userwidth);
+insert_paragraph($folder,"justify","korak_16.txt");
+PICTURES($folder,array("korak_goven"),"2",$userwidth);
+insert_paragraph($folder,"justify","korak_17.txt");
+PICTURES($folder,array("korak_seynav"),"2",$userwidth);
+
+insert_paragraph($folder,"justify","korak_18.txt");
+PICTURES($folder,array("korak_razrab_01","korak_razrab_02"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_19.txt");
+PICTURES($folder,array("korak_gori_01","korak_gori_02","korak_gori_03"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_20.txt");
+PICTURES($folder,array("korak_reka"),"2",$userwidth);
+PICTURES($folder,array("korak_new-02-1","korak_new-02-2","korak_new-02-3"),"1",$userwidth);
+insert_paragraph($folder,"justify","korak_21.txt");
+PICTURES($folder,array("korak_posl"),"2",$userwidth);
+insert_paragraph($folder,"justify","korak_22.txt");
+insert_paragraph($folder,"justify","korak_23.txt");
+
+insert_bottom($folder,$bord."_right.png",$userwidth);
+?>

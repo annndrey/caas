@@ -1,0 +1,34 @@
+<?php
+require("mainlib.php");
+
+$mainname = "Хибинские тундры,<br>дополнительные фотографии";
+$upname = "Дополнительные фотографии к описанию походов по Хибинам";
+$descr="Здесь собраны фотографии, не вошедшие в основную <a href=hibin.html>статью</a>, в которой описаны такие места, как
+длолина реки Гольцовки, долина Аку-Аку, перевалы Щель, Рисчор, Чоргорр, Лопарский и др. Разные интересные озера, вроде озера
+Академического и другие достопримечательности.";
+$folder="hibiny";
+$keywords = "Хибины, Чоргорр, Индивичвумчорр, перевал Щель, перевал Лопарский, Рисчорр, озеро Академическое, Вудьявр, Гольцовка, Малая Белая, туризм, альпинизм, Имандра, Будозеро, Ловозерские тундры";
+$css = "proper.css";
+$bord = "bord_4";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+
+PICTURES($folder,array("hibin_pan_4"),"2",$userwidth);
+PICTURES($folder,array("hib_84","hib_101","hib_57"),"1",$userwidth);
+PICTURES($folder,array("hib_55","hib_52a","hib_68"),"1",$userwidth);
+PICTURES($folder,array("hib_01","hib_52","hib_03"),"1",$userwidth);
+PICTURES($folder,array("hib_11","hib_07","hib_09"),"1",$userwidth);
+PICTURES($folder,array("hib_10","hib_94","hib_13"),"1",$userwidth);
+PICTURES($folder,array("hib_27","hib_18","hib_23"),"1",$userwidth);
+PICTURES($folder,array("hib_24","hib_31","hib_28"),"1",$userwidth);
+PICTURES($folder,array("hib_37","hib_39","hib_44"),"1",$userwidth);
+PICTURES($folder,array("hib_49","hib_50","hib_43"),"1",$userwidth);
+PICTURES($folder,array("hib_33","hib_30a","hib_21"),"1",$userwidth);
+PICTURES($folder,array("hib_55a","hib_46","hib_56"),"1",$userwidth);
+PICTURES($folder,array("hib_77a","hib_74","hib_56a"),"1",$userwidth);
+PICTURES($folder,array("hib_79","hib_81","hib_80"),"1",$userwidth);
+PICTURES($folder,array("hib_34","hib_82","hib_65"),"1",$userwidth);
+PICTURES($folder,array("hib_29","hib_19","hib_64"),"1",$userwidth);
+
+insert_bottom("hibin_foto",$bord.".png",$userwidth);?>

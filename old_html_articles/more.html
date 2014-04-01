@@ -1,0 +1,95 @@
+<?php
+require("mainlib.php");
+
+$upname = "Охотское море, путевые заметки моряка-любителя, апрель - июль 2008 года";
+$mainname = "Охотское море,<br>записки путешественника.";
+$descr="Путевые заметки моряка-путешественика, обошедшего Охотское море на рыболовецком сейнере. Расказ о том, каково это
+несколько месяцев просидеть практически одному на маленьком суденышке.";
+$folder="more";
+$keywords = "Sclerocrangon  communis, Sclerocrangon  salebrosa, Pandalus  goniurus, Pandalus  hypsinotus, Pandalus montagui tridens, Lebbeus longidactylus, Lebbeus groenlandicus, Argis  ochotensis, Eualus  macilentus, Eualus suckley, Spirontocaris arcuata, Spirontocaris spina intermedia, охотское море, креветки, pandalus borealis, рейс, стр киреевка, глупыши, чайки, камчатка, япония, курилы, курильские острова, палтус, трубач, магадан, камчатка, сахалин, трал, матросики, чайки, камбуз, inmarsat, камчатккий краб, стригун опилио, экофиш, моррыбпром, ливадия, порт, находка";
+$css = "proper.css";
+$bord = "bord_2";
+
+insert_header($mainname,$upname,$descr,$keywords,$css,$bord.".png");
+$userwidth=get_width();
+
+PICTURES($folder,array("krap_48"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_00.txt");
+PICTURES($folder,array("krap_40","krab7","krap_41"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_01.txt");
+PICTURES($folder,array("krap_49","krap_73"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_02.txt");
+PICTURES($folder,array("krap_02","krap_01","krap_03"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_03.txt");
+PICTURES($folder,array("krap_04","krap_05","krap_06"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_04.txt");
+PICTURES($folder,array("krap_07","krap_50","krap_80"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_05.txt");
+PICTURES($folder,array("krap_10","krab18","krap_11"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_06.txt");
+insert_paragraph($folder,"justify","more_19.txt");
+PICTURES($folder,array("krap_63","krap_58","krap_66"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_07.txt");
+insert_paragraph($folder,"justify","more_08.txt");
+PICTURES($folder,array("krap_13","krap_12","krap_14"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_09.txt");
+PICTURES($folder,array("krab2"),"2",$userwidth);
+
+insert_paragraph($folder,"justify","more_10.txt");
+PICTURES($folder,array("krap_19","krap_18","krap_20"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_11.txt");
+PICTURES($folder,array("krap_22","krap_23","krap_21"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_12.txt");
+PICTURES($folder,array("krap_32","krap_24","krap_25"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_13.txt");
+PICTURES($folder,array("krap_27","krap_26","krap_28"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_14.txt");
+PICTURES($folder,array("krap_30","krab11","krap_31"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_15.txt");
+PICTURES($folder,array("krap_33","krap_34","krap_35"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_16.txt");
+PICTURES($folder,array("krap_39","krab17","krap_43"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_17.txt");
+PICTURES($folder,array("krap_68","krap_72","krap_85"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_21.txt");
+PICTURES($folder,array("krab29","krab30","krab31"),"1",$userwidth);
+PICTURES($folder,array("krab32","krab28","krab33"),"1",$userwidth);
+
+insert_paragraph($folder,"justify","more_18.txt");?>
+
+<p align=left>А еще Вы можете посмотреть видеоролики:</p>
+<p><object width="425" height="344">
+<param name="movie" value="http://www.youtube.com/v/k6VbvPl-xZY&amp;hl=en&amp;fs=1">
+<param name="allowFullScreen" value="true">
+<param name="allowscriptaccess" value="always">
+<embed src="http://www.youtube.com/v/k6VbvPl-xZY&amp;hl=en&amp;fs=1" 
+type="application/x-shockwave-flash" allowscriptaccess="always" 
+allowfullscreen="true" width="425" height="344"></embed></object></p>
+
+<p>
+<object width="425" height="344">
+<param name="movie" value="http://www.youtube.com/v/pRodjm75pnQ&amp;hl=en&amp;fs=1">
+<param name="allowFullScreen" value="true">
+<param name="allowscriptaccess" value="always">
+<embed src="http://www.youtube.com/v/pRodjm75pnQ&amp;hl=en&amp;fs=1" 
+type="application/x-shockwave-flash" allowscriptaccess="always"
+allowfullscreen="true" width="425" height="344"></embed></object></p>
+
+<?php insert_bottom($folder,$bord.".png",$userwidth);?>
