@@ -23,8 +23,8 @@ from sqlalchemy import func
 from .models import (
     DBSession,
     Post,
-	User, 
-	Article
+    User, 
+    Article
     )
 import re 
 _re_login = re.compile(r'^[\w\d._-]+$')
@@ -101,11 +101,12 @@ def discuss_view(request):
 			last = first + on_page
 			if int(page) > max_page:
 				return HTTPSeeOther(location=request.route_url('home:page',page=max_page))
-		posts = DBSession.query(Post).order_by(Post.id.desc()).slice(first, last)
+		posts = DBSession.query(Post).filter(Post.page == 'discuss').order_by(Post.id.desc()).slice(first, last)
 		current_time = datetime.datetime.now()
 		week_ago = current_time - datetime.timedelta(weeks=1)
 
 		newcomments = DBSession.query(Post).filter(Post.date > week_ago).filter(Post.page != 'discuss')
+
 		tpldef = {'posts': posts,
 				  'page': page,
 				  'max_page':max_page,
