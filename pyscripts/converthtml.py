@@ -3,51 +3,55 @@
 import sys
 import re
 
+#!!!! Надо что-то делать с многострочными переменными типа descr
+# там еще где-то descr, где-то descript... проверить и исправить
 phpvars = re.compile('\$.+=.+\"')
-phpfuncts = re.compile('.+PICTURES\(.+?\).+\?\>')
+
+phppicts = re.compile('array\(.+\),')
+pictures = re.compile('"([A-Za-z0-9_\./\\-]*)"')
+phpfuncts = re.compile('\w+\(.*\);')
+
+div_start = """<div class="photoset-grid-lightbox" data-layout={0} style="visibility: hidden;">"""
+div_image = """<img alt="" src="/{0}/{1}_small.jpg" data-highres="/{0}/{1}.jpg"/>"""
+div_end = "</div>"
 
 def convert_file(infile):
     a = open(infile).read()
+    #вот тут надо исправить длинные descr в однострочные, еще до обработки переменных
     vardict = {}
     for v in phpvars.findall(a):
         outlist = [k.strip() for k in v.replace('$','').replace('"', '').replace("<br>", '').split("=")]
         vardict[outlist[0]] = outlist[1]
-    #so we got all php variables here
-    #print(vardict)
-    #теперь надо пройтись по всей странице и найти блоки с картинками, посчитать сколько там строк и как что располагается
-    #чтобы заменить строки с последовательными вставками на один блок
-    # найти и заменить 
-    # <?php PICTURES($folder,array("Lib_05", "Lib_06"),"1", $userwidth);?>
-    # <?php PICTURES($folder,array("Lib_07", "Lib_08"), "1", $userwidth);?>   
-    #на
-    #
-    #   <div class="photoset-grid-lightbox" data-layout=22 style="visibility: hidden;">
-    #   <img alt="" src="/libya/Lib_05_small.jpg" data-highres="/libya/Lib_05.jpg"/>
-    #   <img alt="" src="/libya/Lib_06_small.jpg" data-highres="/libya/Lib_06.jpg"/>
-    #   <img alt="" src="/libya/Lib_07_small.jpg" data-highres="/libya/Lib_07.jpg"/>
-    #   <img alt="" src="/libya/Lib_08_small.jpg" data-highres="/libya/Lib_08.jpg"/>
-    #   </div>
-    #разбиваем текст на строчки    
-    a = [x for x in a.split('\n') if len(x) > 0]
-    #пропускаем все <?php и ждем, что в конце будет ?>
-    imgcount = 0
-    for i in range(len(a)):
-        if a[i].startswith('<?php'):
-            if "PICTURES" in a[i]:
-                imgcount = imgcount + 1
-                #parse image string and form new div with pictures
-                print(a[i])
-            else:
-                pass
 
-        elif a[i].endswith("?>") or "?>" in a[i]:
-            if i+1< len(a):
-                print(a[i+1])
+    a = [x for x in a.split('\n') if len(x) > 0]
+    imgcount = 0
+    imglayout = ""
+    imgdivs = []
+
+    #here we remove php statements
+
+    for i in range(len(a)):
+        if "PICTURES" in a[i]:
+            pictarray = phppicts.findall(a[i])[-1]
+            pict_row = pictures.findall(pictarray)
+            for p in pict_row:
+                imgdivs.append(div_image.format(vardict['folder'], p.replace('"', '')))
+            imglayout = imglayout + str(len(pictures.findall(pictarray)))
+            imgcount = imgcount + 1
         else:
             if imgcount > 0:
-                print(imgcount)
+                print(div_start.format(imglayout))
+                print("\n".join(imgdivs))
+                print(div_end)
+            if not "?php" in a[i]:
+                if not phpvars.search(a[i]):
+                    if not phpfuncts.search(a[i]):
+                        print(a[i])
             imgcount = 0
-            print(a[i])
+            imglayout = ""
+            imgdivs = []
+
+
 
 if __name__ == "__main__":
     convert_file(sys.argv[1])
