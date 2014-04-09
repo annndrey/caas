@@ -1,66 +1,81 @@
+
 # -*- coding: utf-8 -*-
 
 import sys
 import re
-
-#bosniya - и др - там еще появляется insert_paragraph из другого файла, который лежит в папке с фоточками.
-#может лучше брать html-версии и их преобразовывать? 
-
-#!!!! Надо что-то делать с многострочными переменными типа descr
-# там еще где-то descr, где-то descript... проверить и исправить
-phpvars = re.compile('\$.*=.*\".*\"')
-block = re.compile('require.+?\?>', re.DOTALL)
-phppicts = re.compile('array\(.+\),')
-pictures = re.compile('"([A-Za-z0-9_\./\\-]*)"')
-phpfuncts = re.compile('\w+\(.*\);')
+from bs4 import BeautifulSoup
 
 div_start = """<div class="photoset-grid-lightbox" data-layout={0} style="visibility: hidden;">"""
-div_image = """<img alt="" src="/{0}/{1}_small.jpg" data-highres="/{0}/{1}.jpg"/>"""
+div_image = """<img alt="" src="{0}" data-highres="{1}"/>"""
 div_end = "</div>"
 
-def convert_file(infile):
-    a = open(infile).read()
-    vardict = {}
 
-    phpblock = block.search(a)
-    vars = a[phpblock.start():phpblock.end()]
-
-    vars = """"\n""".join([x.replace("\n", '') for x in vars.split("""";""")])
-    
-    for v in phpvars.findall(vars):
-        outlist = [k.strip() for k in v.replace('$','').replace('"', '').replace("<br>", '').split("=")]
-        vardict[outlist[0]] = outlist[1]
-    print(vars)
-    print(vardict)
-    a = a[phpblock.end():]
-    a = [x for x in a.split('\n') if len(x) > 0]
-    imgcount = 0
-    imglayout = ""
-    imgdivs = []
-
-
-    #here we remove php statements
-
-    for i in range(len(a)):
-        if "PICTURES" in a[i]:
-            pictarray = phppicts.findall(a[i])[-1]
-            pict_row = pictures.findall(pictarray)
-            for p in pict_row:
-                imgdivs.append(div_image.format(vardict['folder'], p.replace('"', '')))
-            imglayout = imglayout + str(len(pictures.findall(pictarray)))
-            imgcount = imgcount + 1
+def finddivs(div):
+    sibl = [a for a in div.next_siblings if a !="\n"]
+    imgblock = [[a['src'] for a in div.findAll('img')], ]
+    for i in range(len(sibl)):
+        if sibl[i].name == 'div':
+            imgblock.append([a['src'] for a in sibl[i].findAll('img')])
         else:
-            if imgcount > 0:
-                print(div_start.format(imglayout))
-                print("\n".join(imgdivs))
-                print(div_end)
-            if not "?php" in a[i]:
-                if not phpvars.search(a[i]):
-                    if not phpfuncts.search(a[i]):
-                        print(a[i])
-            imgcount = 0
-            imglayout = ""
-            imgdivs = []
+            break
+    return imgblock 
+
+def convert_file(infile):
+    sourcehtml = open(infile).read().replace("<br>", '')
+    soup = BeautifulSoup(sourcehtml)
+    prettyhtml = soup.prettify()
+    prettysoup = BeautifulSoup(prettyhtml)
+
+    keywords = soup.find("meta", {"name":"keywords"})['content']
+    descr = soup.find("meta", {"name":"description"})['content']
+    title = soup.title
+
+    contents = prettysoup.findAll("a", {"class":"link_3"})
+
+    tabledivs = prettysoup.findAll("div", {'id':"picttable"})
+    elements = prettysoup.body.findAll(['p', 'i', 'h3', 'div'])
+    
+    print(title.text.replace('\n', '').strip())
+    print(descr)
+    print(keywords)
+
+    resulthtml = []
+
+    for e in elements:
+        skip = False
+
+        if 'picttable' in e.attrs.get('id', '') or 'justify' in e.attrs.get('align', '') or e.name == 'i' or e.name != 'script':
+            if 'bottom' not in e.attrs.get('id', ''):
+                if 'center' not in e.attrs.get('align', ''):
+                    #now processing imagedivs. 
+                    if e.name == 'div' and e['id'] == 'picttable' and skip == False:
+                        alldivs = finddivs(e)
+                        layout = "".join([str(len(a)) for a in alldivs])
+                        resulthtml.append(div_start.format(layout))
+                        for d in alldivs:
+                            for img in d:
+                                resulthtml.append(div_image.format(img, img.replace('_small', '')))
+                        resulthtml.append(div_end)
+
+                        if len(alldivs) > 1:
+                            skip = True
+
+                    elif skip == False:
+                        #skipping comments
+                        if e.name and e.name == 'p' and e.attrs.get('id', '') == 'comment':
+                            continue
+
+                        #cleaning links
+                        for a in e.findAll('a'):
+                            del a['class']
+                            #atxt = str(a).replace('\n', '')
+                            #a.replace_with(atxt)
+                        
+                        #for elem in e.findAll(True):
+                        
+                        resulthtml.append(e)
+
+    print('\n'.join([str(i) for i in resulthtml]))
 
 if __name__ == "__main__":
     convert_file(sys.argv[1])
