@@ -40,9 +40,8 @@ def convert_file(infile):
     print(keywords)
 
     resulthtml = []
-
+    skip = False
     for e in elements:
-        skip = False
 
         if 'picttable' in e.attrs.get('id', '') or 'justify' in e.attrs.get('align', '') or e.name == 'i' or e.name != 'script':
             if 'bottom' not in e.attrs.get('id', ''):
@@ -50,17 +49,19 @@ def convert_file(infile):
                     #now processing imagedivs. 
                     if e.name == 'div' and e['id'] == 'picttable' and skip == False:
                         alldivs = finddivs(e)
+                        print(len(alldivs))
+                        if len(alldivs) > 1:
+                            skip = True
                         layout = "".join([str(len(a)) for a in alldivs])
                         resulthtml.append(div_start.format(layout))
                         for d in alldivs:
                             for img in d:
                                 resulthtml.append(div_image.format(img, img.replace('_small', '')))
                         resulthtml.append(div_end)
+                    
 
-                        if len(alldivs) > 1:
-                            skip = True
-
-                    elif skip == False:
+                    elif e.name != 'div':
+                        skip = False
                         #skipping comments
                         if e.name and e.name == 'p' and e.attrs.get('id', '') == 'comment':
                             continue
