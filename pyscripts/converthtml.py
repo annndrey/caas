@@ -8,7 +8,8 @@ from bs4 import BeautifulSoup
 div_start = """<div class="photoset-grid-lightbox" data-layout={0} style="visibility: hidden;">"""
 div_image = """<img alt="" src="{0}" data-highres="{1}"/>"""
 div_end = "</div>"
-
+reimg = re.compile("[a-zA-Z]+\/.+\.[jpegJPEGpngPNG]+")
+separator = re.compile("src.+Разделитель")
 
 def finddivs(div):
     sibl = [a for a in div.next_siblings if a !="\n"]
@@ -22,6 +23,8 @@ def finddivs(div):
 
 def convert_file(infile):
     sourcehtml = open(infile).read().replace("<br>", '')
+    seps = separator.findall(sourcehtml)
+
     soup = BeautifulSoup(sourcehtml)
     prettyhtml = soup.prettify()
     prettysoup = BeautifulSoup(prettyhtml)
@@ -29,19 +32,34 @@ def convert_file(infile):
     keywords = soup.find("meta", {"name":"keywords"})['content']
     descr = soup.find("meta", {"name":"description"})['content']
     title = soup.title
+    leftbracket = soup.find('td', {'id':'bgimageleft'})
+    #print(leftbracket)
+    leftbracket = reimg.findall(leftbracket['style'])[-1]
+    rightbracket = prettysoup.find('td', {'id':'bgimageright'})
 
+    rightbracket = reimg.findall(rightbracket['style'])[-1]
+
+    articlesep = seps[0].split(" ")[0].split("=")[-1].replace('"','')
     contents = prettysoup.findAll("a", {"class":"link_3"})
-
     tabledivs = prettysoup.findAll("div", {'id':"picttable"})
+
     elements = prettysoup.body.findAll(['p', 'i', 'h3', 'div'])
     
     print(title.text.replace('\n', '').strip())
     print(descr)
     print(keywords)
+    print(articlesep)
+    print(leftbracket, rightbracket)
+
+    #TODO
+    #don't forget to create top link in the mako template!!!1
 
     resulthtml = []
     skip = False
     for e in elements:
+        #if e.name == 'img':
+        #    if e.attrs.get('alt', '') == 'Разделитель':
+        #        print(e)
 
         if 'picttable' in e.attrs.get('id', '') or 'justify' in e.attrs.get('align', '') or e.name == 'i' or e.name != 'script':
             if 'bottom' not in e.attrs.get('id', ''):
@@ -49,7 +67,6 @@ def convert_file(infile):
                     #now processing imagedivs. 
                     if e.name == 'div' and e['id'] == 'picttable' and skip == False:
                         alldivs = finddivs(e)
-                        print(len(alldivs))
                         if len(alldivs) > 1:
                             skip = True
                         layout = "".join([str(len(a)) for a in alldivs])
@@ -69,14 +86,16 @@ def convert_file(infile):
                         #cleaning links
                         for a in e.findAll('a'):
                             del a['class']
-                            #atxt = str(a).replace('\n', '')
-                            #a.replace_with(atxt)
-                        
-                        #for elem in e.findAll(True):
-                        
+
+                            for c in a.children:
+                                if c.name == 'font':
+                                    a.string = c.text.replace("\n", '').strip()
                         resulthtml.append(e)
-
-    print('\n'.join([str(i) for i in resulthtml]))
-
+    print("______________________")
+    finalhtml = '\n'.join([str(i) for i in resulthtml])
+    
+    finalhtml = finalhtml.replace("""<a href="#top">top</a>""", """<img id="separator" src="{0}"><a href="#top">top</a>""".format(articlesep))
+    print(finalhtml)
+    
 if __name__ == "__main__":
     convert_file(sys.argv[1])
