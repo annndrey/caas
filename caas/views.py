@@ -29,7 +29,10 @@ from .models import (
 import re 
 _re_login = re.compile(r'^[\w\d._-]+$')
 
-@view_config(route_name='main', renderer='template_main.mak')
+@view_config(
+	route_name='main', 
+	renderer='template_main.mak'
+	)
 def main_view(request):
 	firstarticle = DBSession.query(Article).filter(Article.id==7).first()
 	tpldef = {'message': 'Welcome to the main page. Here we will post something useful', 'article':firstarticle }
@@ -37,8 +40,13 @@ def main_view(request):
 		tpldef.update({'auth':True})
 	return tpldef
 
-@view_config(route_name='newarticle', renderer='template_newarticle.mak')
+@view_config(
+	route_name='newarticle', 
+	renderer='template_newarticle.mak',
+	permission='USAGE'
+	)
 def add_article(request):
+	#ADD csrf token to form
 	if not authenticated_userid(request):
 		request.session.flash({
 				'class' : 'warning',
@@ -61,8 +69,13 @@ def add_article(request):
 
 		return HTTPSeeOther(location=request.route_url('main'))
 
-@view_config(route_name='newpost')
+@view_config(
+	route_name='newpost', 
+	request_method="POST",
+	permission="USAGE"
+	)
 def add_new_post(request):
+	#add csrf
 	if not authenticated_userid(request):
 		request.session.flash({
 				'class' : 'warning',
@@ -78,9 +91,9 @@ def add_new_post(request):
 			DBSession.add(newpost)
 		return HTTPSeeOther(location=request.route_url('home'))
 
-@view_config(route_name='home', renderer='template_discuss.mak')
-@view_config(route_name='home_slash', renderer='template_discuss.mak')
-@view_config(route_name='home:page', renderer='template_discuss.mak')
+@view_config(route_name='home', renderer='template_discuss.mak', permission="USAGE")
+@view_config(route_name='home_slash', renderer='template_discuss.mak', permission="USAGE")
+@view_config(route_name='home:page', renderer='template_discuss.mak', permission="USAGE")
 def discuss_view(request):
 	on_page = 20
 	first = 0
@@ -142,7 +155,7 @@ def login_view(request):
 		}
 	return tpldef
 
-@view_config(route_name='edit')
+@view_config(route_name='edit', permission="USAGE")
 def discuss_edit(request):
 	if not authenticated_userid(request):
 		request.session.flash({
@@ -163,7 +176,7 @@ def discuss_edit(request):
 		return HTTPSeeOther(location=request.route_url('home'))
 
 
-@view_config(route_name='remove')
+@view_config(route_name='remove', permission="USAGE")
 def remove_post(request):
 	if not authenticated_userid(request):
 		request.session.flash({
@@ -179,7 +192,7 @@ def remove_post(request):
 			return HTTPSeeOther(location=request.route_url('home'))
 		return HTTPSeeOther(location=request.route_url('home'))
 
-@view_config(route_name='logout')
+@view_config(route_name='logout', permission="USAGE")
 def logout_view(request):
     if authenticated_userid(request):
         headers = forget(request)

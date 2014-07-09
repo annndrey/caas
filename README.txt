@@ -21,3 +21,7 @@ TODO:
 - articles page
 
 - main page: last articles, map
+
+- add csrf to views
+
+- review code, fetch issues from bitbucket
