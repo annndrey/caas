@@ -24,4 +24,20 @@ TODO:
 
 - add csrf to views
 
-- review code, fetch issues from bitbucket
+- put all existing articles to database with converthtml.py
+
+- add a link "Create New Article" to the main page for authenticated users
+
+- Decrease font size everywhere
+
+- Pictures in text: we use photoset-grid, but we havw to fix for not to crop portrait oriented pictures surronded by landscape oriented ones
+
+- Text edition tool for new article. See issue https://bitbucket.org/annndrey/caas/issue/7
+
+- Social networks integration so users can login using their social accounts and make a repost
+
+- Pictures upload: http://blueimp.github.io/jQuery-File-Upload/angularjs.html
+
+- New article creation for authorized users
+
+
