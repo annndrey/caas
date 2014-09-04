@@ -43,11 +43,17 @@ class Article(Base):
 	url = Column(Unicode, unique=True)
 	maintext = Column(Text)
 	descr = Column(Unicode(length=600))
+	## Add to database
+	sep_url = Column(Unicode(length=200))
+	## Add to database
+	left_bracket_url = Column(Unicode(length=200))
+	## Add to database
+	right_bracket_url = Column(Unicode(length=200))
 	pubtimestamp = Column(TIMESTAMP)
 	edittimestamp = Column(TIMESTAMP)
 	user = Column(Unicode)
 
-	def __init__(self, mainname, upname, keywords, url, maintext, descr, edittimestamp, user):
+	def __init__(self, mainname, upname, keywords, url, maintext, descr, edittimestamp, user, sep_url, right_bracket_url, left_bracket_url):
 		self.mainname = mainname
 		self.upname = upname
 		self.keywords = keywords
@@ -55,6 +61,9 @@ class Article(Base):
 		self.maintext = maintext
 		self.descr = descr
 		self.user = user
+		self.sep_url = sep_url
+		self.left_bracket_url = left_bracket_url
+		self.right_bracket_url = right_bracket_url
 
 
 #TODO md5 hash in password fields instead of plain text

@@ -1,4 +1,4 @@
-
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 import sys
@@ -34,6 +34,7 @@ def convert_file(infile):
     title = soup.title
     leftbracket = soup.find('td', {'id':'bgimageleft'})
     #print(leftbracket)
+
     leftbracket = reimg.findall(leftbracket['style'])[-1]
     rightbracket = prettysoup.find('td', {'id':'bgimageright'})
 
@@ -44,11 +45,18 @@ def convert_file(infile):
     tabledivs = prettysoup.findAll("div", {'id':"picttable"})
 
     elements = prettysoup.body.findAll(['p', 'i', 'h3', 'div'])
-    
+    ## We should create a new isntance of Article here
+    ## with the given parameters
+    ## and save it to database
+    # mainname
     print(title.text.replace('\n', '').strip())
+    ## descr
     print(descr)
+    ## keywords 
     print(keywords)
+    ## sep_url
     print(articlesep)
+    ## left_bracket_url, left_bracket_url
     print(leftbracket, rightbracket)
 
     #TODO
@@ -92,10 +100,15 @@ def convert_file(infile):
                                     a.string = c.text.replace("\n", '').strip()
                         resulthtml.append(e)
     print("______________________")
+
     finalhtml = '\n'.join([str(i) for i in resulthtml])
     
     finalhtml = finalhtml.replace("""<a href="#top">top</a>""", """<img id="separator" src="{0}"><a href="#top">top</a>""".format(articlesep))
+    ## maintext
+    ## >>>>> Create new article here
     print(finalhtml)
+
+
     
 if __name__ == "__main__":
     convert_file(sys.argv[1])
