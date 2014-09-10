@@ -1,4 +1,4 @@
-#!/usr/bin/env python                                                                                                                                                    # -*- coding: utf-8
+#!/usr/bin/env python                                                                                                   # -*- coding: utf-8
 
 from pyramid.view import (
     notfound_view_config,
@@ -31,8 +31,17 @@ _re_login = re.compile(r'^[\w\d._-]+$')
 
 @view_config(route_name='main', renderer='template_main.mak')
 def main_view(request):
-	firstarticle = DBSession.query(Article).filter(Article.id==7).first()
-	tpldef = {'message': 'Welcome to the main page. Here we will post something useful', 'article':firstarticle }
+	articles = DBSession.query(Article).all()
+	tpldef = {'message': 'Welcome to the main page. Here is the list of all articles', 'articles':articles }
+	if authenticated_userid(request):
+		tpldef.update({'auth':True})
+	return tpldef
+
+@view_config(route_name='article', renderer='template_article.mak')
+def article_view(request):
+	article_url = request.matchdict.get('url', None)
+	article = DBSession.query(Article).filter(Article.url==article_url).first()
+	tpldef = {'article':article}
 	if authenticated_userid(request):
 		tpldef.update({'auth':True})
 	return tpldef

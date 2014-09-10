@@ -1,9 +1,18 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import sys
 import re
+import datetime
+import os
 from bs4 import BeautifulSoup
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from caas import models as m
+
+engine = create_engine('mysql+mysqlconnector://annndrey:Dishnek5@localhost/caas')
+Session = sessionmaker(bind=engine)
+session = Session()
 
 div_start = """<div class="photoset-grid-lightbox" data-layout={0} style="visibility: hidden;">"""
 div_image = """<img alt="" src="{0}" data-highres="{1}"/>"""
@@ -22,6 +31,8 @@ def finddivs(div):
     return imgblock 
 
 def convert_file(infile):
+    article_url = os.path.split(infile)[-1].split('.')[0]
+    print(article_url)
     sourcehtml = open(infile).read().replace("<br>", '')
     seps = separator.findall(sourcehtml)
 
@@ -49,15 +60,16 @@ def convert_file(infile):
     ## with the given parameters
     ## and save it to database
     # mainname
-    print(title.text.replace('\n', '').strip())
+    #print(title.text.replace('\n', '').strip())
+    mainname = title.text.replace('\n', '').strip().replace('cAAs - ', '')
     ## descr
-    print(descr)
+    #print(descr)
     ## keywords 
-    print(keywords)
+    #print(keywords)
     ## sep_url
-    print(articlesep)
+    #print(articlesep)
     ## left_bracket_url, left_bracket_url
-    print(leftbracket, rightbracket)
+    #print(leftbracket, rightbracket)
 
     #TODO
     #don't forget to create top link in the mako template!!!1
@@ -99,16 +111,28 @@ def convert_file(infile):
                                 if c.name == 'font':
                                     a.string = c.text.replace("\n", '').strip()
                         resulthtml.append(e)
-    print("______________________")
+    #print("______________________")
 
     finalhtml = '\n'.join([str(i) for i in resulthtml])
     
     finalhtml = finalhtml.replace("""<a href="#top">top</a>""", """<img id="separator" src="{0}"><a href="#top">top</a>""".format(articlesep))
     ## maintext
     ## >>>>> Create new article here
-    print(finalhtml)
-
-
+    #print(finalhtml)
+    article = m.Article(
+        mainname=mainname, 
+        upname=mainname, 
+        descr=descr, 
+        url=article_url,
+        keywords=keywords, 
+        sep_url=articlesep, 
+        left_bracket_url=leftbracket, 
+        right_bracket_url=rightbracket,
+        maintext=finalhtml,
+        user=18,
+        )
+    session.add(article)
+    session.flush()
     
 if __name__ == "__main__":
     convert_file(sys.argv[1])

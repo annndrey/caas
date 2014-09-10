@@ -4,7 +4,8 @@ from sqlalchemy import (
     Text,
     Unicode
     )
-from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP
+from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP, LONGTEXT
+
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import (
@@ -34,6 +35,10 @@ class Post(Base):
 		self.page = page
 		self.post = post
 
+	def __str__(self):
+		return self.post
+
+
 class Article(Base):
 	__tablename__ = 'articles'
 	id = Column(Integer, primary_key=True)
@@ -41,19 +46,16 @@ class Article(Base):
 	upname = Column(Unicode, unique=True)
 	keywords = Column(Unicode(length=600))
 	url = Column(Unicode, unique=True)
-	maintext = Column(Text)
+	maintext = Column(LONGTEXT)
 	descr = Column(Unicode(length=600))
-	## Add to database
 	sep_url = Column(Unicode(length=200))
-	## Add to database
 	left_bracket_url = Column(Unicode(length=200))
-	## Add to database
 	right_bracket_url = Column(Unicode(length=200))
 	pubtimestamp = Column(TIMESTAMP)
 	edittimestamp = Column(TIMESTAMP)
 	user = Column(Unicode)
 
-	def __init__(self, mainname, upname, keywords, url, maintext, descr, edittimestamp, user, sep_url, right_bracket_url, left_bracket_url):
+	def __init__(self, mainname, upname, keywords, url, maintext, descr, user, sep_url, right_bracket_url, left_bracket_url):
 		self.mainname = mainname
 		self.upname = upname
 		self.keywords = keywords
@@ -64,6 +66,7 @@ class Article(Base):
 		self.sep_url = sep_url
 		self.left_bracket_url = left_bracket_url
 		self.right_bracket_url = right_bracket_url
+
 
 
 #TODO md5 hash in password fields instead of plain text
