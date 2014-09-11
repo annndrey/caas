@@ -2,19 +2,19 @@
 <%inherit file="caas:templates/template_base.mak"/>
 
 <%def name="navbar(page, maxpage)">
-   <ul class="pager">
-  % if not page:
-    <li class="previous disabled"><a href="${request.route_url('home')}"> &larr; Вперед</a></li>
-    <li class="next"><a href="${request.route_url('home')}/2">Назад &rarr;</a></li>
-  % else:
-    <li class="previous"><a href="${request.route_url('home')}/${page}"> &larr; Вперед</a></li>
-    % if int(page) < int(maxpage):
-    <li class="next"><a href="${request.route_url('home')}/${page + 2}">Назад &rarr;</a></li>
+  <ul class="pager">
+    % if not page:
+      <li class="previous disabled"><a href="${request.route_url('home')}"> &larr; Вперед</a></li>
+      <li class="next"><a href="${request.route_url('home')}/2">Назад &rarr;</a></li>
     % else:
-    <li class="next disabled"><a href="${request.route_url('home')}/${page + 1}">Назад &rarr;</a></li>
-    % endif
-  % endif  
-</ul>
+      <li class="previous"><a href="${request.route_url('home')}/${page}"> &larr; Вперед</a></li>
+      % if int(page) < int(maxpage):
+	<li class="next"><a href="${request.route_url('home')}/${page + 2}">Назад &rarr;</a></li>
+      % else:
+	<li class="next disabled"><a href="${request.route_url('home')}/${page + 1}">Назад &rarr;</a></li>
+      % endif
+    % endif  
+  </ul>
 </%def>
 
 <div class="container">
@@ -65,7 +65,7 @@ ${navbar(page, max_page)}
         	 <h4 class="modal-title" id="editModalLabel${p.id}">Правка записи</h4>
       		 </div>
       		 <div class="modal-body">
-        	 <form role="form" method="post" action="/edit/${p.id}">
+        	 <form role="form" method="post" action="${request.route_url('edit', pub='post', id=p.id)}">
 		 <textarea class="form-control" id="newpost" name="newpost" rows="4">${p.post|n}</textarea>
 		 <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
       		 </div>
@@ -87,7 +87,7 @@ ${navbar(page, max_page)}
 		       <h4 class="modal-title" id="deleteModalLabel${p.id}">Удаление записи</h4>
 		       </div>
 		       <div class="modal-body">
-      		       <a href="/remove/${p.id}">Да, удалите немедленно!</a>
+      		       <a href="${request.route_url('remove', pub='post', id=p.id)}">Да, удалите немедленно!</a>
 		       </div>
 		       <div class="modal-footer">
 		       <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>

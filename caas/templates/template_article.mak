@@ -34,6 +34,10 @@ $('.photoset-grid-lightbox').photosetGrid({
     <div class="row">
 	<div class="col-md-8 col-md-offset-2" align='justify'>
 	% if article:
+	  <p>
+	    <a href="${request.route_url('edit', pub='article', id=article.id)}">Edit</a>
+	    <a href="${request.route_url('remove', pub='article', id=article.id)}">Remove</a>
+	  </p>
 	    ${article.maintext|n}
 	% else:
 	  There's no such article

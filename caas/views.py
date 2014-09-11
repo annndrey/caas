@@ -152,7 +152,7 @@ def login_view(request):
 	return tpldef
 
 @view_config(route_name='edit')
-def discuss_edit(request):
+def pub_edit(request):
 	if not authenticated_userid(request):
 		request.session.flash({
 				'class' : 'warning',
@@ -160,20 +160,32 @@ def discuss_edit(request):
 				})
 		return HTTPSeeOther(location=request.route_url('login'))
 	else:
+		pubtype = request.matchdict['pub']
+		pubid = request.matchdict['id']
 		if request.POST:
-			csrf = request.POST.get('csrf', '')
-			if (csrf == request.session.get_csrf_token()):
-				newpost = request.POST.get('newpost', '')
-				post = DBSession.query(Post).filter(Post.id==request.matchdict['id']).first()
-				if post.name == authenticated_userid(request):
-					post.post = newpost
+			if pubtype == 'post':
+				csrf = request.POST.get('csrf', '')
+				if csrf == request.session.get_csrf_token():
+					newpost = request.POST.get('newpost', '')
+					post = DBSession.query(Post).filter(Post.id==pubid).first()
+					if post.name == authenticated_userid(request):
+						post.post = newpost
+						DBSession.add(post)
+			elif pubtype == 'article':
+				csrf = request.POST.get('csrf', '')
+				if csrf == request.session.get_csrf_token():
+					newarticle = request.POST.get('newpost', '')
+					## GET other article params here
+					article = DBSession.query(Article).filter(Article.id==pubid).first()
+					article.maintext = newpost
+					article.user = authenticated_userid(request)
 					DBSession.add(post)
 
-		return HTTPSeeOther(location=request.route_url('home'))
-
+			return HTTPSeeOther(location=request.referrer)
+		return HTTPSeeOther(location=request.route_url('main'))
 
 @view_config(route_name='remove')
-def remove_post(request):
+def pub_remove(request):
 	if not authenticated_userid(request):
 		request.session.flash({
 				'class' : 'warning',
@@ -181,12 +193,20 @@ def remove_post(request):
 				})
 		return HTTPSeeOther(location=request.route_url('login'))
 	else:
-		post = DBSession.query(Post).filter(Post.id==request.matchdict['id']).first()
-		if post.name == authenticated_userid(request):
-			DBSession.delete(post)
-			#userid = DBSession.query(User).filter(User.name==authenticated_userid(request))
-			return HTTPSeeOther(location=request.route_url('home'))
-		return HTTPSeeOther(location=request.route_url('home'))
+		pubtype = request.matchdict['pub']
+		pubid = request.matchdict['id']
+		if pubtype == 'post':
+			post = DBSession.query(Post).filter(Post.id==pubid).first()
+			if post.name == authenticated_userid(request):
+				DBSession.delete(post)
+				return HTTPSeeOther(location=request.referrer)
+		elif pubtype == 'article':
+			article = DBSession.query(Article).filter(Article.id==pubid).first()
+			if article.user == authenticated_userid(request):
+				DBSession.delete(article)
+				return HTTPSeeOther(location=request.route_url('main'))
+
+	return HTTPSeeOther(location=request.route_url('home'))
 
 @view_config(route_name='logout')
 def logout_view(request):

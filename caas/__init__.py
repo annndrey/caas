@@ -30,12 +30,10 @@ def main(global_config, **settings):
 	config.add_route('home_slash', '/discuss/')
 	config.add_route('home:page', '/discuss/{page:\d+}')
 	config.add_route('login', '/login')
-	#postedit
-	config.add_route('edit', '/edit/{id:\d+}')
+	config.add_route('edit', '/edit/{pub:\w+}/{id:\d+}')
 	config.add_route('newarticle', '/newarticle')
 	config.add_route('article', '/article/{url:\w+}')
-	#postremove
-	config.add_route('remove', '/remove/{id:\d+}')
+	config.add_route('remove', '/remove/{pub:\w+}/{id:\d+}')
 	config.add_route('newpost', '/newpost')
 	config.add_route('logout', '/logout')
 	config.add_route('main', '/')
