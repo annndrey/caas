@@ -1,4 +1,4 @@
-#!/usr/bin/env python                                                                                                   # -*- coding: utf-8
+#!/usr/bin/env python                                                                                              # -*- coding: utf-8
 
 from pyramid.view import (
     notfound_view_config,
@@ -56,7 +56,7 @@ def add_article(request):
 		return HTTPSeeOther(location=request.route_url('login'))
 	if not request.POST:
 		tpldef = {}
-		tpldef.update({'authuser':authenticated_userid(request)})
+		tpldef.update({'authuser':authenticated_userid(request), 'auth':True})
 		return tpldef
 	else:
 		art_name = request.POST.get('inputMainname', None)
@@ -65,7 +65,7 @@ def add_article(request):
 		art_descr = request.POST.get('inputDescr', None)
 		art_text = request.POST.get('inputArticle', None)
 		art_url = request.POST.get('inputURL', None)
-		newarticle = Article(art_name, art_uppername, art_kwords, art_url, art_text, art_descr, datetime.datetime.now(), authenticated_userid(request))
+		newarticle = Article(art_name, art_uppername, art_kwords, art_url, art_text, art_descr, datetime.datetime.now(), authenticated_userid(request), None, None, None)
 		DBSession.add(newarticle)
 
 		return HTTPSeeOther(location=request.route_url('main'))
@@ -120,6 +120,7 @@ def discuss_view(request):
 				  'page': page,
 				  'max_page':max_page,
 				  'authuser':authenticated_userid(request),
+				  'auth':True,
 				  'newcommentscount':newcomments.count()
 				  }
 		return tpldef
@@ -151,8 +152,9 @@ def login_view(request):
 		}
 	return tpldef
 
-@view_config(route_name='edit')
+@view_config(route_name='edit', renderer='template_newarticle.mak')
 def pub_edit(request):
+	tpldef = {}
 	if not authenticated_userid(request):
 		request.session.flash({
 				'class' : 'warning',
@@ -171,17 +173,43 @@ def pub_edit(request):
 					if post.name == authenticated_userid(request):
 						post.post = newpost
 						DBSession.add(post)
+						return HTTPSeeOther(location=request.referrer)
+
 			elif pubtype == 'article':
 				csrf = request.POST.get('csrf', '')
 				if csrf == request.session.get_csrf_token():
-					newarticle = request.POST.get('newpost', '')
 					## GET other article params here
 					article = DBSession.query(Article).filter(Article.id==pubid).first()
-					article.maintext = newpost
+					art_name = request.POST.get('inputMainname', None)
+					art_uppername = art_name
+					art_kwords = request.POST.get('inputKeywords', None)
+					art_descr = request.POST.get('inputDescr', None)
+					art_text = request.POST.get('inputArticle', None)
+					art_url = request.POST.get('inputURL', None)
+					
+					#SET them to the aricle
+					article.mainname = art_name
+					article.uppername = art_name
+					article.keywords = art_kwords
+					article.descr = art_descr
+					article.url = art_url
+					article.maintext = art_text
 					article.user = authenticated_userid(request)
-					DBSession.add(post)
+					article.edittimestamp = datetime.datetime.now()
+					DBSession.add(article)
+					return HTTPSeeOther(location=request.referrer)
+		else:
+			if pubtype == 'article':
+				article = DBSession.query(Article).filter(Article.id==pubid).first()
+				articleparams = {
+					'edit':True,
+					'article': article,
+					'authuser':authenticated_userid(request), 
+					'auth':True
+					}
+				tpldef.update(articleparams)
+				return tpldef
 
-			return HTTPSeeOther(location=request.referrer)
 		return HTTPSeeOther(location=request.route_url('main'))
 
 @view_config(route_name='remove')

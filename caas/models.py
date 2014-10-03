@@ -55,7 +55,7 @@ class Article(Base):
 	edittimestamp = Column(TIMESTAMP)
 	user = Column(Unicode)
 
-	def __init__(self, mainname, upname, keywords, url, maintext, descr, user, sep_url, right_bracket_url, left_bracket_url):
+	def __init__(self, mainname, upname, keywords, url, maintext, descr, pubtimestamp, user, sep_url, right_bracket_url, left_bracket_url):
 		self.mainname = mainname
 		self.upname = upname
 		self.keywords = keywords

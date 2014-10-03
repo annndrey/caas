@@ -19,9 +19,39 @@
 	<script type="text/javascript" src="${req.static_url('caas:static/js/bootstrap.js')}"></script>
 	<script type="text/javascript" src="${req.static_url('caas:static/js/jquery.photoset-grid.js')}"></script>
 	<script type="text/javascript" src="${req.static_url('caas:static/js/jquery.colorbox.js')}"></script>
+
+<script type="text/javascript">
+$(window).load( function() {
+$('.photoset-grid-lightbox').photosetGrid({
+  highresLinks: true,
+  rel: 'withhearts-gallery',
+  gutter: '2px',
+  lowresWidth:100,
+  onComplete: function(){
+    $('.photoset-grid-lightbox').attr('style', '');
+    $('.photoset-grid-lightbox a').colorbox({
+      photo: true,
+      scalePhotos: true,
+      minWidth:'1%',
+      maxHeight:'90%',
+      maxWidth:'90%'
+    });
+  }
+});
+});
+</script>
 	
 </head>
 <body id="yellowfonts">
+
+% if auth:
+  <a href="${request.route_url('logout')}">Logout</a>
+  <a href="${request.route_url('newarticle')}">New Article</a>
+  <a href="${request.route_url('home')}">Discuss</a>
+% else:
+  <a href="${request.route_url('login')}">Login</a>
+% endif
+
 ${next.body()}
 </body>
 </html>
