@@ -54,6 +54,14 @@ class Article(Base):
 	pubtimestamp = Column(TIMESTAMP)
 	edittimestamp = Column(TIMESTAMP)
 	user = Column(Unicode)
+	status = Column(
+		'status',
+		Unicode(100),
+		Comment('Article Status'),
+		nullable=False,
+		default='draft'
+		)
+		
 
 	def __init__(self, mainname, upname, keywords, url, maintext, descr, pubtimestamp, user, sep_url, right_bracket_url, left_bracket_url):
 		self.mainname = mainname
