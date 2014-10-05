@@ -59,7 +59,8 @@ class Article(Base):
 		Unicode(100),
 		Comment('Article Status'),
 		nullable=False,
-		default='draft'
+		default='draft',
+		server_default=Text('draft')
 		)
 		
 
