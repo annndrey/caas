@@ -43,6 +43,9 @@ $('.photoset-grid-lightbox').photosetGrid({
 	
 </head>
 <body id="yellowfonts">
+% if request.current_route_url() != request.route_url('main'):
+  <a href="${request.route_url('main')}">MainPage</a>
+% endif
 
 % if auth:
   <a href="${request.route_url('logout')}">Logout</a>

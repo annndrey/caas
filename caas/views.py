@@ -28,6 +28,7 @@ from .models import (
     )
 import re 
 _re_login = re.compile(r'^[\w\d._-]+$')
+article_status = {'draft':'Черновик', 'ready':'Готово', 'private':'Не трогать!'}
 
 @view_config(route_name='main', renderer='template_main.mak')
 def main_view(request):
@@ -59,14 +60,16 @@ def add_article(request):
 		tpldef.update({'authuser':authenticated_userid(request), 'auth':True})
 		return tpldef
 	else:
-		art_name = request.POST.get('inputMainname', None)
-		art_uppername = art_name
-		art_kwords = request.POST.get('inputKeywords', None)
-		art_descr = request.POST.get('inputDescr', None)
-		art_text = request.POST.get('inputArticle', None)
-		art_url = request.POST.get('inputURL', None)
-		newarticle = Article(art_name, art_uppername, art_kwords, art_url, art_text, art_descr, datetime.datetime.now(), authenticated_userid(request), None, None, None)
-		DBSession.add(newarticle)
+		csrf = request.POST.get('csrf', '')
+		if csrf == request.session.get_csrf_token():
+			art_name = request.POST.get('inputMainname', None)
+			art_uppername = art_name
+			art_kwords = request.POST.get('inputKeywords', None)
+			art_descr = request.POST.get('inputDescr', None)
+			art_text = request.POST.get('inputArticle', None)
+			art_url = request.POST.get('inputURL', None)
+			newarticle = Article(art_name, art_uppername, art_kwords, art_url, art_text, art_descr, datetime.datetime.now(), authenticated_userid(request), None, None, None)
+			DBSession.add(newarticle)
 
 		return HTTPSeeOther(location=request.route_url('main'))
 
@@ -81,8 +84,10 @@ def add_new_post(request):
 	if not request.POST:
 		return HTTPSeeOther(location=request.route_url('home'))
 	else:
+		csrf = request.POST.get('csrf', '')
 		message = request.POST.get('userpost', None)
-		if message:
+
+		if message and csrf == request.session.get_csrf_token():
 			newpost = Post(date = datetime.datetime.now(), page='discuss', name=authenticated_userid(request), ip=request.remote_addr, post=message )
 			DBSession.add(newpost)
 		return HTTPSeeOther(location=request.route_url('home'))
@@ -183,6 +188,7 @@ def pub_edit(request):
 					art_name = request.POST.get('inputMainname', None)
 					art_uppername = art_name
 					art_kwords = request.POST.get('inputKeywords', None)
+					art_status = request.POST.get('inputStatus', None)
 					art_descr = request.POST.get('inputDescr', None)
 					art_text = request.POST.get('inputArticle', None)
 					art_url = request.POST.get('inputURL', None)
@@ -193,10 +199,12 @@ def pub_edit(request):
 					article.keywords = art_kwords
 					article.descr = art_descr
 					article.url = art_url
+					article.status = art_status
 					article.maintext = art_text
 					article.user = authenticated_userid(request)
 					article.edittimestamp = datetime.datetime.now()
 					DBSession.add(article)
+					request.session.flash('edited')
 					return HTTPSeeOther(location=request.referrer)
 		else:
 			if pubtype == 'article':
@@ -204,10 +212,13 @@ def pub_edit(request):
 				articleparams = {
 					'edit':True,
 					'article': article,
+					'article_status':article_status,
 					'authuser':authenticated_userid(request), 
-					'auth':True
+					'auth':True,
+					'session_message':request.session.pop_flash()
 					}
 				tpldef.update(articleparams)
+
 				return tpldef
 
 		return HTTPSeeOther(location=request.route_url('main'))

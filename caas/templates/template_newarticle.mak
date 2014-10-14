@@ -28,6 +28,10 @@
      </div>
 </nav>
 
+% if session_message[0]=='edited':
+  <div class="alert alert-success" role="alert">Your article is successfully saved!</div>
+% endif
+
 <div class="row">
        % if not edit:
 	  <form role="form" method="post" action="${req.route_url('newarticle')}">
@@ -52,6 +56,23 @@
 	       value="${article.keywords}"
 	     % endif
 	     >
+      <select class="form-control" id="inputStatus" name="inputStatus">
+	     % for s in article_status.keys():
+	       % if edit:
+		 % if s == article.status:
+		   <option selected value="${s}">${article_status[s]}</option>
+		 % else:
+		   <option value="${s}">${article_status[s]}</option>
+		   % endif
+		 % else:
+		   % if s == 'draft':
+		     <option selected value="${s}">${article_status[s]}</option>
+		   % else:
+		     <option value="${s}">${article_status[s]}</option>
+		    % endif
+		 % endif   
+	     % endfor
+	     </select>
     </div>
     <div class="form-group">
     <label for="inputDescr" class="col-sm-2 control-label">Описание</label>
@@ -71,6 +92,9 @@
 	     % endif
 	     >
     </div>
+
+    ## add status, sep_url, left_bracket_url, right_bracket_url here
+
     <div class="col-md-8 col-md-offset-2">
      		       <textarea class="form-control" id="inputArticle" name="inputArticle" placeholder="Основонй текст" rows=20>
 			    % if edit:

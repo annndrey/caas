@@ -2,7 +2,8 @@ from sqlalchemy import (
     Column,
     Integer,
     Text,
-    Unicode
+    Unicode,
+	Enum
     )
 from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP, LONGTEXT
 
@@ -56,13 +57,10 @@ class Article(Base):
 	user = Column(Unicode)
 	status = Column(
 		'status',
-		Unicode(100),
-		Comment('Article Status'),
+		Enum('draft', 'ready', 'private'),
 		nullable=False,
 		default='draft',
-		server_default=Text('draft')
 		)
-		
 
 	def __init__(self, mainname, upname, keywords, url, maintext, descr, pubtimestamp, user, sep_url, right_bracket_url, left_bracket_url):
 		self.mainname = mainname
