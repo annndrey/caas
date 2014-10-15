@@ -49,7 +49,7 @@ def article_view(request):
 	article = DBSession.query(Article).filter(Article.url==article_url).first()
 	tpldef = {'article':article, 'pagename':article.mainname}
 	if authenticated_userid(request):
-		tpldef.update({'auth':True})
+		tpldef.update({'auth':True, 'authuser':authenticated_userid(request)})
 	return tpldef
 
 @view_config(route_name='newarticle', renderer='template_newarticle.mak')
@@ -223,7 +223,7 @@ def pub_edit(request):
 					'article_status':article_status,
 					'authuser':authenticated_userid(request), 
 					'auth':True,
-					'pagename': 'Правка <s>%s</s>' % article.mainname,
+					'pagename': 'Правка %s' % article.mainname,
 					'session_message':request.session.pop_flash()
 					}
 				tpldef.update(articleparams)
@@ -253,7 +253,7 @@ def pub_remove(request):
 			if article.user == authenticated_userid(request):
 				DBSession.delete(article)
 				#session.flash article deleted
-				return HTTPSeeOther(location=request.referrer)
+				return HTTPSeeOther(location=request.route_url('main')
 
 	return HTTPSeeOther(location=request.referrer)
 
