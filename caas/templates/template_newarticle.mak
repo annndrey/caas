@@ -73,7 +73,7 @@
       <div class="col-md-8 col-md-offset-2">
      	<textarea class="form-control" id="inputArticle" name="inputArticle" placeholder="Основной текст" rows=20>
 	  % if edit:
-	    ${article.maintext|n}
+${article.maintext|n}
 	  % endif
 </textarea>
 	<input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />

@@ -253,7 +253,7 @@ def pub_remove(request):
 			if article.user == authenticated_userid(request):
 				DBSession.delete(article)
 				#session.flash article deleted
-				return HTTPSeeOther(location=request.route_url('main')
+				return HTTPSeeOther(location=request.route_url('main'))
 
 	return HTTPSeeOther(location=request.referrer)
 

@@ -10,10 +10,10 @@
 	% for a in articles:
 	  % if auth:
 	    % if a.status == 'draft': 
-	      <p> <a href="${request.route_url('article', url=a.url)}">${a.mainname}</a><span class="label label-default"> ${statuses[a.status]}</span></p>
+	      <p> <a href="${request.route_url('article', url=a.url)}">${a.mainname}</a> <span class="label label-default"> ${statuses[a.status]}</span> [${a.user}]</p>
 	    % endif  
 	    % if a.status == 'private':
-	      <p> <a href="${request.route_url('article', url=a.url)}">${a.mainname}</a><span class="label label-warning"> ${statuses[a.status]}</span></p>
+	      <p> <a href="${request.route_url('article', url=a.url)}">${a.mainname}</a> <span class="label label-warning"> ${statuses[a.status]}</span> [${a.user}]</p>
 	    % endif
 	  % endif 
 	  % if a.status == "ready":
