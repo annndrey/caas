@@ -1,4 +1,5 @@
-#!/usr/bin/env python                                                                                              # -*- coding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8
 
 from pyramid.view import (
     notfound_view_config,
@@ -27,22 +28,26 @@ from .models import (
     Article
     )
 import re 
+
 _re_login = re.compile(r'^[\w\d._-]+$')
 article_status = {'draft':'Черновик', 'ready':'Готово', 'private':'Не трогать!'}
 
 @view_config(route_name='main', renderer='template_main.mak')
 def main_view(request):
-	articles = DBSession.query(Article).all()
-	tpldef = {'message': 'Welcome to the main page. Here is the list of all articles', 'articles':articles }
+	articles = DBSession.query(Article).order_by(Article.pubtimestamp.desc())
+	tpldef = {'articles':articles, 'statuses':article_status, 'pagename':'Главная' }
 	if authenticated_userid(request):
-		tpldef.update({'auth':True})
+		tpldef.update({
+				'auth':True,
+				'authuser':authenticated_userid(request)
+				})
 	return tpldef
 
 @view_config(route_name='article', renderer='template_article.mak')
 def article_view(request):
 	article_url = request.matchdict.get('url', None)
 	article = DBSession.query(Article).filter(Article.url==article_url).first()
-	tpldef = {'article':article}
+	tpldef = {'article':article, 'pagename':article.mainname}
 	if authenticated_userid(request):
 		tpldef.update({'auth':True})
 	return tpldef
@@ -50,6 +55,7 @@ def article_view(request):
 @view_config(route_name='newarticle', renderer='template_newarticle.mak')
 def add_article(request):
 	if not authenticated_userid(request):
+		# add error message processing in the template
 		request.session.flash({
 				'class' : 'warning',
 				'text'  : 'You need to log in to access this page'
@@ -57,7 +63,7 @@ def add_article(request):
 		return HTTPSeeOther(location=request.route_url('login'))
 	if not request.POST:
 		tpldef = {}
-		tpldef.update({'authuser':authenticated_userid(request), 'auth':True})
+		tpldef.update({'authuser':authenticated_userid(request), 'auth':True, 'article_status':article_status, 'pagename':'Новая статья'})
 		return tpldef
 	else:
 		csrf = request.POST.get('csrf', '')
@@ -70,7 +76,7 @@ def add_article(request):
 			art_url = request.POST.get('inputURL', None)
 			newarticle = Article(art_name, art_uppername, art_kwords, art_url, art_text, art_descr, datetime.datetime.now(), authenticated_userid(request), None, None, None)
 			DBSession.add(newarticle)
-
+			# new article added here
 		return HTTPSeeOther(location=request.route_url('main'))
 
 @view_config(route_name='newpost')
@@ -90,7 +96,7 @@ def add_new_post(request):
 		if message and csrf == request.session.get_csrf_token():
 			newpost = Post(date = datetime.datetime.now(), page='discuss', name=authenticated_userid(request), ip=request.remote_addr, post=message )
 			DBSession.add(newpost)
-		return HTTPSeeOther(location=request.route_url('home'))
+		return HTTPSeeOther(location=request.referrer)
 
 @view_config(route_name='home', renderer='template_discuss.mak')
 @view_config(route_name='home_slash', renderer='template_discuss.mak')
@@ -126,6 +132,7 @@ def discuss_view(request):
 				  'max_page':max_page,
 				  'authuser':authenticated_userid(request),
 				  'auth':True,
+				  'pagename':'Глагне',
 				  'newcommentscount':newcomments.count()
 				  }
 		return tpldef
@@ -154,6 +161,7 @@ def login_view(request):
 	tpldef = {
 		'login'       : login,
 		'failed'      : did_fail,
+		'pagename'    : 'Вход'
 		}
 	return tpldef
 
@@ -215,6 +223,7 @@ def pub_edit(request):
 					'article_status':article_status,
 					'authuser':authenticated_userid(request), 
 					'auth':True,
+					'pagename': 'Правка <s>%s</s>' % article.mainname,
 					'session_message':request.session.pop_flash()
 					}
 				tpldef.update(articleparams)
@@ -243,9 +252,10 @@ def pub_remove(request):
 			article = DBSession.query(Article).filter(Article.id==pubid).first()
 			if article.user == authenticated_userid(request):
 				DBSession.delete(article)
-				return HTTPSeeOther(location=request.route_url('main'))
+				#session.flash article deleted
+				return HTTPSeeOther(location=request.referrer)
 
-	return HTTPSeeOther(location=request.route_url('home'))
+	return HTTPSeeOther(location=request.referrer)
 
 @view_config(route_name='logout')
 def logout_view(request):
