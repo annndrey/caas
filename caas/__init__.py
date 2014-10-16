@@ -32,7 +32,7 @@ def main(global_config, **settings):
 	config.add_route('login', '/login')
 	config.add_route('edit', '/edit/{pub:\w+}/{id:\d+}')
 	config.add_route('newarticle', '/newarticle')
-	config.add_route('article', '/article/{url:\w+}')
+	config.add_route('article', '/{url:\w+}')
 	config.add_route('remove', '/remove/{pub:\w+}/{id:\d+}')
 	config.add_route('newpost', '/newpost')
 	config.add_route('logout', '/logout')
