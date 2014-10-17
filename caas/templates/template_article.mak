@@ -30,6 +30,7 @@
 	    </div>  
 
 	  </p>
+	  ## should replace src=" with src="static/picts/
 	  ${article.maintext|n}
 	% else:
 	  There's no such article
