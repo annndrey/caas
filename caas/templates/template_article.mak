@@ -2,9 +2,9 @@
 
 <%inherit file="caas:templates/template_base.mak"/>
 
-  <div class="container">
+  <div class="inner">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2" align='justify'>
+      <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2" align='justify'>
 	% if article:
 	  <p>
 	    % if auth:

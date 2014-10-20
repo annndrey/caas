@@ -2,7 +2,7 @@
 
 <%inherit file="caas:templates/template_base.mak"/>
 
-<div class="container">
+<div class="inner">
   
   <div class="row">
     <div class="col-md-8 col-md-offset-2" align='justify'>

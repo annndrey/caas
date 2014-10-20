@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="caas discuss page" />
     <meta name="description" content="caas" />
-    <title>test-CAAS-test</title>
+    <title>NEW CAAS!</title>
     
     <link rel="stylesheet" href="${req.static_url('caas:static/css/main.css')}" type="text/css" />
     <link rel="stylesheet" href="${req.static_url('caas:static/css/bootstrap.css')}" type="text/css" />
