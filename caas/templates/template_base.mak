@@ -52,7 +52,7 @@
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
       <a class="navbar-brand">${pagename}</a>
       <div class="container">
-	<p class="navbar-text">
+	<p class="navbar-text navbar-right">
 	  % if auth:
 	    Шалом, ${authuser}! 
 	    <a data-toggle="tooltip" data-placement="top" title="Выйти" href="${request.route_url('logout')}"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
