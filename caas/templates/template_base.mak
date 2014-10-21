@@ -25,6 +25,7 @@
      $(window).load( function() {
        $('.photoset-grid-lightbox').photosetGrid({
 	 highresLinks: true,
+	 lowresWidth: 400,
 	 rel: 'withhearts-gallery',
 	 gutter: '2px',
 	 lowresWidth:100,
