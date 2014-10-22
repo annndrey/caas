@@ -14,10 +14,10 @@ function injectText(element, type){
 	elem.focus();
 	sel=document.selection.createRange();
 	if (type == 'link'){
-            elem.value=val_start + tag1 + text + tag2 + text + tag3 + val_end;
+            elem.value=val_start+tag1+text+tag2+text+tag3+val_end;
         }
 	else if(type == 'pict'){
-            elem.value=val_start + tag1 + text + tag2 + val_end;
+            elem.value=val_start+tag1+text+tag2+val_end;
         }
 	return;
     }if(elem.selectionStart||elem.selectionStart=="0"){
@@ -26,19 +26,18 @@ function injectText(element, type){
 	var val_start=elem.value.substring(0,t_start);
 	var val_end=elem.value.substring(t_end,elem.value.length);
 	var text = elem.value.substring(t_start,t_end)
-
 	if (type == 'link'){
-	    elem.value=val_start + tag1 + text + tag2 + text + tag3 + val_end;
+	    elem.value=val_start+tag1+text+tag2+text+tag3+val_end;
 	}
 	else if (type == 'pict'){
-	    elem.value=val_start + tag1 + text + tag2 + val_end;
+	    elem.value=val_start+tag1+text+tag2+val_end;
 	}
     }else{
 	if (type == 'link'){
-            elem.value=val_start + tag1 + text + tag2 + text + tag3 + val_end;
+            elem.value=val_start+tag1+text+tag2+text+tag3+val_end;
         }
 	else if(type == 'pict'){
-            elem.value=val_start + tag1 + text + tag2 + val_end;
+            elem.value=val_start+tag1+text+tag2+val_end;
         }
     }
 }
