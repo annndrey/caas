@@ -1,7 +1,7 @@
 ## -*- coding: utf-8 -*-
 <%inherit file="caas:templates/template_base.mak"/>
 
-<script src="${req.static_url('caas:static/js/injectText.js" type="text/javascript"></script>
+<script src="${req.static_url('caas:static/js/injectText.js')}" type='text/javascript'></script>
 
   <%def name="navbar(page, maxpage)">
     <ul class="pager">
@@ -27,9 +27,10 @@
      	  <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
      	    <textarea class="form-control" id="userpost" name="userpost" placeholder="Куку!" rows=2></textarea>
 	    <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
-	    <a type="button" href="javascript:void(0);" onclick="injectText('text','link');" >Ссылка</a> 
-	    <a type="button" href="javascript:void(0);" onclick="injectText('text','pict');" >Картинка</a>
 	    <button type="submit" class="btn btn-default pull-right" id="submit" name="submit" title="Послать" tabindex="3">Послать</button>
+	    <a href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','link');" >Ссылка</a> 
+	    <a href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','pict');" >Картинка</a>
+
      	  </div>
 	</div>
       </form>
