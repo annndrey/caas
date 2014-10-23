@@ -30,7 +30,7 @@
 	    <button type="submit" class="btn btn-default pull-right" id="submit" name="submit" title="Послать" tabindex="3">Послать</button>
 	    <a href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','link');" >Ссылка</a> 
 	    <a href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','pict');" >Картинка</a>
-	    <a data-toggle="modal" data-target="#uploadModal" class="btn btn-default pull-right">Загрузить</a>
+	    <a  data-toggle="modal" data-target="#uploadModal" class="btn btn-default pull-right disabled">Загрузить</a>
      	  </div>
 	</div>
       </form>
