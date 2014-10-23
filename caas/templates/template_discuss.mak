@@ -18,7 +18,7 @@
       % endif  
     </ul>
   </%def>
-    
+  
   ${navbar(page, max_page)}
   <div class="inner">  
     <div class="row">
@@ -30,9 +30,38 @@
 	    <button type="submit" class="btn btn-default pull-right" id="submit" name="submit" title="Послать" tabindex="3">Послать</button>
 	    <a href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','link');" >Ссылка</a> 
 	    <a href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','pict');" >Картинка</a>
+	    <a data-toggle="modal" data-target="#uploadModal" class="btn btn-default pull-right">Загрузить</a>
      	  </div>
 	</div>
       </form>
+      
+      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModal" aria-hidden="true">
+  	<div class="modal-dialog">
+    	  <div class="modal-content">
+      	    <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="uploadModal">Загрузить что-нибудь</h4>
+      	    </div>
+      	    <div class="modal-body">
+              <form class="form-inline" enctype="multipart/form-data" role="form" method="post" action="upload">
+		<div class="form-group">
+		  <input type="file" name="file" size=60>
+		</div>
+		<div class="form-group">
+		  <input type='checkbox' name='preserve' value='preserve'>Сохранить навсегда!!
+		</div>
+		<div class="form-group">
+		  <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
+		</div>
+      		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+		  <button type="submit" class="btn btn-primary">Загрузить</button>
+		</div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+      </div>
     </div>  
     <br>    
     % for p in posts:
@@ -42,10 +71,10 @@
 	    <div class="panel-heading">
      	      <h4>${p.name}: <small>${p.date.strftime('%d/%m/%Y %H:%M')}</small>
 		% if p.name == authuser:
-		  <a data-toggle="modal" data-target="#editModal${p.id}" data-toggle="tooltip" data-placement="top" title="Править"><span class="glyphicon glyphicon-pencil"></span></a>
+		  <a data-toggle="modal" data-target="#editModal${p.id}"><span class="glyphicon glyphicon-pencil"></span></a>
 		% endif
 
-		<div class="modal fade" id="editModal${p.id}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"${p.id} aria-hidden="true">
+		<div class="modal fade" id="editModal${p.id}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel${p.id}" aria-hidden="true">
   		  <div class="modal-dialog">
     		    <div class="modal-content">
       		      <div class="modal-header">
