@@ -27,10 +27,10 @@
      	  <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
      	    <textarea class="form-control" id="userpost" name="userpost" placeholder="Куку!" rows=2></textarea>
 	    <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
-	    <button type="submit" class="btn btn-default pull-right" id="submit" name="submit" title="Послать" tabindex="3">Послать</button>
-	    <a href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','link');" >Ссылка</a> 
-	    <a href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','pict');" >Картинка</a>
-	    <a  data-toggle="modal" data-target="#uploadModal" class="btn btn-default pull-right disabled">Загрузить</a>
+	    <button style="margin: 10px 0; margin-left: 2px;" type="submit" class="btn btn-default pull-right" id="submit" name="submit" title="Послать" tabindex="3">Послать</button>
+	    <a style="margin: 10px 0; margin-left: 2px;" href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','link');" >Ссылка</a> 
+	    <a style="margin: 10px 0; margin-left: 2px;" href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','pict');" >Картинка</a>
+	    <a style="margin: 10px 0; margin-left: 2px;" data-toggle="modal" data-target="#uploadModal" class="btn btn-default pull-right">Загрузить</a>
      	  </div>
 	</div>
       </form>
@@ -43,7 +43,7 @@
               <h4 class="modal-title" id="uploadModal">Загрузить что-нибудь</h4>
       	    </div>
       	    <div class="modal-body">
-              <form class="form-inline" enctype="multipart/form-data" role="form" method="post" action="upload">
+              <form class="form-inline" enctype="multipart/form-data" id="fileupload" name="fileupload" role="form" method="post" action="#">
 		<div class="form-group">
 		  <input type="file" name="file" size=60>
 		</div>
