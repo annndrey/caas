@@ -17,7 +17,14 @@ from pyramid.httpexceptions import (
     HTTPNotFound,
     HTTPSeeOther
 )
+
 import datetime
+import os 
+import uuid
+import json
+import codecs
+import datetime
+
 from pyramid.response import Response
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy import func
@@ -58,7 +65,7 @@ def add_article(request):
 		# add error message processing in the template
 		request.session.flash({
 				'class' : 'warning',
-				'text'  : 'You need to log in to access this page'
+				'text'  : 'Войдите чтобы увидеть эту страницу'
 				})
 		return HTTPSeeOther(location=request.route_url('login'))
 	if not request.POST:
@@ -79,12 +86,47 @@ def add_article(request):
 			# new article added here
 		return HTTPSeeOther(location=request.route_url('main'))
 
+@view_config(route_name='upload', renderer='json')
+def upload_files(request):
+	#print(" ".join([k for k in request.POST.values()]))
+	#if 'file_input' in request.POST and hasattr(request.POST['file_input'], 'filename'):
+	filename = request.POST.get('0').filename
+	fileext = os.path.splitext(filename)[-1]
+	input_file = request.POST.get('0').file
+	savefilename = "{0}".format(datetime.datetime.now())+fileext
+	keep = False
+	if 'keep' in request.GET:
+		upload_path = '/media/MEDIA/upload/immortal'
+		keep = True
+	else:
+		upload_path = '/media/MEDIA/upload/files'
+	
+	
+
+	file_path = os.path.join(upload_path, "{0}".format(savefilename))
+	#file_path = file_path.encode('ascii', 'ignore')
+	temp_file_path = file_path + '~'#.encode('utf-8')
+	output_file = open(temp_file_path, 'wb')
+	input_file.seek(0)
+	while True:
+		data = input_file.read(2<<16)
+		if not data:
+			break
+		output_file.write(data)
+	output_file.close()
+	os.rename(temp_file_path, file_path)
+	if keep == True:
+		return "<a href='http://pomoyka.homelinux.net/immortal/{0}'>{0}</a>".format(savefilename)
+	else:
+		return "<a href='http://pomoyka.homelinux.net/files/{0}'>{0}</a>".format(savefilename)
+
+
 @view_config(route_name='newpost')
 def add_new_post(request):
 	if not authenticated_userid(request):
 		request.session.flash({
 				'class' : 'warning',
-				'text'  : 'You need to log in to access this page'
+				'text'  : 'Войдите чтобы увидеть эту страницу'
 				})
 		return HTTPSeeOther(location=request.route_url('login'))
 	if not request.POST:
@@ -110,7 +152,7 @@ def discuss_view(request):
 	if not authenticated_userid(request):
 		request.session.flash({
 				'class' : 'warning',
-				'text'  : 'You need to log in to access this page'
+				'text'  : 'Войдите чтобы увидеть эту страницу'
 				})
 		return HTTPSeeOther(location=request.route_url('login'))
 	else:
@@ -237,7 +279,7 @@ def pub_remove(request):
 	if not authenticated_userid(request):
 		request.session.flash({
 				'class' : 'warning',
-				'text'  : 'You need to log in to access this page'
+				'text'  : 'Войдите чтобы увидеть эту страницу'
 				})
 		return HTTPSeeOther(location=request.route_url('login'))
 	else:

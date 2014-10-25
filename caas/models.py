@@ -49,6 +49,8 @@ class Article(Base):
 	url = Column(Unicode, unique=True)
 	maintext = Column(LONGTEXT)
 	descr = Column(Unicode(length=600))
+	previewtext = Column(Text)
+	previewpict = Column(Unicode(length=600))
 	sep_url = Column(Unicode(length=200))
 	left_bracket_url = Column(Unicode(length=200))
 	right_bracket_url = Column(Unicode(length=200))

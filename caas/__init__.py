@@ -36,6 +36,7 @@ def main(global_config, **settings):
 	config.add_route('remove', '/remove/{pub:\w+}/{id:\d+}')
 	config.add_route('newpost', '/newpost')
 	config.add_route('logout', '/logout')
+	config.add_route('upload', '/upload')
 	config.add_route('main', '/')
 	config.scan()
 	return config.make_wsgi_app()
