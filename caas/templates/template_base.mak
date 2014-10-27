@@ -29,7 +29,6 @@
 	 lowresWidth: 400,
 	 rel: 'withhearts-gallery',
 	 gutter: '2px',
-	 lowresWidth:100,
 	 onComplete: function(){
 	   $('.photoset-grid-lightbox').attr('style', '');
 	   $('.photoset-grid-lightbox a').colorbox({
