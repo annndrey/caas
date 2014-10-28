@@ -81,7 +81,14 @@ def add_article(request):
 			art_descr = request.POST.get('inputDescr', None)
 			art_text = request.POST.get('inputArticle', None)
 			art_url = request.POST.get('inputURL', None)
-			newarticle = Article(art_name, art_uppername, art_kwords, art_url, art_text, art_descr, datetime.datetime.now(), authenticated_userid(request), None, None, None)
+
+			art_leftbr = request.POST.get('inputLeftBracket', None)
+			art_rightbr = request.POST.get('inputRightBracket', None)
+			art_sep = request.POST.get('inputSep', None)
+			art_prevtext = request.POST.get('inputPrevText', None)
+			art_prevpict = request.POST.get('inputPrevPict', None)
+
+			newarticle = Article(art_name, art_uppername, art_kwords, art_url, art_text, art_descr, datetime.datetime.now(), authenticated_userid(request), art_sep, art_rightbr, art_leftbr, art_prevtext, art_prevpict)
 			DBSession.add(newarticle)
 			# new article added here
 		return HTTPSeeOther(location=request.route_url('main'))
@@ -242,6 +249,12 @@ def pub_edit(request):
 					art_descr = request.POST.get('inputDescr', None)
 					art_text = request.POST.get('inputArticle', None)
 					art_url = request.POST.get('inputURL', None)
+
+					art_leftbr = request.POST.get('inputLeftBracket', None)
+					art_rightbr = request.POST.get('inputRightBracket', None)
+					art_sep = request.POST.get('inputSep', None)
+					art_prevtext = request.POST.get('inputPrevText', None)
+					art_prevpict = request.POST.get('inputPrevPict', None)
 					
 					#SET them to the aricle
 					article.mainname = art_name
@@ -249,6 +262,13 @@ def pub_edit(request):
 					article.keywords = art_kwords
 					article.descr = art_descr
 					article.url = art_url
+					
+					article.sep_url = art_sep
+					article.right_bracket_url = art_rightbr
+					article.left_bracket_url = art_leftbr
+					article.previewtext = art_prevtext
+					article.previewpict = art_prevpict
+
 					article.status = art_status
 					article.maintext = art_text
 					article.user = authenticated_userid(request)
