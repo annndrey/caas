@@ -133,13 +133,13 @@
 
      	    <textarea class="form-control" id="inputPrevText" name="inputPrevText" placeholder="Краткий текст для превью" rows=3>
 	      % if edit:
-		${article.previewtext|n}
+${article.previewtext}
 	      % endif
 </textarea>
 
      	    <textarea class="form-control" id="inputArticle" name="inputArticle" placeholder="Основной текст" rows=20>
 	      % if edit:
-		${article.maintext|n}
+${article.maintext|n}
 	      % endif
 </textarea>
 	    <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
