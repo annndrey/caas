@@ -8,9 +8,8 @@
 	% if article:
 	  <p>
 	    % if auth:
-	      <a href="${request.route_url('edit', pub='article', id=article.id)}">Edit</a>
-	      <a data-toggle="modal" data-target=".modal-remove">Remove</a>
-	      
+	      <a class="btn btn-default" href="${request.route_url('edit', pub='article', id=article.id)}">Править</a>
+	      <a class="btn btn-default" data-toggle="modal" data-target=".modal-remove">Удалить</a>
 	      <div class="modal fade modal-remove" tabindex="-1" role="dialog" aria-labelledby="modalRemoveLabel" aria-hidden="true">
 		<div class="modal-dialog">
 		  <div class="modal-content">
@@ -25,7 +24,6 @@
 		      <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
 		      <a href="${request.route_url('remove', pub='article', id=article.id)}" type="button" class="btn btn-primary">Удалить</a>
 		    </div>
-		    
 		  </div>
 		</div>
 	      </div>  

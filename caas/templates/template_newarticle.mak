@@ -4,7 +4,7 @@
   ## navbar was here
   <div class="inner"> 
       % if session_message and session_message[0]=='edited':
-	<div class="alert alert-success" role="alert">Статья сохранена!</div>
+	<div class="alert alert-success" role="alert">Статья сохранена! <a href="${request.route_url('article', url=article.url)}">Посмотреть</a></div>
       % endif
       <div class="col-md-offset-1">
       % if not edit:
@@ -116,7 +116,9 @@
 	    <div class="col-md-10">
 	      <input type="text" class="form-control" id="inputPrevPict" name="inputPrevPict" placeholder="заглавная картинка"
 		     % if edit:
-		       value="${article.previewpict}"
+		       % if article.previewpict is not None:
+			 value="${article.previewpict}"
+		       % endif
 		     % endif
 		     >
 	    </div>
@@ -130,18 +132,23 @@
 	<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" align='justify'>
 	  
 	  <div class="col-md-12">
-
-     	    <textarea class="form-control" id="inputPrevText" name="inputPrevText" placeholder="Краткий текст для превью" rows=3>
-	      % if edit:
-${article.previewtext}
+	    % if edit:
+	      % if article.previewtext is not None:
+		<textarea class="form-control" id="inputPrevText" name="inputPrevText" placeholder="Краткий текст для превью" rows=3>${article.previewtext|n}</textarea>
+		% else:
+		<textarea class="form-control" id="inputPrevText" name="inputPrevText" placeholder="Краткий текст для превью" rows=3></textarea>
 	      % endif
-</textarea>
-
-     	    <textarea class="form-control" id="inputArticle" name="inputArticle" placeholder="Основной текст" rows=20>
-	      % if edit:
-${article.maintext|n}
-	      % endif
-</textarea>
+	    % else:
+	      <textarea class="form-control" id="inputPrevText" name="inputPrevText" placeholder="Краткий текст для превью" rows=3></textarea>
+	    % endif
+	    
+     	    
+	    % if edit:
+     	      <textarea class="form-control" id="inputArticle" name="inputArticle" placeholder="Основной текст" rows=20>${article.maintext|n}</textarea>
+	    % else:
+	      <textarea class="form-control" id="inputArticle" name="inputArticle" placeholder="Основной текст" rows=20></textarea>
+	    % endif
+	    	    
 	    <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
 	    <a href="${req.referrer}" type="button" class="btn btn-default pull-right">Отменить</a>
 	    <button type="submit" class="btn btn-default pull-right" id="submit" name="submit" title="Опубликовать" tabindex="3">Сохранить</button>

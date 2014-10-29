@@ -255,7 +255,8 @@ def pub_edit(request):
 					art_sep = request.POST.get('inputSep', None)
 					art_prevtext = request.POST.get('inputPrevText', None)
 					art_prevpict = request.POST.get('inputPrevPict', None)
-					
+					if len(art_prevtext) < 1:
+						art_prevtext = None
 					#SET them to the aricle
 					article.mainname = art_name
 					article.uppername = art_name
@@ -312,10 +313,10 @@ def pub_remove(request):
 				return HTTPSeeOther(location=request.referrer)
 		elif pubtype == 'article':
 			article = DBSession.query(Article).filter(Article.id==pubid).first()
-			if article.user == authenticated_userid(request):
-				DBSession.delete(article)
+			#if article.user == authenticated_userid(request):
+			DBSession.delete(article)
 				#session.flash article deleted
-				return HTTPSeeOther(location=request.route_url('main'))
+			return HTTPSeeOther(location=request.route_url('main'))
 
 	return HTTPSeeOther(location=request.referrer)
 
