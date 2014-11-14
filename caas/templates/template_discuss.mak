@@ -126,7 +126,5 @@
       </div>
     % endfor
     ##  <ul class="pager">
-    ${navbar(page, max_page)}
-    
-    
   </div>
+  ${navbar(page, max_page)}
