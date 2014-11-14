@@ -47,7 +47,7 @@
   <body id="yellowfonts">
     
     ## set navbar here
-
+<div id="wrap">
   <div class="container">
     
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -84,5 +84,13 @@
     </nav>
     
     ${next.body()}
+    <div id="push"></div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">CAAS, 2014. The old site is here: <a href="http://caas.is-saved.org">http://caas.is-saved.org</a></p>
+    </div>
+  </div>
+</div>
   </body>
 </html>
