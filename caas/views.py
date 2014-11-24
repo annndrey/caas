@@ -97,18 +97,21 @@ def add_article(request):
 def upload_files(request):
 	#print(" ".join([k for k in request.POST.values()]))
 	#if 'file_input' in request.POST and hasattr(request.POST['file_input'], 'filename'):
+
+	cfg = request.registry.settings
+	temp_path = cfg.get('caas.upload.temp', False)
+	perm_path = cfg.get('caas.upload.perm', False)
 	filename = request.POST.get('0').filename
 	fileext = os.path.splitext(filename)[-1]
 	input_file = request.POST.get('0').file
+	#we use datetime here beacuse of encoding problem, see issue 27
 	savefilename = "{0}".format(datetime.datetime.now())+fileext
 	keep = False
 	if 'keep' in request.GET:
-		upload_path = '/media/MEDIA/upload/immortal'
+		upload_path = perm_path
 		keep = True
 	else:
-		upload_path = '/media/MEDIA/upload/files'
-	
-	
+		upload_path = temp_path
 
 	file_path = os.path.join(upload_path, "{0}".format(savefilename))
 	#file_path = file_path.encode('ascii', 'ignore')
@@ -122,6 +125,7 @@ def upload_files(request):
 		output_file.write(data)
 	output_file.close()
 	os.rename(temp_file_path, file_path)
+	# Move filesharing host to the settings
 	if keep == True:
 		return "<a href='http://pomoyka.homelinux.net/immortal/{0}'>{0}</a>".format(savefilename)
 	else:
