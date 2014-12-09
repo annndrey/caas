@@ -105,7 +105,7 @@ def upload_files(request):
 	fileext = os.path.splitext(filename)[-1]
 	input_file = request.POST.get('0').file
 	#we use datetime here beacuse of encoding problem, see issue 27
-	savefilename = "{0}".format(datetime.datetime.now())+fileext
+	savefilename = "{0}".format(datetime.datetime.now()).replace(" ", "_")+fileext
 	keep = False
 	if 'keep' in request.GET:
 		upload_path = perm_path
@@ -129,7 +129,7 @@ def upload_files(request):
 	if keep == True:
 		return "<a href='http://pomoyka.homelinux.net/immortal/{0}'>{0}</a>".format(savefilename)
 	else:
-		return "<a href='http://pomoyka.homelinux.net/files/{0}'>{0}</a>".format(savefilename)
+		return "<a href='http://pomoyka.homelinux.net/files/{0}'>{1}</a>".format(savefilename, savefilename)
 
 
 @view_config(route_name='newpost')
