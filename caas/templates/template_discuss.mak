@@ -18,7 +18,7 @@
       % endif  
     </ul>
   </%def>
-  
+
   ${navbar(page, max_page)}
   <div class="inner">  
     <div class="row">

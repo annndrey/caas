@@ -54,6 +54,7 @@
       <a class="navbar-brand">${pagename}</a>
       <div class="container">
 	<p class="navbar-text navbar-right">
+  
 	  % if auth:
 	    Шалом, ${authuser}! 
 	    <a data-toggle="tooltip" data-placement="top" title="Выйти" href="${request.route_url('logout')}"><span class="glyphicon glyphicon-circle-arrow-right"></span></a>
@@ -79,7 +80,17 @@
 	      % endif
 	    % endif
 	  </ul>
+	  ## <form class="navbar-form " role="search">
+	  ##  <div class="input-group col-sm-3 col-md-3 col-lg-3">
+          ##    <input type="text" size=14 class="form-control" placeholder="Искать" name="srch-term" id="srch-term">
+          ##    <div class="input-group-btn">
+	  ##	<button class="btn btn-default disabled" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          ##    </div>
+          ##  </div>
+	  ##</form>
+
 	</p>
+
       </div>
     </nav>
     

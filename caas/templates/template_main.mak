@@ -14,7 +14,7 @@
 		  <img class="media-object img-rounded" src="${a.previewpict}" width="140">
 		</a>
 		<div class="media-body">
-		  <h4 class="media-heading">${a.mainname} <small><span class="label label-default"> ${statuses[a.status]}</span> [${a.user}]</small></h4>
+		  <h4 class="media-heading"><a href="${request.route_url('article', url=a.url)}">${a.mainname}</a> <small><span class="label label-default"> ${statuses[a.status]}</span> [${a.user}]</small></h4>
 		  <a class="btn btn-default btn-xs" href="${request.route_url('edit', pub='article', id=a.id)}">Править</a>
 		  <a class="btn btn-default btn-xs" data-toggle="modal" data-target=".modal-remove${a.id}">Удалить</a>
 	      
@@ -50,7 +50,7 @@
 		  <img class="media-object img-rounded" src="${a.previewpict}" width="140">
 		</a>
 		<div class="media-body">
-		  <h4 class="media-heading">${a.mainname} <small><span class="label label-default"> ${statuses[a.status]}</span> [${a.user}]</small></h4>
+		  <h4 class="media-heading"><a href="${request.route_url('article', url=a.url)}">${a.mainname}</a> <small><span class="label label-default"> ${statuses[a.status]}</span> [${a.user}]</small></h4>
 		  <a class="btn btn-default btn-xs" href="${request.route_url('edit', pub='article', id=a.id)}">Править</a>
 		  <a class="btn btn-default btn-xs" data-toggle="modal" data-target=".modal-remove${a.id}">Удалить</a>
 		  
@@ -88,7 +88,7 @@
 		<img class="media-object img-rounded" src="${a.previewpict}" width="140">
 	      </a>
 	      <div class="media-body">
-		<h4 class="media-heading">${a.mainname}</h4>
+		<h4 class="media-heading"><a href="${request.route_url('article', url=a.url)}">${a.mainname}</a></h4>
 		% if auth:
 		  <a class="btn btn-default btn-xs" href="${request.route_url('edit', pub='article', id=a.id)}">Править</a>
 		  <a class="btn btn-default btn-xs" data-toggle="modal" data-target=".modal-remove${a.id}">Удалить</a>

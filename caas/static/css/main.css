@@ -21,6 +21,9 @@
       background-color: #000000;
   }
 }
+h4 a:link{
+    color:#bbbb00;
+}
 #yellowfonts { 
    color:#bbbb00;
             }
