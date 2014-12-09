@@ -54,7 +54,8 @@ def main_view(request):
 def article_view(request):
 	article_url = request.matchdict.get('url', None)
 	article = DBSession.query(Article).filter(Article.url==article_url).first()
-	tpldef = {'article':article, 'pagename':article.mainname}
+	comments = DBSession.query(Post).filter(Post.page==article_url)
+	tpldef = {'article':article, 'pagename':article.mainname, 'comments':comments}
 	if authenticated_userid(request):
 		tpldef.update({'auth':True, 'authuser':authenticated_userid(request)})
 	return tpldef

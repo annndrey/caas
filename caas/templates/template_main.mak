@@ -84,9 +84,9 @@
 	  
 	  % if a.status == "ready":
 	    <div class="media">
-	      <a class="pull-left" href="${request.route_url('article', url=a.url)}">
-		<img class="media-object img-rounded" src="${a.previewpict}" width="140">
-	      </a>
+	      ##<a class="pull-left" href="${request.route_url('article', url=a.url)}">
+		<img class="media-object img-rounded pull-left" src="${a.previewpict}" width="140">
+	      ##</a>
 	      <div class="media-body">
 		<h4 class="media-heading"><a href="${request.route_url('article', url=a.url)}">${a.mainname}</a></h4>
 		% if auth:

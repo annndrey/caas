@@ -33,7 +33,26 @@ ${article.maintext|n}
 	% else:
 	  There's no such article
 	% endif  	
-      </div>
+	
+	<hr class="style-thin">
+	<div class="push1"></div>
+	
+	% if comments is not None:
+	  % for p in comments:
+	    <div class="row">
+	      <div class="panel panel-default">
+		<div class="panel-heading">
+     		  <h4>${p.name}: <small>${p.date.strftime('%d/%m/%Y %H:%M')}</small></h4>
+		</div>
+		<div class="panel-body">
+		  ${p.post|n}
+		</div>
+		</div>
+	      </div>
+	  % endfor
+	% endif
+	##<div class="g-recaptcha" data-sitekey="6Lf5AP8SAAAAADKrZCOeF1qRqSdTTXJfrhWmQeb5"></div>
+	</div>	
     </div>
-  </div>
-  
+ </div>     
+    

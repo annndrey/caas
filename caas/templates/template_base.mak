@@ -21,7 +21,7 @@
     <script type="text/javascript" src="${req.static_url('caas:static/js/jquery.photoset-grid.js')}"></script>
     <script type="text/javascript" src="${req.static_url('caas:static/js/jquery.colorbox.js')}"></script>
     <script type="text/javascript" src="${req.static_url('caas:static/js/fileupload.js')}"></script>
-    
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
      $(window).load( function() {
        $('.photoset-grid-lightbox').photosetGrid({

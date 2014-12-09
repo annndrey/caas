@@ -1,6 +1,16 @@
  body { 
    background:#000000 !important;
        } 
+hr.style-thin {
+    padding: 0;
+    border: none;
+    border-top:medium double #bbbb00;
+    color: #bbbb00;
+}
+
+.push1 {
+    height: 60px;
+}
 
 .container {
             /* border-image-slice: 0 243 0 243; 
@@ -17,7 +27,7 @@
       border-image-width: 0px 60px 0px 60px; 
       /*border-image-outset: 0px 30px 0px 30px; */
       border-image-repeat: stretch round; 
-      border-image-source: url("/static/css/images/bord_23_left.png");
+      border-image-source: url("/static/picts/main/bord_42_left.png");
       background-color: #000000;
   }
 }
