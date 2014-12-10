@@ -11,7 +11,7 @@
 	    % if a.status == 'draft': 
 	      <div class="media">
 		<a class="pull-left" href="${request.route_url('article', url=a.url)}">
-		  <img class="media-object img-rounded" src="${a.previewpict}" width="140">
+		  <img alt='' class="media-object img-rounded" src="${a.previewpict}" width="140"/>
 		</a>
 		<div class="media-body">
 		  <h4 class="media-heading"><a href="${request.route_url('article', url=a.url)}">${a.mainname}</a> <small><span class="label label-default"> ${statuses[a.status]}</span> [${a.user}]</small></h4>
@@ -47,7 +47,7 @@
 
 	      <div class="media">
 		<a class="pull-left" href="${request.route_url('article', url=a.url)}">
-		  <img class="media-object img-rounded" src="${a.previewpict}" width="140">
+		  <img alt='' class="media-object img-rounded" src="${a.previewpict}" width="140"/>
 		</a>
 		<div class="media-body">
 		  <h4 class="media-heading"><a href="${request.route_url('article', url=a.url)}">${a.mainname}</a> <small><span class="label label-default"> ${statuses[a.status]}</span> [${a.user}]</small></h4>
@@ -85,7 +85,7 @@
 	  % if a.status == "ready":
 	    <div class="media">
 	      ##<a class="pull-left" href="${request.route_url('article', url=a.url)}">
-		<img class="media-object img-rounded pull-left" src="${a.previewpict}" width="140">
+		<img alt='' class="media-object img-rounded pull-left" src="${a.previewpict}" width="140"/>
 	      ##</a>
 	      <div class="media-body">
 		<h4 class="media-heading"><a href="${request.route_url('article', url=a.url)}">${a.mainname}</a></h4>

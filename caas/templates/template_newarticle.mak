@@ -1,7 +1,26 @@
 ## -*- coding: utf-8 -*-
 <%inherit file="caas:templates/template_base.mak"/>
-  
-  ## navbar was here
+<script type="text/javascript">
+ $(document).ready(function(){
+   $("#inputSeries").select2({
+     width:'240px',
+     allowClear:true,
+     formatNoMatches: function(term) {
+       /* customize the no matches output */
+       return "<input class='form-control' id='newTerm' value='"+term+"'><a href='#' id='addNew' class='btn btn-default'>Создать</a>"
+     }
+   })
+  .parent().find('.select2-with-searchbox').on('click','#addNew',function(){
+     /* add the new term */
+     var newTerm = $('#newTerm').val();
+     //alert('adding:'+newTerm);
+     $('<option>'+newTerm+'</option>').appendTo('#inputSeries');
+     $('#inputSeries').select2('val',newTerm); // select the new term
+     $("#inputSeries").select2('close');// close the dropdown
+   })
+ });
+</script>
+
   <div class="inner"> 
       % if session_message and session_message[0]=='edited':
 	<div class="alert alert-success" role="alert">Статья сохранена! <a href="${request.route_url('article', url=article.url)}">Посмотреть</a></div>
@@ -58,7 +77,29 @@
 	  </div>
 	</div>
       </div>
-      
+
+      <div class="row">
+	<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" align='justify'>
+	  <div class="form-group">
+	    <label for="inputSeries" class="col-md-2 control-label">Серия статей</label>
+	    <div class="col-md-10">
+	      
+	      <select class="form-control" id="inputSeries" name="inputSeries">
+		% for s in article_series:
+		  % if edit:
+		    % if s == article.series:
+		      <option selected value="${s}">${s}</option>
+		    % else:
+		      <option value="${s}">${s}</option>
+		    % endif
+		  % endif   
+		% endfor
+	      </select>
+	      
+	    </div>
+	  </div>
+	</div>
+      </div>
       <div class="row">
 	<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" align='justify'>
 	  <div class="form-group">
