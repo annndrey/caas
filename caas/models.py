@@ -5,7 +5,7 @@ from sqlalchemy import (
     Unicode,
 	Enum
     )
-from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP, LONGTEXT
+from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP, LONGTEXT, DATE
 
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -49,6 +49,7 @@ class Article(Base):
 	url = Column(Unicode, unique=True)
 	maintext = Column(LONGTEXT)
 	descr = Column(Unicode(length=600))
+	series = Column(Unicode(length=600))
 	previewtext = Column(Text)
 	previewpict = Column(Unicode(length=600))
 	sep_url = Column(Unicode(length=200))
@@ -85,7 +86,9 @@ class User(Base):
 	id = Column(Integer, primary_key=True)
 	name = Column(Unicode)
 	password = Column(Unicode)
-	
+	email = Column(Unicode(150))
+	bday = Column(DATE)
+
 	def __init__(self, name, password):
 		self.name = name
 		self.password = password

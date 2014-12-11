@@ -18,12 +18,13 @@ from pyramid.httpexceptions import (
     HTTPSeeOther
 )
 
-import datetime
 import os 
 import uuid
 import json
 import codecs
 import datetime
+import re 
+from threading import Timer
 
 from pyramid.response import Response
 from sqlalchemy.exc import DBAPIError
@@ -34,10 +35,39 @@ from .models import (
     User, 
     Article
     )
-import re 
+
 
 _re_login = re.compile(r'^[\w\d._-]+$')
 article_status = {'draft':'Черновик', 'ready':'Готово', 'private':'Не трогать!'}
+
+x=datetime.datetime.today()
+y=x.replace(day=x.day+1, hour=1, minute=0, second=0, microsecond=0)
+delta_t=y-x
+secs=delta_t.seconds+1
+
+def calculate_age(born):
+	today = date.today()
+	return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+def post_stuff():
+	users = DBSession.query(User).filter(User.bday==datetime.date.today()+datetime.timedelta(days=1)).all()
+	if len(users) > 0:
+		for u in users:
+			message = "Совесть кааса напоминает, завтра у <b>{0}</b>  {1} день рождения!!!1".format(u.name, calculate_age(u.bday))
+			newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
+			DBSession.add(newpost)
+	else:
+		message = "Проверка связи, ололо!"
+		newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
+		DBSession.add(newpost)
+	timer_callback()
+
+def timer_callback():
+	t = Timer(secs, post_stuff)
+	t.start()
+
+post_stuff()
+
 
 @view_config(route_name='main', renderer='template_main.mak')
 def main_view(request):
@@ -71,7 +101,8 @@ def add_article(request):
 		return HTTPSeeOther(location=request.route_url('login'))
 	if not request.POST:
 		tpldef = {}
-		tpldef.update({'authuser':authenticated_userid(request), 'auth':True, 'article_status':article_status, 'pagename':'Новая статья'})
+		article_series = set([s.series for s in DBSession.query(Article).all()])
+		tpldef.update({'authuser':authenticated_userid(request), 'auth':True, 'article_status':article_status, 'article_series':article_series, 'pagename':'Новая статья'})
 		return tpldef
 	else:
 		csrf = request.POST.get('csrf', '')
@@ -332,3 +363,4 @@ def logout_view(request):
         return HTTPFound(request.route_url("login"), headers=headers)
     else:
         return HTTPFound(request.route_url("login"))
+
