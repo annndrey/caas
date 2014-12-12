@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="${req.static_url('caas:static/css/select2.css')}" type="text/css" />
     <link rel="stylesheet" href="${req.static_url('caas:static/css/select2-bootstrap.css')}" type="text/css" />
     <link rel="stylesheet" href="${req.static_url('caas:static/css/bootstrap-glyphicons.css')}" type="text/css" />
-    ## get the local copies
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"/>
+    <link rel="stylesheet" href="${req.static_url('caas:static/css/font-awesome.css')}" type="text/css" />
     
     <script type="text/javascript" src="${req.static_url('caas:static/js/jquery.js')}"></script>
     <script type="text/javascript" src="${req.static_url('caas:static/js/jquery.actual.js')}"></script>
@@ -24,7 +23,7 @@
     <script type="text/javascript" src="${req.static_url('caas:static/js/jquery.colorbox.js')}"></script>
     <script type="text/javascript" src="${req.static_url('caas:static/js/fileupload.js')}"></script>
     <script type="text/javascript" src="${req.static_url('caas:static/js/select2.js')}"></script>
-    <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
+    ##<script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
      $(window).load( function() {
        $('.photoset-grid-lightbox').photosetGrid({

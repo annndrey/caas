@@ -3,7 +3,7 @@
 <script type="text/javascript">
  $(document).ready(function(){
    $("#inputSeries").select2({
-     width:'240px',
+     /*width:'240px',*/
      allowClear:true,
      formatNoMatches: function(term) {
        /* customize the no matches output */
