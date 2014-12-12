@@ -50,16 +50,18 @@ def calculate_age(born):
 	return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 def post_stuff():
+
+	#message = "Проверка связи, ололо!"
+	#newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
+	#DBSession.add(newpost)
+
 	users = DBSession.query(User).filter(User.bday==datetime.date.today()+datetime.timedelta(days=1)).all()
 	if len(users) > 0:
 		for u in users:
 			message = "Совесть кааса напоминает, завтра у <b>{0}</b>  {1} день рождения!!!1".format(u.name, calculate_age(u.bday))
 			newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
 			DBSession.add(newpost)
-	else:
-		message = "Проверка связи, ололо!"
-		newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
-		DBSession.add(newpost)
+	#else:
 	timer_callback()
 
 def timer_callback():
@@ -67,7 +69,6 @@ def timer_callback():
 	t.start()
 
 post_stuff()
-
 
 @view_config(route_name='main', renderer='template_main.mak')
 def main_view(request):
