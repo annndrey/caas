@@ -5,7 +5,7 @@ from sqlalchemy import (
     Unicode,
 	Enum
     )
-from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP, LONGTEXT, DATE
+from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP, LONGTEXT, DATE, NUMERIC
 
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -53,6 +53,8 @@ class Article(Base):
 	previewtext = Column(Text)
 	previewpict = Column(Unicode(length=600))
 	sep_url = Column(Unicode(length=200))
+	lat = Column(NUMERIC)
+	lon = Column(NUMERIC)
 	left_bracket_url = Column(Unicode(length=200))
 	right_bracket_url = Column(Unicode(length=200))
 	pubtimestamp = Column(TIMESTAMP)

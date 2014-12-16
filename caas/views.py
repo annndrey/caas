@@ -286,7 +286,9 @@ def pub_edit(request):
 					art_descr = request.POST.get('inputDescr', None)
 					art_text = request.POST.get('inputArticle', None)
 					art_url = request.POST.get('inputURL', None)
-
+					art_series = request.POST.get('inputSeries', None)
+					art_lat = request.POST.get('lat', None)
+					art_lon = request.POST.get('lon', None)
 					art_leftbr = request.POST.get('inputLeftBracket', None)
 					art_rightbr = request.POST.get('inputRightBracket', None)
 					art_sep = request.POST.get('inputSep', None)
@@ -300,7 +302,9 @@ def pub_edit(request):
 					article.keywords = art_kwords
 					article.descr = art_descr
 					article.url = art_url
-					
+					article.series = art_series
+					article.lat = art_lat
+					article.lon = art_lon
 					article.sep_url = art_sep
 					article.right_bracket_url = art_rightbr
 					article.left_bracket_url = art_leftbr
@@ -317,10 +321,12 @@ def pub_edit(request):
 		else:
 			if pubtype == 'article':
 				article = DBSession.query(Article).filter(Article.id==pubid).first()
+				article_series = set([s.series for s in DBSession.query(Article).all()])
 				articleparams = {
 					'edit':True,
 					'article': article,
 					'article_status':article_status,
+					'article_series':article_series,
 					'authuser':authenticated_userid(request), 
 					'auth':True,
 					'pagename': 'Правка %s' % article.mainname,

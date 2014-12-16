@@ -85,17 +85,44 @@
 	    <div class="col-md-10">
 	      
 	      <select class="form-control" id="inputSeries" name="inputSeries">
-		% for s in article_series:
-		  % if edit:
-		    % if s == article.series:
-		      <option selected value="${s}">${s}</option>
-		    % else:
-		      <option value="${s}">${s}</option>
-		    % endif
-		  % endif   
-		% endfor
+		% if article_series is not None:
+		  % for s in article_series:
+		    % if edit:
+		      % if s == article.series:
+			<option selected value="${s}">${s}</option>
+		      % else:
+			<option value="${s}">${s}</option>
+		      % endif
+		    % endif   
+		  % endfor
+		% endif
 	      </select>
 	      
+	    </div>
+	  </div>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" align='justify'>
+	  <div class="form-group">
+	    <label for="inputSeries" class="col-md-2 control-label">Координаты, Lat/Lon</label>
+	    <div class="col-md-3">
+	      <input type="text" class="form-control" id="lat" name="lat" placeholder='Lattitude'
+		     % if edit:
+		       % if article.lat is not None:
+			 value="${article.lat}"
+		       % endif
+		     % endif
+		     >
+	    </div>
+	    <div class="col-md-3">
+	      <input type="text" class="form-control" id="lon" name="lon" placeholder='Longitude'
+		     % if edit:
+		       % if article.lon is not None:
+			 value="${article.lon}"
+		       % endif
+		     % endif
+		     >
 	    </div>
 	  </div>
 	</div>

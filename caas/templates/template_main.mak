@@ -2,7 +2,50 @@
 
 <%inherit file="caas:templates/template_base.mak"/>
 
-<div class="inner">
+  
+
+  <div class="inner">
+    <div class="col-md-10 col-md-offset-1" align='justify'>
+      <div id="map" style="height: 335px">
+	<script>
+	 var map = L.map('map').setView([51.505, -0.09], 1);
+	 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+	   maxZoom: 18,
+	   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+		     '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+		     'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+	   id: 'annndrey.kg994dgi'
+	 }).addTo(map);
+	 % for art in articles:
+	 % if art.status != 'draft':
+	 % if art.lat is not None:
+			    ## put here media class
+	 L.marker([${art.lat}, ${art.lon}]).addTo(map).bindPopup('<a href="${request.route_url('article', url=art.url)}"><img alt="" class="media-object img-rounded" src="${art.previewpict}" width="140"/>${art.mainname}</a>');
+	 % endif
+	 % endif
+	 % endfor
+	 ##/*L.circle([51.508, -0.11], 500, {
+	 ##color: 'red',
+	 ##fillColor: '#f03',
+	 ##fillOpacity: 0.5
+       ##}).addTo(map).bindPopup("I am a circle.");*/
+       ##/*L.polygon([
+	 ##  [51.509, -0.08],
+	 ##[51.503, -0.06],
+	 ##[51.51, -0.047]
+       ##]).addTo(map).bindPopup("I am a polygon.");*/
+       var popup = L.popup();
+       function onMapClick(e) {
+	 popup
+	    .setLatLng(e.latlng)
+	    .setContent("You clicked the map at " + e.latlng.toString())
+	    .openOn(map);
+       }
+       map.on('click', onMapClick);
+      </script>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-8 col-md-offset-2" align='justify'>
       % if articles:
