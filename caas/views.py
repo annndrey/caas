@@ -46,21 +46,19 @@ delta_t=y-x
 secs=delta_t.seconds+1
 
 def calculate_age(born):
-	today = date.today()
-	return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+	today = datetime.date.today()
+	return (today.year - born.year - ((today.month, today.day) < (born.month, born.day))) + 1
 
 def post_stuff():
-
-	#message = "Проверка связи, ололо!"
-	#newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
-	#DBSession.add(newpost)
-
-	users = DBSession.query(User).filter(User.bday==datetime.date.today()+datetime.timedelta(days=1)).all()
+	sess = DBSession()
+	tomorrow = datetime.date.today()+datetime.timedelta(days=1)
+	users = sess.query(User).filter(func.DATE_FORMAT(User.bday, "%d_%m")==tomorrow.strftime("%d_%m")).all()
 	if len(users) > 0:
 		for u in users:
 			message = "Совесть кааса напоминает, завтра у <b>{0}</b>  {1} день рождения!!!1".format(u.name, calculate_age(u.bday))
 			newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
-			DBSession.add(newpost)
+			sess.add(newpost)
+			sess.flush()
 	#else:
 	timer_callback()
 
@@ -210,15 +208,18 @@ def discuss_view(request):
 		posts = DBSession.query(Post).filter(Post.page == 'discuss').order_by(Post.id.desc()).slice(first, last)
 		current_time = datetime.datetime.now()
 		week_ago = current_time - datetime.timedelta(weeks=1)
-
+		#ho ho it compares users birth date and year with current year and returns nothing!
 		newcomments = DBSession.query(Post).filter(Post.date > week_ago).filter(Post.page != 'discuss')
+		tomorrow = datetime.date.today()+datetime.timedelta(days=1)
+		users = DBSession.query(User).filter(func.DATE_FORMAT(User.bday, "%d_%m")==tomorrow.strftime("%d_%m")).all()
+	
 
 		tpldef = {'posts': posts,
 				  'page': page,
 				  'max_page':max_page,
 				  'authuser':authenticated_userid(request),
 				  'auth':True,
-				  'pagename':'Глагне',
+				  'pagename':'Глагне {0}'.format(' '),#.join([x.name for x in users])),
 				  'newcommentscount':newcomments.count()
 				  }
 		return tpldef
