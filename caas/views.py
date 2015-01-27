@@ -25,7 +25,7 @@ import codecs
 import datetime
 import re 
 from threading import Timer
-
+from urllib.request import urlopen
 from pyramid.response import Response
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy import func
@@ -165,21 +165,37 @@ def upload_files(request):
 
 @view_config(route_name='newpost')
 def add_new_post(request):
-	if not authenticated_userid(request):
-		request.session.flash({
-				'class' : 'warning',
-				'text'  : 'Войдите чтобы увидеть эту страницу'
-				})
-		return HTTPSeeOther(location=request.route_url('login'))
+	succ = False
+	#if not authenticated_userid(request):
+	#	request.session.flash({
+	#			'class' : 'warning',
+	#			'text'  : 'Войдите чтобы увидеть эту страницу'
+	#			})
+	#	return HTTPSeeOther(location=request.route_url('login'))
 	if not request.POST:
 		return HTTPSeeOther(location=request.route_url('home'))
 	else:
 		csrf = request.POST.get('csrf', '')
 		message = request.POST.get('userpost', None)
+		ppage = request.POST.get('ppage', None)
+		captcha = request.POST.get('g-recaptcha-response', None)
+		if authenticated_userid(request):
+			username = authenticated_userid(request)
+			if message and csrf == request.session.get_csrf_token() and ppage:
+				newpost = Post(date = datetime.datetime.now(), page=ppage, name=username, ip=request.remote_addr, post=message )
+				DBSession.add(newpost)
+		
 
-		if message and csrf == request.session.get_csrf_token():
-			newpost = Post(date = datetime.datetime.now(), page='discuss', name=authenticated_userid(request), ip=request.remote_addr, post=message )
-			DBSession.add(newpost)
+		else:
+			username = request.POST.get('username', None)
+			resp = urlopen("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}".format("6Lf5AP8SAAAAAHKklOunO0NxX3UOBiFNZPYJslId", captcha))
+			
+			captcharesp = json.loads(resp.read().decode("utf-8"))
+			if captcharesp.get('success') is True:
+				if message and csrf == request.session.get_csrf_token() and ppage:
+					newpost = Post(date = datetime.datetime.now(), page=ppage, name=username, ip=request.remote_addr, post=message )
+					DBSession.add(newpost)
+					
 		return HTTPSeeOther(location=request.referrer)
 
 @view_config(route_name='home', renderer='template_discuss.mak')
@@ -352,7 +368,11 @@ def pub_remove(request):
 		pubid = request.matchdict['id']
 		if pubtype == 'post':
 			post = DBSession.query(Post).filter(Post.id==pubid).first()
-			if post.name == authenticated_userid(request):
+			if post.page == 'discuss':
+				if post.name == authenticated_userid(request):
+					DBSession.delete(post)
+					return HTTPSeeOther(location=request.referrer)
+			else:
 				DBSession.delete(post)
 				return HTTPSeeOther(location=request.referrer)
 		elif pubtype == 'article':

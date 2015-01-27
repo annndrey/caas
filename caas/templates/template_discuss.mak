@@ -27,6 +27,7 @@
      	  <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
      	    <textarea class="form-control" id="userpost" name="userpost" placeholder="Куку!" rows=2></textarea>
 	    <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
+	    <input type="hidden" id="ppage" name="ppage" value="discuss" />
 	    <button style="margin: 10px 0; margin-left: 2px;" type="submit" class="btn btn-default pull-right" id="submit" name="submit" title="Послать" tabindex="3">Послать</button>
 	    <a style="margin: 10px 0; margin-left: 2px;" href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','link');" >Ссылка</a> 
 	    <a style="margin: 10px 0; margin-left: 2px;" href="javascript:void(0);" class="btn btn-default pull-right" onclick="injectText('userpost','pict');" >Картинка</a>

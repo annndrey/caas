@@ -26,7 +26,7 @@
     <script type="text/javascript" src="${req.static_url('caas:static/js/select2.js')}"></script>
     <script type="text/javascript" src="${req.static_url('caas:static/js/leaflet.js')}"></script>
 
-    ##<script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script type="text/javascript">
      $(window).load( function() {
        $('.photoset-grid-lightbox').photosetGrid({
