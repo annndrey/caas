@@ -3,6 +3,7 @@
 
 <script src="${req.static_url('caas:static/js/injectText.js')}" type='text/javascript'></script>
 
+
   <%def name="navbar(page, maxpage)">
     <ul class="pager">
       % if not page:

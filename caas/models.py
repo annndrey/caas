@@ -3,7 +3,8 @@ from sqlalchemy import (
     Integer,
     Text,
     Unicode,
-	Enum
+	Enum,
+	ForeignKey
     )
 from sqlalchemy.dialects.mysql import DATETIME, TIMESTAMP, LONGTEXT, DATE, NUMERIC
 
@@ -12,6 +13,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import (
     scoped_session,
     sessionmaker,
+	relationship
     )
 
 from zope.sqlalchemy import ZopeTransactionExtension
@@ -23,18 +25,20 @@ Base = declarative_base()
 class Post(Base):
 	__tablename__ = 'book'
 	id = Column(Integer, primary_key=True)
+	articleid = Column(Integer, ForeignKey('articles.id'), default=0)
 	date = Column(DATETIME)
 	page = Column(Unicode)
 	name = Column(Unicode)
 	ip = Column(Unicode)
 	post = Column(Text)
 
-	def __init__(self, date, page, name, ip, post):
+	def __init__(self, date, page, name, ip, post, articleid):
 		self.name = name
 		self.date = date
 		self.ip = ip
 		self.page = page
 		self.post = post
+		self.articleid = articleid
 
 	def __str__(self):
 		return self.post
@@ -60,6 +64,7 @@ class Article(Base):
 	pubtimestamp = Column(TIMESTAMP)
 	edittimestamp = Column(TIMESTAMP)
 	user = Column(Unicode)
+	posts = relationship("Post", backref='article')
 	status = Column(
 		'status',
 		Enum('draft', 'ready', 'private'),

@@ -55,10 +55,16 @@ def post_stuff():
 	users = sess.query(User).filter(func.DATE_FORMAT(User.bday, "%d_%m")==tomorrow.strftime("%d_%m")).all()
 	if len(users) > 0:
 		for u in users:
+			
 			message = "Совесть кааса напоминает, завтра у <b>{0}</b>  {1} день рождения!!!1".format(u.name, calculate_age(u.bday))
-			newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
-			sess.add(newpost)
-			sess.flush()
+			#check if the message is already posted, because we are running 
+			prev_greetings = sess.query(Post).filter(Post.post==message).all()
+			if len(prev_greetings) > 0:
+				pass
+			else:
+				newpost = Post(date = datetime.datetime.now(), page='discuss', name='cAAs', ip='127.0.0.1', post=message)
+				sess.add(newpost)
+				sess.flush()
 	#else:
 	timer_callback()
 
@@ -178,11 +184,12 @@ def add_new_post(request):
 		csrf = request.POST.get('csrf', '')
 		message = request.POST.get('userpost', None)
 		ppage = request.POST.get('ppage', None)
+		aid = request.POST.get('aid', None)
 		captcha = request.POST.get('g-recaptcha-response', None)
 		if authenticated_userid(request):
 			username = authenticated_userid(request)
 			if message and csrf == request.session.get_csrf_token() and ppage:
-				newpost = Post(date = datetime.datetime.now(), page=ppage, name=username, ip=request.remote_addr, post=message )
+				newpost = Post(date = datetime.datetime.now(), page=ppage, name=username, ip=request.remote_addr, post=message, articleid=aid )
 				DBSession.add(newpost)
 		
 
@@ -224,7 +231,7 @@ def discuss_view(request):
 		posts = DBSession.query(Post).filter(Post.page == 'discuss').order_by(Post.id.desc()).slice(first, last)
 		current_time = datetime.datetime.now()
 		week_ago = current_time - datetime.timedelta(weeks=1)
-		#ho ho it compares users birth date and year with current year and returns nothing!
+
 		newcomments = DBSession.query(Post).filter(Post.date > week_ago).filter(Post.page != 'discuss')
 		tomorrow = datetime.date.today()+datetime.timedelta(days=1)
 		users = DBSession.query(User).filter(func.DATE_FORMAT(User.bday, "%d_%m")==tomorrow.strftime("%d_%m")).all()
@@ -236,7 +243,7 @@ def discuss_view(request):
 				  'authuser':authenticated_userid(request),
 				  'auth':True,
 				  'pagename':'Глагне {0}'.format(' '),#.join([x.name for x in users])),
-				  'newcommentscount':newcomments.count()
+				  'newcomments':newcomments
 				  }
 		return tpldef
 

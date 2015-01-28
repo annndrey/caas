@@ -5331,8 +5331,8 @@ button.close {
   font-size: 14px;
   font-weight: normal;
   line-height: 18px;
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #ebebeb;
+  background-color: #413D00;
+  border-bottom: 1px solid #000000;
   border-radius: 5px 5px 0 0;
 }
 .popover-content {

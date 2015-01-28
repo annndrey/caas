@@ -109,6 +109,7 @@ ${article.maintext|n}
      	  <textarea class="form-control" id="userpost" name="userpost" placeholder="Оставьте комментарий..." rows=2></textarea>
 	  <input type="hidden" id="csrf" name="csrf" value="${req.session.get_csrf_token()}" />
 	  <input type="hidden" id="ppage" name="ppage" value="${article.url}" />
+	  <input type="hidden" id="aid" name="aid" value="${article.id}" />
 
 	  % if not auth:
 	  <div class="g-recaptcha" data-sitekey="6Lf5AP8SAAAAADKrZCOeF1qRqSdTTXJfrhWmQeb5" data-theme="dark"></div>

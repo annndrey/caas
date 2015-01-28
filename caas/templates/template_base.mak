@@ -28,6 +28,12 @@
 
     <script type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script type="text/javascript">
+    $(document).ready(function() {
+      $('.popovers').popover({container: 'body', html: true});
+    });    
+    </script>
+
+    <script type="text/javascript">
      $(window).load( function() {
        $('.photoset-grid-lightbox').photosetGrid({
 	 highresLinks: true,
@@ -77,7 +83,8 @@
 		<li><a href="${request.route_url('home')}">Глагне</a></li>
 	      % else:
 		## put a link here
-		<li><a href="#"> новые комментарии <span class="badge">${str(newcommentscount)}</span></a></li>
+		##<li><a href="#" role="button" class="btn popovers" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?"></a></li>
+		<li><a href="#" role="button" class="btn popovers" data-toggle="popover" title="" data-content="${"<br>".join(["В <a href={3}>{0}</a>  {1} написал: {2} ".format(p.article.mainname, p.name, p.post, request.route_url('article', url=p.page)) for p in newcomments]) }"  data-original-title="Новые комментарии" data-placement="bottom"> новые комментарии <span class="badge">${str(newcomments.count())}</span></a></li>
 	      % endif
 	      % if request.current_route_url() != request.route_url('newarticle'):
 		<li><a href="${request.route_url('newarticle')}">Новая статья</a></li>

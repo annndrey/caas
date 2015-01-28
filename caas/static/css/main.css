@@ -39,11 +39,12 @@ h4 a:link, h4 a:visited{
 }
 #yellowfonts { 
    color:#bbbb00;
-   /*backgronnd-color:#141300;*/
+   /*background-color:#141300;*/
             }
 .select2-search { background-color: #141300; }
 .select2-search input { background-color: #141300; }
 .select2-results { background-color: #141300; }
+#popover-title { background-color: #141300; }
 a { 
    color:#bbbb00;
             }
