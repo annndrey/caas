@@ -17,24 +17,12 @@
 	   id: 'annndrey.kg994dgi'
 	 }).addTo(map);
 	 % for art in articles:
-	 % if art.status != 'draft':
-	 % if art.lat is not None:
-			    ## put here media class
-	 ##<div class="media"><a class="media-left" href="${request.route_url('article', url=art.url)}"><img class="media-object img-rounded" src="${art.previewpict}" alt="..."></a><div class="media-body"><h4 class="media-heading"><a>${art.mainname}</a></h4>${art.descr}</div></div>
-	 L.marker([${art.lat}, ${art.lon}]).addTo(map).bindPopup('<div class="thumbnail"><img alt="" class="media-object img-rounded" src="${art.previewpict}" width="140"/><div class="caption"><a href="${request.route_url('article', url=art.url)}">${art.mainname}</a><p>${art.descr}</p></div></div>');
+           % if art.status not in ('draft', 'private'):
+	      % if art.lat is not None:
+	         L.marker([${art.lat}, ${art.lon}]).addTo(map).bindPopup('<div class="thumbnail"><img alt="" class="media-object img-rounded" src="${art.previewpict}" width="140"/><div class="caption"><a href="${request.route_url('article', url=art.url)}">${art.mainname}</a><p>${art.descr}  :${art.status}:</p></div></div>');
 	 % endif
 	 % endif
 	 % endfor
-	 ##/*L.circle([51.508, -0.11], 500, {
-	 ##color: 'red',
-	 ##fillColor: '#f03',
-	 ##fillOpacity: 0.5
-       ##}).addTo(map).bindPopup("I am a circle.");*/
-       ##/*L.polygon([
-	 ##  [51.509, -0.08],
-	 ##[51.503, -0.06],
-	 ##[51.51, -0.047]
-       ##]).addTo(map).bindPopup("I am a polygon.");*/
        var popup = L.popup();
        function onMapClick(e) {
 	 popup
