@@ -22,7 +22,8 @@ import os
 import uuid
 import json
 import codecs
-import datetime
+import datetime, time
+import sched
 import re 
 from threading import Timer
 from urllib.request import urlopen
@@ -53,12 +54,13 @@ def post_stuff():
 	sess = DBSession()
 	tomorrow = datetime.date.today()+datetime.timedelta(days=1)
 	users = sess.query(User).filter(func.DATE_FORMAT(User.bday, "%d_%m")==tomorrow.strftime("%d_%m")).all()
+	print("TIMER DEBUGGING", datetime.datetime.now())
 	if len(users) > 0:
 		for u in users:
 			
 			message = "Совесть кааса напоминает, завтра у <b>{0}</b>  {1} день рождения!!!1".format(u.name, calculate_age(u.bday))
-			#check if the message is already posted, because we are running 
 			prev_greetings = sess.query(Post).filter(Post.post==message).all()
+
 			if len(prev_greetings) > 0:
 				pass
 			else:
@@ -66,9 +68,11 @@ def post_stuff():
 				sess.add(newpost)
 				sess.flush()
 	#else:
+	print("New timer is calling")
 	timer_callback()
 
 def timer_callback():
+	print("Timer started")
 	t = Timer(secs, post_stuff)
 	t.start()
 
